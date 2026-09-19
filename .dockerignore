@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.env
+*.log
+.system_generated
+scratch/
+test-*.js
+audit-assets.js

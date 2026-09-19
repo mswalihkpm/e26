@@ -1,0 +1,31 @@
+{
+  "name": "excellentia-arts-fiesta-2026",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test-all-features.js && node test-pwa-and-landscape.js && node test-performance-benchmark.js && node test-security-audit.js",
+    "icons:generate": "node generate-pwa-icons.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
+    "compression": "^1.8.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "multer": "^2.3.0",
+    "ws": "^8.21.3",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "pngjs": "^7.0.0",
+    "sharp": "^0.35.4"
+  }
+}

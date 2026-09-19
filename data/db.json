@@ -1,0 +1,2588 @@
+{
+  "settings": {
+    "eventName": "Excellentia Arts Fiesta 2026",
+    "institution": "Ma'din School of Excellence",
+    "theme": "Discover the Unseen",
+    "dates": "September 15 - 18, 2026",
+    "location": "Malappuram, Kerala",
+    "adminUsername": "e26@gmail.com",
+    "adminPasswordHash": "e26msoe",
+    "footerText": "Ma'din School of Excellence • Near Police Station Malappuram • Excellentia Arts Fiesta 2026 • Copyright Reserved",
+    "showTeamScores": true,
+    "maxVisibleResultNumber": null,
+    "standingsSlideInterval": 5,
+    "liveStream": {
+      "url": "https://www.youtube-nocookie.com/embed/live_stream_test",
+      "status": "Live",
+      "title": "Stage 1 Live Competitions - Camera Deck Active",
+      "notice": "Currently Broadcasting: Mappila Pattu Solo (A-Zone)",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/jfKfPfyJRdk?autoplay=1",
+      "description": "Official Live Broadcast from Excellentia Arts Fiesta 2026"
+    }
+  },
+  "videos": [
+    {
+      "id": "vid-01",
+      "date": "2026-09-15",
+      "title": "Grand Inaugural Ceremony & Anthem Performance",
+      "category": "Ceremony",
+      "thumbnail": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Opening overture and festive stage welcome for Excellentia Arts Fiesta 2026."
+    },
+    {
+      "id": "vid-02",
+      "date": "2026-09-15",
+      "title": "HAAMEEM PUKAL - Sufi Choral Recital",
+      "category": "Ceremony",
+      "thumbnail": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800",
+      "url": "https://youtu.be/L2OMuWdGMDE?si=jJE_e7qBm0NHwZ-R",
+      "description": "Soulful devotional choral hymn presented during the inauguration."
+    },
+    {
+      "id": "vid-03",
+      "date": "2026-09-15",
+      "title": "Quran Recitation (Hafs) - 1st Place Championship Winner",
+      "category": "A-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Flawless tajweed recitation by Mohammed Adil (Samarkhand) in A-Zone."
+    },
+    {
+      "id": "vid-04",
+      "date": "2026-09-16",
+      "title": "Elocution English (A-Zone) - Winning Keynote",
+      "category": "A-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Powerful rhetoric on 'Discovering the Unseen Depths of Truth' by Zayan Rayan."
+    },
+    {
+      "id": "vid-05",
+      "date": "2026-09-16",
+      "title": "Arabana Muttu Traditional Percussion Championship",
+      "category": "C-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "High-octane rhythmic Arabana display by Bukhara Troupe."
+    },
+    {
+      "id": "vid-06",
+      "date": "2026-09-16",
+      "title": "Duff Muttu Spectacular Group Sync",
+      "category": "C-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Undulus Duff Squad's gold medal-winning stage choreography and beats."
+    },
+    {
+      "id": "vid-07",
+      "date": "2026-09-16",
+      "title": "Kolkkali Folk Dance Performance Grand Finale",
+      "category": "C-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Lightning-fast stick rhythm and circle steps by Qurthuba Kolkkali Team."
+    },
+    {
+      "id": "vid-08",
+      "date": "2026-09-17",
+      "title": "Group Nasheed Harmony Showcase",
+      "category": "C-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Melodious polyphonic vocal harmonies by Samarkhand Nasheed Band."
+    },
+    {
+      "id": "vid-09",
+      "date": "2026-09-17",
+      "title": "Elocution Malayalam (B-Zone) - Fiery Speech",
+      "category": "B-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Masterful Malayalam speech delivered by Rayyan Shaheen."
+    },
+    {
+      "id": "vid-10",
+      "date": "2026-09-17",
+      "title": "Versification Malayalam - Poetic Recital",
+      "category": "B-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Original Malayalam verse recitation by Muhammed Rizwan."
+    },
+    {
+      "id": "vid-11",
+      "date": "2026-09-17",
+      "title": "Origami Sculpture & 3D Paper Architecture",
+      "category": "B-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Speed craftsmanship and complex geometric folding exhibition."
+    },
+    {
+      "id": "vid-12",
+      "date": "2026-09-18",
+      "title": "Theatrical Stage Drama - 'Echoes of the Coast'",
+      "category": "General",
+      "thumbnail": "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Dramatic historical enactment staged by Bukhara Drama Wing."
+    },
+    {
+      "id": "vid-13",
+      "date": "2026-09-18",
+      "title": "Grand Quiz Finale - Rapid Fire Championship Round",
+      "category": "General",
+      "thumbnail": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "High-intensity battle of wits between Samarkhand and Undulus quiz teams."
+    },
+    {
+      "id": "vid-14",
+      "date": "2026-09-18",
+      "title": "Choral March & Anthem - Four House Symphonies",
+      "category": "General",
+      "thumbnail": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Grand ensemble performance of the official festival anthem."
+    },
+    {
+      "id": "vid-15",
+      "date": "2026-09-18",
+      "title": "Qawwali Grand Night & Traditional Ghazal Recitals",
+      "category": "General",
+      "thumbnail": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Ecstatic live classical vocal rendition by the festival choir."
+    },
+    {
+      "id": "vid-16",
+      "date": "2026-09-18",
+      "title": "Water Color Painting Live Championship Strokes",
+      "category": "A-Zone",
+      "thumbnail": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800",
+      "url": "/videos/INTRO SPEED.mp4",
+      "description": "Timelapsed technique and live canvas painting demonstration."
+    }
+  ],
+  "teams": [
+    {
+      "id": "bukhara",
+      "name": "Bukhara",
+      "tagline": "The Golden Vanguard",
+      "color": "#f59e0b",
+      "gradient": "linear-gradient(135deg, #f59e0b, #d97706, #0284c7)",
+      "accent": "#fde047",
+      "points": 145,
+      "rank": 1,
+      "firstCount": 7,
+      "secondCount": 5,
+      "thirdCount": 8,
+      "categoryPoints": {
+        "A-Zone": 44,
+        "B-Zone": 52,
+        "C-Zone": 27,
+        "General": 22
+      }
+    },
+    {
+      "id": "undulus",
+      "name": "Undulus",
+      "tagline": "The Emerald Tide",
+      "color": "#10b981",
+      "gradient": "linear-gradient(135deg, #10b981, #059669, #06b6d4)",
+      "accent": "#6ee7b7",
+      "points": 128,
+      "rank": 2,
+      "firstCount": 5,
+      "secondCount": 9,
+      "thirdCount": 3,
+      "categoryPoints": {
+        "A-Zone": 36,
+        "B-Zone": 46,
+        "C-Zone": 24,
+        "General": 22
+      }
+    },
+    {
+      "id": "samarkhand",
+      "name": "Samarkhand",
+      "tagline": "The Mystic Luminary",
+      "color": "#8b5cf6",
+      "gradient": "linear-gradient(135deg, #8b5cf6, #7c3aed, #0ea5e9)",
+      "accent": "#c4b5fd",
+      "points": 103,
+      "rank": 3,
+      "firstCount": 5,
+      "secondCount": 5,
+      "thirdCount": 4,
+      "categoryPoints": {
+        "A-Zone": 31,
+        "B-Zone": 33,
+        "C-Zone": 22,
+        "General": 17
+      }
+    },
+    {
+      "id": "qurthuba",
+      "name": "Qurthuba",
+      "tagline": "The Crimson Horizon",
+      "color": "#ef4444",
+      "gradient": "linear-gradient(135deg, #ef4444, #dc2626, #14b8a6)",
+      "accent": "#fca5a5",
+      "points": 72,
+      "rank": 4,
+      "firstCount": 3,
+      "secondCount": 2,
+      "thirdCount": 6,
+      "categoryPoints": {
+        "A-Zone": 19,
+        "B-Zone": 33,
+        "C-Zone": 15,
+        "General": 5
+      }
+    }
+  ],
+  "programs": [
+    {
+      "id": "prog-1788501411625-9934",
+      "name": "QAWWALI",
+      "category": "General",
+      "status": "Completed"
+    },
+    {
+      "id": "prog-1788501411625-2732",
+      "name": "NASHEED",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-2810",
+      "name": "GROUP SONG",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-7181",
+      "name": "QASEEDA",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-5193",
+      "name": "SEERA RECITATION",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-1086",
+      "name": "SPOT DA'WA",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3428",
+      "name": "M-TALK",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4486",
+      "name": "VA'AL",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-2497",
+      "name": "REEL MAKING",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-1146",
+      "name": "DOCUMENTARY PRESANTATION",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3902",
+      "name": "KNOWLEDGE OLYMPIAD",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-8771",
+      "name": "SPOT MAGAZINE",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-6836",
+      "name": "COLLAGE",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-5640",
+      "name": "PROJECT",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3091",
+      "name": "LOGO ELABORATING",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4008",
+      "name": "AI PROMPTING",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-8383",
+      "name": "THASNEEF",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-1488",
+      "name": "IFTHAU",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-9395",
+      "name": "JAMU-AL-NUQOOL",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-7710",
+      "name": "IDEAL TALK",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-7985",
+      "name": "MUSHA'ARA ALFIYYA",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-1396",
+      "name": "PHOTOGRAPHY",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-1899",
+      "name": "GERMAN SPEECH",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-5580",
+      "name": "SPANISH SPEECH",
+      "category": "General",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3985",
+      "name": "ESSAY MALAYALAM",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-9190",
+      "name": "ESSAY ENGLISH",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-5953",
+      "name": "CAPSULE POEM",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-8935",
+      "name": "STORY MALAYALAM",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-2670",
+      "name": "POEM RECITATION",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-491",
+      "name": "MADH SONG",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4562",
+      "name": "SPELLING BEE",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4326",
+      "name": "MAPPILAPPATTU",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-6374",
+      "name": "PENSIL DRAWING",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-1834",
+      "name": "FACE TO FACE",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-2838",
+      "name": "POSTER MAKING",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4117",
+      "name": "CAPTION WRITING",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-2645",
+      "name": "SPOT TALK",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4284",
+      "name": "ELOCUTION ARABIC",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-1521",
+      "name": "MAP STUDY",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-5788",
+      "name": "THARTHEEL",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4912",
+      "name": "HIFZ",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3368",
+      "name": "GANITHAKELI",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-7401",
+      "name": "DICTIONARY MAKING",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-9660",
+      "name": "IDENTIFY THE PERSON",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-7510",
+      "name": "SWARF TEST",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-5404",
+      "name": "FIQH CONTEST",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-6156",
+      "name": "HIFZ SANAD",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-2289",
+      "name": "IMLAU",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-7832",
+      "name": "IGRAB WRITING",
+      "category": "A-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3340",
+      "name": "ESSAY MALAYALAM",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3977",
+      "name": "ESSAY ARABIC",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-8690",
+      "name": "POEM MALAYALAM",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4637",
+      "name": "POEM ENGLISH",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-7522",
+      "name": "STORY MALAYALAM",
+      "category": "B-Zone",
+      "status": "Completed"
+    },
+    {
+      "id": "prog-1788501411625-5895",
+      "name": "MUHADASA",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-9257",
+      "name": "MADH SONG",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-1338",
+      "name": "MAPPILAPPATTU",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-8378",
+      "name": "CALLIGRAPHY",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-9850",
+      "name": "PENCIL DRAWING",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-8276",
+      "name": "SOCIAL TEXT",
+      "category": "B-Zone",
+      "status": "Completed"
+    },
+    {
+      "id": "prog-1788501411625-2546",
+      "name": "HAIKU MALAYALM",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-7708",
+      "name": "HASH TAG",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-279",
+      "name": "ELOCUTION ENG",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-9337",
+      "name": "BOOK REVIEW",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-2959",
+      "name": "THARTHEEL",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4701",
+      "name": "SUDOKU",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3",
+      "name": "SLOGAN WRITING",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-2181",
+      "name": "BAKTHI GANAM",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3981",
+      "name": "ARBAUONA TEST",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-8133",
+      "name": "MA-AL-MOUSOOMATH",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-3487",
+      "name": "SHARH-AL-AQEEDATHUL AVAM",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-6919",
+      "name": "THAHADDI-ALQIRA'A",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411625-4932",
+      "name": "THASMIYATHUL KITHAB",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-3443",
+      "name": "IGRAB WRITING",
+      "category": "B-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-2451",
+      "name": "ESSAY MALAYALAM",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-7162",
+      "name": "ESSAY ENGLISH",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-4820",
+      "name": "POEM MALAYALAM",
+      "category": "C-Zone",
+      "status": "Completed"
+    },
+    {
+      "id": "prog-1788501411626-3207",
+      "name": "STORY MALAYALAM",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-3566",
+      "name": "PODCAST",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-1504",
+      "name": "MAPPILAPPATU",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-8417",
+      "name": "E-POSTER MAKING",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-500",
+      "name": "CALLIGRAPHY",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-492",
+      "name": "SOCIAL TEXT",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-501",
+      "name": "FEATURE WRITING",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-8704",
+      "name": "SCHOLAR'S PROFILE",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-511",
+      "name": "POEM INTERPRETATION",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-2420",
+      "name": "ELOCUTION ENGLISH",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-6532",
+      "name": "ELOCUTION MALAYALAM",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-8437",
+      "name": "DEPIT THE SCENERIO",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-1483",
+      "name": "VIPLAVAGANA RACHANA",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-6502",
+      "name": "BHAKTHI GANAM",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-7661",
+      "name": "TOP COMMENT",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-5424",
+      "name": "THAHADDI-ALKITHAB",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-2278",
+      "name": "USTHADIFY",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-8699",
+      "name": "BALAGA TEST",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-6565",
+      "name": "THAHADI-AL-MANTIQ",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-136",
+      "name": "SHARHUL MUTHOON",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-4659",
+      "name": "USOOL AL HADITH TEST",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    },
+    {
+      "id": "prog-1788501411626-1112",
+      "name": "THAHLEEL AL  IBARAA",
+      "category": "C-Zone",
+      "status": "Upcoming"
+    }
+  ],
+  "participants": [
+    {
+      "id": "p-1788501382437-6",
+      "name": "MUHAMMAD SINAN N",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-1190",
+      "name": "MUHAMMED SUFYAN PN",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9611",
+      "name": "MUHAMMED RAZI CK",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9615",
+      "name": "MOHAMMED SAHL K",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-4869",
+      "name": "ZIYAD BIN MUSTAFA CK",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9639",
+      "name": "MUHAMMED HAMDHAN KT",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-6102",
+      "name": "AHMED RASHAD T",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9007",
+      "name": "MUHAMMAD GHAZZALI. OK",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5789",
+      "name": "HAMDAN ORAVIL",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-8759",
+      "name": "MUHAMMED BISHR",
+      "team": "Bukhara",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9738",
+      "name": "MUHAMMED SINAN KP",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9011",
+      "name": "SAYYID NIZAMUDDEEN THANGAL",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-6340",
+      "name": "NASWIH ABDURAHEEM P",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-2123",
+      "name": "MUHAMMED ANAS K",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9602",
+      "name": "MUHAMMED MISBAH P",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-2938",
+      "name": "AHAMMAD SINAN K",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-7994",
+      "name": "AAHIL MUHAMMED S",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-6825",
+      "name": "MUHAMMED ASJAD",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-6331",
+      "name": "MOHAMMED SWALIH C",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-7240",
+      "name": "MUHAMMED FAKIH M",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-6003",
+      "name": "MUHAMMAD ANSIL AP",
+      "team": "Bukhara",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-1339",
+      "name": "MUHAMMAD IRFAN N",
+      "team": "Bukhara",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-2988",
+      "name": "MUHAMMED ABOOBAKAR M",
+      "team": "Bukhara",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-3653",
+      "name": "MUHAMMED RABEEH MI",
+      "team": "Bukhara",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-7936",
+      "name": "MUHAMMED RABAH KT",
+      "team": "Bukhara",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-1559",
+      "name": "MUHAMMAD RISHAN V",
+      "team": "Bukhara",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-8665",
+      "name": "MUHAMMED RAFHAN KK",
+      "team": "Bukhara",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-6117",
+      "name": "AHMED ZIYAD K T",
+      "team": "Bukhara",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-8113",
+      "name": "MUHAMMED SINAN K",
+      "team": "Bukhara",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5702",
+      "name": "MUHAMMED SHAFEEH",
+      "team": "Qurthuba",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-1049",
+      "name": "MUHAMMED SHAFI PK",
+      "team": "Qurthuba",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-3236",
+      "name": "MUHAMMED RAZAN M",
+      "team": "Qurthuba",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9249",
+      "name": "MUHAMMED SWABEEH KP",
+      "team": "Qurthuba",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-2766",
+      "name": "SAYYID BISHRUL HAFI",
+      "team": "Qurthuba",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-7084",
+      "name": "MUHAMMED AYMAN M",
+      "team": "Qurthuba",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5689",
+      "name": "ABDUSAMAD",
+      "team": "Qurthuba",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-6561",
+      "name": "MUHAMMED ANSHID T",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-808",
+      "name": "MUHAMMED BISHRUL HAFI",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-1660",
+      "name": "MOHAMMED AFNAN M",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-4417",
+      "name": "MUHAMMED SIRAJ",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-4995",
+      "name": "MUHAMMED RABEEH T",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5219",
+      "name": "MUHAMMED SINAN M",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-4541",
+      "name": "MUHAMMED HABEEB A P",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5042",
+      "name": "UMAR ABDULLA KAMIL V A",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-2733",
+      "name": "MUHAMMAD SWALIH MT",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-2231",
+      "name": "MUHAMMED LUQMAN V",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9672",
+      "name": "MUHAMMAD SABITH VY",
+      "team": "Qurthuba",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5166",
+      "name": "MUHAMMAD MISHAB M",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-3001",
+      "name": "MUHAMMED NABEEL KP",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-763",
+      "name": "SHIFAN BIN MUSTHAFA",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-4383",
+      "name": "MUHAMMED RASIM MM",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-8361",
+      "name": "MUHAMMAD MUNHIM P",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-4316",
+      "name": "MUHAMMED BILAL KP",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5152",
+      "name": "MUHAMMED MIDLAJ K",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-9831",
+      "name": "MUHAMMED HADI KK",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-2038",
+      "name": "MUHAMMAD SAHL K P",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-7470",
+      "name": "ABDUL MUHIZ OK",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5961",
+      "name": "SHERAZ MAHBEER",
+      "team": "Qurthuba",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-7739",
+      "name": "MUHAMMED RUSLAN CK",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-1162",
+      "name": "AHMAD ANFAAL PA",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-5373",
+      "name": "ABDUL KHADIRI SINAN",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-1029",
+      "name": "MUHAMMED RABEEH P",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-1455",
+      "name": "AMAN MUHAMMAD K",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-7562",
+      "name": "ZIYAURAHMAN K",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382437-3450",
+      "name": "MUHAMMED HAMIDULLAH P",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-3931",
+      "name": "ABDUL MAJID P",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-3640",
+      "name": "MUHAMMED SAEED P",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-7729",
+      "name": "MUHAMMED MISHAL MC",
+      "team": "Samarkhand",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-7775",
+      "name": "MUHAMMED OMER AP",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-7533",
+      "name": "THWUFAILUL MASHHOOD",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6260",
+      "name": "MUHAMMED KHASIM NASHATH",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-7351",
+      "name": "MUHAMMAD SABITH H",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-7342",
+      "name": "MUHAMMED SINAN K",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6526",
+      "name": "MUHAMMED ISMAYIL MK",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-5551",
+      "name": "MUHAMMED ANAS V P",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-225",
+      "name": "MUHAMMED SAHAD KK",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-4964",
+      "name": "MUHAMMED THWAYYIB  K T",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-9892",
+      "name": "MUHAMMED SHAHEEM P",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-4413",
+      "name": "MUHAMMED MIDULAJ PM",
+      "team": "Samarkhand",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-9321",
+      "name": "BADRUDHEEN PK",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-3929",
+      "name": "MUHAMMAD SWALIH P",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-595",
+      "name": "MUHAMMED SHAMMAS MI",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-1686",
+      "name": "MUHAMMED HASAN M",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-977",
+      "name": "MOHAMMED M",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-9678",
+      "name": "MUHAMMED SIYAN KN",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6715",
+      "name": "HARSHAD KC",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-4646",
+      "name": "THAMEEM AHMAD U",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-3932",
+      "name": "MUHAMMED JASEEL M",
+      "team": "Samarkhand",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-2814",
+      "name": "MUHAMMED SHAMIL E",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-5058",
+      "name": "MUHAMMED RABEEB",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6772",
+      "name": "MUHAMMAD RASAL AP",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-4787",
+      "name": "MUHAMMED SWABEEH KK",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-3015",
+      "name": "MUHAMMED ASAD",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-5701",
+      "name": "MUHAMMED SHABBEER MC",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-3987",
+      "name": "MUHAMMED SAJEED AP",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-9462",
+      "name": "MOHAMMED AFNAN E",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6741",
+      "name": "MUHAMMED SWABEEH MK",
+      "team": "Undulus",
+      "category": "B-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-5424",
+      "name": "MUHAMMED E",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-1571",
+      "name": "ADHIL AMEEN T",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-1668",
+      "name": "MUHAMMED SHAMEEM",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-4450",
+      "name": "MUHAMMED VM",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6269",
+      "name": "MUHAMMAD MINHAJ",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-1402",
+      "name": "MUHAMMED DILSHAD KC",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6782",
+      "name": "MUHAMMED SAEED KK",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-2341",
+      "name": "MUHAMMED MALIK U",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-8015",
+      "name": "MUHAMMED MIDLAJ KS",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-5544",
+      "name": "MOHAMMED SHAMMAS P",
+      "team": "Undulus",
+      "category": "C-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-5950",
+      "name": "SAYYID MUHAMMED FOUZAN KP",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-7751",
+      "name": "MUHAMMED NABEEL CP",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-960",
+      "name": "MUHAMMED RIZIN P V",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-2060",
+      "name": "SHAKIR K",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6392",
+      "name": "MUHAMMAD JASIL AP",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-2343",
+      "name": "MUHAMMED MUZAMMIL PM",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-6283",
+      "name": "AHMAD THAMEEM E",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-1745",
+      "name": "MUHAMMED HISHAM  C",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-1007",
+      "name": "MUHAMMED AZEEM MK",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    },
+    {
+      "id": "p-1788501382438-797",
+      "name": "MUHAMMED MUZAMMIL CC",
+      "team": "Undulus",
+      "category": "A-Zone",
+      "class": ""
+    }
+  ],
+  "results": [
+    {
+      "id": "res-01",
+      "resultNumber": 1,
+      "programCode": "A01",
+      "programName": "Elocution English",
+      "category": "A-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Zayan Rayan",
+          "chestNumber": "101",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Aman Farhan",
+          "chestNumber": "201",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Nihal Shamil",
+          "chestNumber": "301",
+          "team": "Samarkhand",
+          "grade": "B",
+          "points": 4
+        }
+      ],
+      "updatedAt": "2026-09-19T15:24:00.590Z"
+    },
+    {
+      "id": "res-02",
+      "resultNumber": 2,
+      "programCode": "A02",
+      "programName": "Quran Recitation (Hafs)",
+      "category": "A-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Mohammed Adil",
+          "chestNumber": "302",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Irfan Habeeb",
+          "chestNumber": "102",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Bilal Sinan",
+          "chestNumber": "401",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-03",
+      "resultNumber": 3,
+      "programCode": "A03",
+      "programName": "Essay Writing Arabic",
+      "category": "A-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Hisham Munir",
+          "chestNumber": "202",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Sufyan Tariq",
+          "chestNumber": "303",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Rayyan Shaheen",
+          "chestNumber": "103",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-04",
+      "resultNumber": 4,
+      "programCode": "A04",
+      "programName": "Water Color Painting",
+      "category": "A-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Zayan Rayan",
+          "chestNumber": "101",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Danish Faheem",
+          "chestNumber": "203",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Muhammed Rizwan",
+          "chestNumber": "402",
+          "team": "Qurthuba",
+          "grade": "B",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "res-05",
+      "resultNumber": 5,
+      "programCode": "A05",
+      "programName": "Calligraphy Arabic",
+      "category": "A-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Rashid Ali",
+          "chestNumber": "403",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Aman Farhan",
+          "chestNumber": "201",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Irfan Habeeb",
+          "chestNumber": "102",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-06",
+      "resultNumber": 6,
+      "programCode": "A06",
+      "programName": "Extempore English",
+      "category": "A-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Nihal Shamil",
+          "chestNumber": "301",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Zayan Rayan",
+          "chestNumber": "101",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Hisham Munir",
+          "chestNumber": "202",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-07",
+      "resultNumber": 7,
+      "programCode": "B01",
+      "programName": "Pencil Drawing",
+      "category": "B-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Danish Faheem",
+          "chestNumber": "203",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Irfan Habeeb",
+          "chestNumber": "102",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Bilal Sinan",
+          "chestNumber": "401",
+          "team": "Qurthuba",
+          "grade": "B",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "res-08",
+      "resultNumber": 8,
+      "programCode": "B02",
+      "programName": "Elocution Malayalam",
+      "category": "B-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Rayyan Shaheen",
+          "chestNumber": "103",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Aman Farhan",
+          "chestNumber": "201",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Sufyan Tariq",
+          "chestNumber": "303",
+          "team": "Samarkhand",
+          "grade": "B",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "res-09",
+      "resultNumber": 9,
+      "programCode": "B03",
+      "programName": "Story Writing English",
+      "category": "B-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Mohammed Adil",
+          "chestNumber": "302",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Rashid Ali",
+          "chestNumber": "403",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Zayan Rayan",
+          "chestNumber": "101",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-10",
+      "resultNumber": 10,
+      "programCode": "B04",
+      "programName": "Versification Malayalam",
+      "category": "B-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Muhammed Rizwan",
+          "chestNumber": "402",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Hisham Munir",
+          "chestNumber": "202",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Irfan Habeeb",
+          "chestNumber": "102",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-11",
+      "resultNumber": 11,
+      "programCode": "B05",
+      "programName": "Origami Sculpture",
+      "category": "B-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Zayan Rayan",
+          "chestNumber": "101",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Nihal Shamil",
+          "chestNumber": "301",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Aman Farhan",
+          "chestNumber": "201",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-12",
+      "resultNumber": 12,
+      "programCode": "C01",
+      "programName": "Arabana Muttu",
+      "category": "C-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Bukhara Arabana Troupe",
+          "chestNumber": "110",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Undulus Arabana Troupe",
+          "chestNumber": "210",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Samarkhand Arabana Troupe",
+          "chestNumber": "310",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-13",
+      "resultNumber": 13,
+      "programCode": "C02",
+      "programName": "Group Nasheed",
+      "category": "C-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Samarkhand Nasheed Band",
+          "chestNumber": "311",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Bukhara Nasheed Band",
+          "chestNumber": "111",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Qurthuba Nasheed Band",
+          "chestNumber": "411",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-14",
+      "resultNumber": 14,
+      "programCode": "C03",
+      "programName": "Duff Muttu Performance",
+      "category": "C-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Undulus Duff Squad",
+          "chestNumber": "212",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Samarkhand Duff Squad",
+          "chestNumber": "312",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Bukhara Duff Squad",
+          "chestNumber": "112",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-15",
+      "resultNumber": 15,
+      "programCode": "C04",
+      "programName": "Kolkkali Folk Dance",
+      "category": "C-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Qurthuba Kolkkali Team",
+          "chestNumber": "413",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Undulus Kolkkali Team",
+          "chestNumber": "213",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Bukhara Kolkkali Team",
+          "chestNumber": "113",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-16",
+      "resultNumber": 16,
+      "programCode": "G01",
+      "programName": "Theatrical Stage Drama",
+      "category": "General",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Bukhara Drama Wing",
+          "chestNumber": "120",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Samarkhand Drama Wing",
+          "chestNumber": "320",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Undulus Drama Wing",
+          "chestNumber": "220",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-17",
+      "resultNumber": 17,
+      "programCode": "G02",
+      "programName": "Quiz Grand Finale",
+      "category": "General",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Samarkhand Quiz Trio",
+          "chestNumber": "321",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Undulus Quiz Trio",
+          "chestNumber": "221",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Bukhara Quiz Trio",
+          "chestNumber": "121",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-18",
+      "resultNumber": 18,
+      "programCode": "G03",
+      "programName": "Choral March & Anthem",
+      "category": "General",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Undulus Choir",
+          "chestNumber": "222",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Bukhara Choir",
+          "chestNumber": "122",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Qurthuba Choir",
+          "chestNumber": "422",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-19",
+      "resultNumber": 19,
+      "programCode": "B06",
+      "programName": "POEM MALAYALAM",
+      "category": "B-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Hisham Munir",
+          "chestNumber": "202",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd",
+          "participantName": "Muhammed Rizwan",
+          "chestNumber": "402",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd (Tie)",
+          "participantName": "Nihal Shamil",
+          "chestNumber": "301",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 5
+        },
+        {
+          "position": "3rd (Tie)",
+          "participantName": "Rayyan Shaheen",
+          "chestNumber": "103",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    },
+    {
+      "id": "res-20",
+      "resultNumber": 20,
+      "programCode": "B07",
+      "programName": "STORY MALAYALAM",
+      "category": "B-Zone",
+      "isPublic": true,
+      "winners": [
+        {
+          "position": "1st",
+          "participantName": "Zayan Rayan",
+          "chestNumber": "101",
+          "team": "Bukhara",
+          "grade": "A",
+          "points": 10
+        },
+        {
+          "position": "2nd (Tie)",
+          "participantName": "Aman Farhan",
+          "chestNumber": "201",
+          "team": "Undulus",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "2nd (Tie)",
+          "participantName": "Sufyan Tariq",
+          "chestNumber": "303",
+          "team": "Samarkhand",
+          "grade": "A",
+          "points": 7
+        },
+        {
+          "position": "3rd",
+          "participantName": "Rashid Ali",
+          "chestNumber": "403",
+          "team": "Qurthuba",
+          "grade": "A",
+          "points": 5
+        }
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": "news-01",
+      "title": "Grand Inauguration of Excellentia Arts Fiesta 2026 Celebrated with Splendor",
+      "category": "Top Story",
+      "badge": "Breaking",
+      "date": "Sept 15, 2026",
+      "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop&q=80",
+      "summary": "The grand cultural extravaganza commenced with majestic fanfare, flag hoisting, and inspiring inaugural addresses honoring the artistic heritage of Ma'din School of Excellence.",
+      "isUploaded": true,
+      "isPublic": true,
+      "isPublished": true
+    },
+    {
+      "id": "news-02",
+      "title": "Team Bukhara Takes Early Lead in A-Zone Literary & Recitation Duels",
+      "category": "Championship",
+      "badge": "Leaderboard",
+      "date": "Sept 16, 2026",
+      "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=80",
+      "summary": "With phenomenal performances in Quran Recitation and Elocution, Bukhara surged ahead, closely followed by Undulus and Samarkhand in a nail-biting point contest.",
+      "isUploaded": true,
+      "isPublic": true,
+      "isPublished": true
+    },
+    {
+      "id": "news-03",
+      "title": "Spectacular Duff Muttu & Kolkkali Performances Mesmerize Capacity Crowd",
+      "category": "Stage Recitals",
+      "badge": "Stage Live",
+      "date": "Sept 16, 2026",
+      "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&auto=format&fit=crop&q=80",
+      "summary": "The Main Stadium was packed to the rafters as the four houses delivered thunderous percussion rhythms, traditional sync, and acrobatic choreography.",
+      "isUploaded": true,
+      "isPublic": true,
+      "isPublished": true
+    },
+    {
+      "id": "news-04",
+      "title": "Arabic Calligraphy & Watercolor Exhibition Unveiled at Central Pavilion",
+      "category": "Exhibition",
+      "badge": "Arts & Craft",
+      "date": "Sept 17, 2026",
+      "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=800&auto=format&fit=crop&q=80",
+      "summary": "Visitors and jury members praised the breathtaking Arabic script masterpieces and creative canvas illustrations crafted by talented students across all zones.",
+      "isUploaded": true,
+      "isPublic": true,
+      "isPublished": true
+    },
+    {
+      "id": "news-05",
+      "title": "Choral March & Anthem Grand Finale Scheduled for Tomorrow Night",
+      "category": "Schedule",
+      "badge": "Upcoming",
+      "date": "Sept 17, 2026",
+      "image": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&auto=format&fit=crop&q=80",
+      "summary": "All four houses are fine-tuning their vocal harmonies and formations for the prestigious General Category Anthem trophy.",
+      "isUploaded": true,
+      "isPublic": true,
+      "isPublished": true
+    },
+    {
+      "id": "news-06",
+      "title": "Audit Committee Discrepancy Reporting System Operational 24/7",
+      "category": "Official",
+      "badge": "Notice",
+      "date": "Sept 18, 2026",
+      "image": "https://images.unsplash.com/photo-1450133064473-71024230f91b?w=800&auto=format&fit=crop&q=80",
+      "summary": "Team managers and house captains can submit immediate score or participant correction queries through the portal's integrated discrepancy audit module.",
+      "isUploaded": true,
+      "isPublic": true,
+      "isPublished": true
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gal-01",
+      "title": "Grand Opening Stage Ceremony",
+      "category": "Inauguration",
+      "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
+      "date": "Sept 15, 2026",
+      "likes": 142
+    },
+    {
+      "id": "gal-02",
+      "title": "Quran Recitation Stage",
+      "category": "A-Zone",
+      "image": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=800",
+      "date": "Sept 15, 2026",
+      "likes": 98
+    },
+    {
+      "id": "gal-03",
+      "title": "Duff Muttu Rhythmic Beats",
+      "category": "C-Zone",
+      "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800",
+      "date": "Sept 16, 2026",
+      "likes": 215
+    },
+    {
+      "id": "gal-04",
+      "title": "Arabic Calligraphy Canvas",
+      "category": "Exhibition",
+      "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=800",
+      "date": "Sept 16, 2026",
+      "likes": 167
+    },
+    {
+      "id": "gal-05",
+      "title": "Kolkkali Folk Dance Squad",
+      "category": "C-Zone",
+      "image": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800",
+      "date": "Sept 16, 2026",
+      "likes": 189
+    },
+    {
+      "id": "gal-06",
+      "title": "English Keynote Speech",
+      "category": "A-Zone",
+      "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800",
+      "date": "Sept 16, 2026",
+      "likes": 76
+    },
+    {
+      "id": "gal-07",
+      "title": "Vocal Choir Harmony",
+      "category": "General",
+      "image": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=800",
+      "date": "Sept 17, 2026",
+      "likes": 134
+    },
+    {
+      "id": "gal-08",
+      "title": "Watercolor Arts Pavilion",
+      "category": "A-Zone",
+      "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800",
+      "date": "Sept 17, 2026",
+      "likes": 112
+    },
+    {
+      "id": "gal-09",
+      "title": "Drama Theatre Showcase",
+      "category": "General",
+      "image": "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800",
+      "date": "Sept 17, 2026",
+      "likes": 156
+    },
+    {
+      "id": "gal-10",
+      "title": "Grand Championship Trophy Unveiling",
+      "category": "Championship",
+      "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800",
+      "date": "Sept 18, 2026",
+      "likes": 245
+    },
+    {
+      "id": "gal-11",
+      "title": "Paper Origami & Craft Display",
+      "category": "B-Zone",
+      "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800",
+      "date": "Sept 18, 2026",
+      "likes": 88
+    },
+    {
+      "id": "gal-12",
+      "title": "Pencil Sketching Contest",
+      "category": "B-Zone",
+      "image": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800",
+      "date": "Sept 18, 2026",
+      "likes": 95
+    },
+    {
+      "id": "gal-13",
+      "title": "Arabana Muttu Percussion Sync",
+      "category": "C-Zone",
+      "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800",
+      "date": "Sept 18, 2026",
+      "likes": 178
+    },
+    {
+      "id": "gal-14",
+      "title": "House Captains March Past",
+      "category": "Ceremony",
+      "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800",
+      "date": "Sept 18, 2026",
+      "likes": 203
+    }
+  ],
+  "notifications": [],
+  "items": [
+    {
+      "id": "item-1789825103557",
+      "resultId": "res-01",
+      "resultNumber": null,
+      "programName": "Elocution English",
+      "category": "A-Zone",
+      "place": 2,
+      "participantName": "",
+      "team": "Undulus",
+      "subject": "Majestic Diwani Calligraphy Composition",
+      "textContent": "<p>A classic calligraphic composition rendered in ink and gold leaf on handmade parchment paper.</p>",
+      "mediaType": "text",
+      "mediaUrl": "",
+      "originalName": "",
+      "fileSize": 450123,
+      "updatedAt": "2026-09-19T15:24:15.700Z"
+    },
+    {
+      "id": "item-1789825103531",
+      "resultId": "res-01",
+      "resultNumber": null,
+      "programName": "Elocution English",
+      "category": "A-Zone",
+      "place": 1,
+      "participantName": "",
+      "team": "Bukhara",
+      "subject": "Discover The Unseen - A Poem on Hidden Horizons",
+      "textContent": "<h2>Echoes of the Unseen Soul</h2><p>In the quiet depths beneath the ocean blue,<br>Where whispered dreams in silent stillness grew...</p><blockquote>\"Art is the mirror of the unseen world.\"</blockquote>",
+      "mediaType": "text",
+      "mediaUrl": "",
+      "originalName": "",
+      "fileSize": null,
+      "updatedAt": "2026-09-19T15:24:15.670Z"
+    }
+  ]
+}

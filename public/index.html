@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excellentia Arts Fiesta 2026 | Discover the Unseen - Ma'din School of Excellence</title>
+  <meta name="description" content="Official Portal for Excellentia Arts Fiesta 2026 of Ma'din School of Excellence, Malappuram. Theme: Discover the Unseen. Live results, team standings, live stream, gallery and downloadable result posters.">
+  <meta name="theme-color" content="#0284c7">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Excellentia 2026">
+  <meta name="application-name" content="Excellentia 2026">
+  <meta name="msapplication-TileColor" content="#0284c7">
+  <meta name="msapplication-TileImage" content="/assets/images/icons/icon-144.png">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Favicons & App Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/icons/icon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.png">
+  <!-- Performance Resource Preconnects & Asset Preloads -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" as="image" href="/assets/images/excellentia-brand-logo.png">
+  <link rel="preload" as="image" href="/assets/images/theme-iceberg-logo.png">
+  <link rel="preload" as="image" href="/assets/images/theme-text-discover.png">
+
+  <!-- Google Fonts: Montserrat & Outfit & Space Grotesk & Syne & Satisfy & Dancing Script -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Satisfy&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons & SheetJS & Confetti -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/poster.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="ocean-theme">
+
+  <!-- Background Ambient Canvas & Light Rays -->
+  <canvas id="ambient-ocean-canvas"></canvas>
+  <div class="deep-sea-glow glow-1"></div>
+  <div class="deep-sea-glow glow-2"></div>
+  <div class="iceberg-watermark-bg"></div>
+
+  <!-- Main Navigation Header -->
+  <header class="fiesta-header" id="main-header">
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <a href="#home" class="brand-link" id="nav-brand-link">
+          <img src="/assets/images/excellentia-brand-logo.png" alt="Excellentia Excellence Arts Fiesta" class="brand-logo-img">
+        </a>
+      </div>
+
+      <nav class="desktop-nav" id="desktop-nav">
+        <a href="#home" class="nav-item active" data-target="home-view" title="Home"><i class="fa-solid fa-house"></i></a>
+        <a href="#leaderboard" class="nav-item" data-target="leaderboard-view" title="Teams & Points Leaderboard"><i class="fa-solid fa-trophy"></i></a>
+        <a href="#results" class="nav-item" data-target="results-view" title="Results Hub"><i class="fa-solid fa-square-poll-vertical"></i></a>
+        <a href="#videos" class="nav-item" data-target="videos-view" title="Video Recitals & Highlights"><i class="fa-solid fa-video text-ruby"></i></a>
+        <a href="#gallery" class="nav-item" data-target="gallery-view" title="Discovery Photo Gallery"><i class="fa-solid fa-images"></i></a>
+        <a href="#news" class="nav-item" data-target="news-view" title="News & Announcements"><i class="fa-solid fa-newspaper"></i></a>
+        <a href="#about" class="nav-item" data-target="about-view" title="About Fiesta & Teams"><i class="fa-solid fa-circle-info"></i></a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+      <div class="drawer-header">
+        <button class="btn-close-drawer" id="btn-close-drawer" aria-label="Close Navigation"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="drawer-links">
+        <a href="#home" class="drawer-link active" data-target="home-view"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#leaderboard" class="drawer-link" data-target="leaderboard-view"><i class="fa-solid fa-trophy"></i> Teams & Points</a>
+        <a href="#results" class="drawer-link" data-target="results-view"><i class="fa-solid fa-square-poll-vertical"></i> Results Hub</a>
+        <a href="#videos" class="drawer-link" data-target="videos-view"><i class="fa-solid fa-video text-ruby"></i> Videos & Highlights</a>
+        <a href="#gallery" class="drawer-link" data-target="gallery-view"><i class="fa-solid fa-images"></i> Photo Gallery</a>
+        <a href="#news" class="drawer-link" data-target="news-view"><i class="fa-solid fa-newspaper"></i> Latest News</a>
+        <a href="#about" class="drawer-link" data-target="about-view"><i class="fa-solid fa-circle-info"></i> About Fiesta</a>
+      </div>
+      <div class="drawer-quick-actions">
+        <button class="btn-ocean-primary w-100 mb-2 btn-trigger-pwa-install" id="btn-drawer-pwa-install" style="display: none;"><i class="fa-solid fa-download"></i> Install Fiesta App</button>
+        <button class="btn-glow-outline w-100 mb-2" id="btn-drawer-settings"><i class="fa-solid fa-gear"></i> Settings & Guide</button>
+        <button class="btn-admin-glow w-100" id="btn-drawer-admin"><i class="fa-solid fa-shield-halved"></i> <span id="admin-nav-text">Committee Portal</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SPA CONTENT VIEWS -->
+  <main class="fiesta-main" id="main-content">
+
+    <!-- 1. HOME VIEW -->
+    <section class="view-section active-view" id="home-view">
+      <!-- Ambient Hero Banner (Theme & Official Emblems) -->
+      <div class="hero-section">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>SEPTEMBER 15 - 18, 2026 • MALAPPURAM, KERALA</span>
+          </div>
+
+          <!-- Hero Brand & Theme Integration -->
+          <div class="hero-brand-block">
+            <img src="/assets/images/excellentia-brand-logo.png" alt="Excellentia Arts Fiesta 2026" class="hero-excellentia-logo">
+            
+            <div class="hero-theme-showcase">
+              <div class="theme-icon-container">
+                <img src="/assets/images/theme-iceberg-logo.png" alt="Discover The Unseen Emblem" class="hero-iceberg-symbol floating-anim">
+              </div>
+              <div class="theme-typography-container">
+                <img src="/assets/images/theme-text-discover.png" alt="DISCOVER THE UNSEEN" class="hero-theme-img">
+                <p class="theme-tagline">“Where the hidden depths of artistic brilliance surface to conquer the horizon.”</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#results" class="btn-ocean-primary glow-btn" data-target="results-view">
+              <i class="fa-solid fa-magnifying-glass"></i> Explore Results
+            </a>
+            <a href="#leaderboard" class="btn-ocean-secondary" data-target="leaderboard-view">
+              <i class="fa-solid fa-trophy"></i> Team Leaderboard
+            </a>
+            <a href="#videos" class="btn-ocean-live" data-target="videos-view" id="btn-hero-watch-live">
+              <i class="fa-solid fa-play"></i> Watch Live & Videos
+            </a>
+          </div>
+
+          <!-- Fiesta Quick Metric Counters -->
+          <div class="fiesta-stats-grid">
+            <div class="stat-card glass-card">
+              <div class="stat-icon-wrap icon-gold"><i class="fa-solid fa-palette"></i></div>
+              <div class="stat-info">
+                <span class="stat-num" id="stat-total-programs">48</span>
+                <span class="stat-title">Artistic Items</span>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-icon-wrap icon-cyan"><i class="fa-solid fa-users"></i></div>
+              <div class="stat-info">
+                <span class="stat-num" id="stat-total-participants">450+</span>
+                <span class="stat-title">Participants</span>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-icon-wrap icon-emerald"><i class="fa-solid fa-star"></i></div>
+              <div class="stat-info">
+                <span class="stat-num" id="stat-results-published">18</span>
+                <span class="stat-title">Results Out</span>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-icon-wrap icon-purple"><i class="fa-solid fa-layer-group"></i></div>
+              <div class="stat-info">
+                <span class="stat-num">4 Teams</span>
+                <span class="stat-title">Bukhara • Undulus • Samarkhand • Qurthuba</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Leaderboard Preview (Top 3 Teams in 1 Row) -->
+      <section class="section-container">
+        <div class="section-header">
+          <div>
+            <span class="section-subtitle">LIVE CHAMPIONSHIP STANDINGS</span>
+            <h2 class="section-title">The Top Three Duel</h2>
+          </div>
+          <a href="#leaderboard" class="link-view-all" data-target="leaderboard-view">Full Standings <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="home-top3-teams-grid" id="home-teams-grid">
+          <!-- Populated dynamically with top 3 houses in 1 row -->
+        </div>
+      </section>
+
+      <!-- Home Latest News Stream -->
+      <section class="section-container">
+        <div class="section-header">
+          <div>
+            <span class="section-subtitle">FIESTA DISPATCHES</span>
+            <h2 class="section-title">Announcements & Highlights</h2>
+          </div>
+          <a href="#news" class="link-view-all" data-target="news-view">News Archive <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="news-cards-grid" id="home-news-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+    </section>
+
+    <!-- 2. LEADERBOARD & TEAMS VIEW (EXACT IMAGE 1 MATCH) -->
+    <section class="view-section" id="leaderboard-view">
+      <div class="section-container">
+        <!-- Live Point Table Header -->
+        <div class="page-title-box leaderboard-title-box">
+          <div class="title-with-icon">
+            <div class="title-icon-badge"><i class="fa-solid fa-trophy"></i></div>
+            <div>
+              <span class="section-subtitle">LIVE POINT TABLE</span>
+              <h1 class="page-main-title">Team Championship Leaderboard</h1>
+              <p class="page-description">Points automatically recalculate instantly upon every official result entry.</p>
+            </div>
+          </div>
+          <!-- AFTER X RESULTS WIDGET (Matching Image 4) -->
+          <div class="leaderboard-cutoff-widget" id="leaderboard-cutoff-widget">
+            <span class="cutoff-widget-label">AFTER</span>
+            <span class="cutoff-widget-number" id="leaderboard-cutoff-number">0</span>
+            <span class="cutoff-widget-unit" id="leaderboard-cutoff-unit">RESULTS</span>
+          </div>
+        </div>
+
+        <!-- Top 3 Podium Showcase (Rank 2 Left, Rank 1 Center Elevated, Rank 3 Right) -->
+        <div class="podium-showcase" id="leaderboard-podium">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+        <!-- 4 Team Point Cards Detailed Grid (4 Columns) -->
+        <div class="teams-detailed-grid" id="teams-detailed-grid">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+        <!-- Category Wise Points Matrix -->
+        <div class="matrix-card-panel glass-panel mt-8">
+          <div class="matrix-header-row">
+            <div class="matrix-title-wrap">
+              <div class="matrix-icon-circle"><i class="fa-solid fa-chart-column text-cyan"></i></div>
+              <h3 class="matrix-title">Category-Wise Points Matrix</h3>
+            </div>
+            <div class="matrix-legend-chips">
+              <span class="legend-chip-item"><span class="legend-dot dot-a"></span> A-ZONE</span>
+              <span class="legend-chip-item"><span class="legend-dot dot-b"></span> B-ZONE</span>
+              <span class="legend-chip-item"><span class="legend-dot dot-c"></span> C-ZONE</span>
+              <span class="legend-chip-item"><span class="legend-dot dot-gen"></span> GENERAL</span>
+            </div>
+          </div>
+          <div class="table-responsive mt-4">
+            <table class="fiesta-table matrix-table">
+              <thead>
+                <tr>
+                  <th>RANK & TEAM</th>
+                  <th>A-ZONE POINTS</th>
+                  <th>B-ZONE POINTS</th>
+                  <th>C-ZONE POINTS</th>
+                  <th>GENERAL POINTS</th>
+                  <th>1ST PLACES</th>
+                  <th>2ND PLACES</th>
+                  <th>3RD PLACES</th>
+                  <th>TOTAL POINTS</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-matrix-body">
+                <!-- Dynamically populated by app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Bottom Info Strip -->
+        <div class="fiesta-info-strip mt-8">
+          <div class="info-strip-left">
+            <i class="fa-solid fa-circle-info text-cyan"></i>
+            <span>Points update in real-time. All rankings are subject to change with new results.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. RESULTS HUB VIEW (EXACT IMAGE 2 MATCH) -->
+    <section class="view-section" id="results-view">
+      <div class="section-container">
+        <!-- Results Hero Showcase (Left: KPI Stats | Right: 3D Trophy Artwork) -->
+        <div class="results-hero-showcase glass-panel">
+          <div class="results-hero-left">
+            <div class="live-status-pill">
+              <span class="live-indicator-dot"></span> LIVE
+            </div>
+            <h1 class="results-hero-title">Results</h1>
+            <p class="results-hero-desc">Live results and rankings from all events</p>
+            
+            <div class="results-kpi-row">
+              <div class="results-kpi-card">
+                <div class="kpi-icon-wrap kpi-blue"><i class="fa-solid fa-trophy"></i></div>
+                <div class="kpi-info">
+                  <span class="kpi-val" id="kpi-events-count">4</span>
+                  <span class="kpi-lbl">Events</span>
+                  <span class="kpi-subtext text-emerald"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Live & Ongoing</span>
+                </div>
+              </div>
+              <div class="results-kpi-card">
+                <div class="kpi-icon-wrap kpi-purple"><i class="fa-solid fa-user-group"></i></div>
+                <div class="kpi-info">
+                  <span class="kpi-val" id="kpi-participants-count">250+</span>
+                  <span class="kpi-lbl">Participants</span>
+                  <span class="kpi-subtext">Across all events</span>
+                </div>
+              </div>
+              <div class="results-kpi-card">
+                <div class="kpi-icon-wrap kpi-gold"><i class="fa-solid fa-star"></i></div>
+                <div class="kpi-info">
+                  <span class="kpi-val" id="kpi-results-count">100+</span>
+                  <span class="kpi-lbl">Results</span>
+                  <span class="kpi-subtext">Updated live</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Streamlined Filter & Search Bar -->
+        <div class="results-streamline-filterbar glass-panel mt-6">
+          <div class="results-zone-pills" id="results-zone-pills">
+            <button class="res-zone-btn active" data-zone="ALL"><i class="fa-solid fa-sliders"></i> All Events</button>
+            <div class="res-other-zones-dropdown">
+              <button class="res-zone-btn" id="btn-toggle-other-zones"><i class="fa-solid fa-globe"></i> Other Zones <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 4px;"></i></button>
+              <div class="other-zones-menu hidden" id="other-zones-menu">
+                <button class="other-zone-item" data-zone="A-Zone">A-Zone</button>
+                <button class="other-zone-item" data-zone="B-Zone">B-Zone</button>
+                <button class="other-zone-item" data-zone="C-Zone">C-Zone</button>
+                <button class="other-zone-item" data-zone="General">General</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-search-sort-group">
+            <div class="res-search-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="result-search-input" placeholder="Search events, participants...">
+              <button class="btn-clear-search" id="btn-clear-search" title="Clear search"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="res-sort-wrap">
+              <select id="res-sort-select" class="res-sort-select">
+                <option value="num-desc" selected>Sort by: Result # (Descending ▾)</option>
+                <option value="num-asc">Sort by: Result # (Ascending ▴)</option>
+                <option value="name">Sort by: Name ▾</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Column Results Grid Container -->
+        <div class="results-cards-grid modern-results-grid mt-6" id="main-results-grid">
+          <!-- Populated dynamically by results.js -->
+        </div>
+
+        <!-- No Results Fallback State -->
+        <div class="no-results-state hidden" id="no-results-state">
+          <div class="no-results-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+          <h3>No Results Found</h3>
+          <p>No results match your selected filter criteria or search keyword.</p>
+          <div class="mt-4">
+            <button class="btn-ocean-primary" id="btn-clear-filters-empty">Clear All Filters</button>
+          </div>
+        </div>
+
+        <!-- Bottom Info Strip -->
+        <div class="fiesta-info-strip mt-8">
+          <div class="info-strip-left">
+            <i class="fa-solid fa-circle-info text-cyan"></i>
+            <span>Results are updated live. Please check back for the latest updates.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. VIDEO HIGHLIGHTS & RECITALS VIEW -->
+    <section class="view-section" id="videos-view">
+      <div class="section-container">
+        <div class="page-title-box">
+          <div class="title-with-icon">
+            <div class="title-icon-badge" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.5);"><i class="fa-solid fa-video"></i></div>
+            <div>
+              <span class="section-subtitle">PERFORMANCE ARCHIVES</span>
+              <h1 class="page-main-title">Video Highlights & Recitals</h1>
+              <p class="page-description">Watch stage recitals, championship highlights, and video recordings from Excellentia Arts Fiesta 2026.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Category Filter Tabs -->
+        <div class="gallery-category-tabs" id="videos-category-tabs">
+          <button class="gal-tab active" data-category="ALL">All Videos</button>
+          <button class="gal-tab" data-category="A-Zone">A-Zone</button>
+          <button class="gal-tab" data-category="B-Zone">B-Zone</button>
+          <button class="gal-tab" data-category="C-Zone">C-Zone</button>
+          <button class="gal-tab" data-category="General">General</button>
+          <button class="gal-tab" data-category="Ceremony">Ceremony</button>
+        </div>
+
+        <!-- Video Highlights Collection Grid -->
+        <div class="video-highlights-grid mt-6" id="main-videos-grid">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- 4B. LIVE RESULTS ARENA BROADCAST SLIDESHOW THEATER -->
+        <div class="results-broadcast-wrapper mt-12" id="results-slideshow-wrapper">
+          <div class="broadcast-section-head">
+            <div class="flex-between-row flex-wrap" style="gap: 1rem; align-items: center;">
+              <div class="broadcast-title-group">
+                <div class="broadcast-live-badge">
+                  <span class="live-pulse-dot"></span>
+                  <span>LIVE ARENA BROADCAST</span>
+                </div>
+                <h2 class="broadcast-heading">Grand Results Arena Broadcast</h2>
+                <p class="broadcast-subtext">Continuous cinematic slideshow of championship results with speed transitions.</p>
+              </div>
+
+              <!-- Top Bar Controls -->
+              <div class="broadcast-controls-cluster">
+                <!-- Zone selector pills for slideshow -->
+                <div class="ss-zone-pills" id="slideshow-zone-pills">
+                  <button class="ss-pill-btn active" data-zone="ALL">All Zones</button>
+                  <button class="ss-pill-btn" data-zone="A-Zone">A-Zone</button>
+                  <button class="ss-pill-btn" data-zone="B-Zone">B-Zone</button>
+                  <button class="ss-pill-btn" data-zone="C-Zone">C-Zone</button>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="ss-action-buttons">
+                  <span class="ss-counter-chip" id="ss-counter-chip">
+                    <i class="fa-solid fa-trophy text-gold"></i> <span id="ss-current-num">1</span> / <span id="ss-total-num">--</span>
+                  </span>
+                  <button class="ss-ctrl-btn" id="ss-btn-prev" title="Previous Result (Left Arrow)">
+                    <i class="fa-solid fa-backward-step"></i>
+                  </button>
+                  <button class="ss-ctrl-btn ss-btn-play" id="ss-btn-play-pause" title="Pause / Play (Spacebar)">
+                    <i class="fa-solid fa-pause"></i>
+                  </button>
+                  <button class="ss-ctrl-btn" id="ss-btn-next" title="Next Result (Right Arrow)">
+                    <i class="fa-solid fa-forward-step"></i>
+                  </button>
+                  <button class="ss-ctrl-btn ss-btn-sound" id="ss-btn-sound" title="Toggle Video Transition Audio (Mute/Unmute)">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                  </button>
+                  <button class="ss-ctrl-btn ss-btn-standings" id="ss-btn-show-standings" title="Show Live Team Points Standings Slide (S)">
+                    <i class="fa-solid fa-chart-column text-cyan"></i> <span class="theater-text">Team Standings</span>
+                  </button>
+                  <button class="ss-ctrl-btn ss-btn-landscape" id="ss-btn-rotate-landscape" title="Landscape Theater Mode (L)">
+                    <i class="fa-solid fa-mobile-screen-button fa-rotate-90 text-cyan"></i> <span class="theater-text">Landscape</span>
+                  </button>
+                  <button class="ss-ctrl-btn ss-btn-theater" id="ss-btn-fullscreen" title="Theater Fullscreen Mode (F)">
+                    <i class="fa-solid fa-expand"></i> <span class="theater-text">Theater Mode</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- THE STADIUM BROADCAST THEATER SCREEN -->
+          <div class="arena-theater-frame glass-panel" id="arena-theater-frame">
+            <!-- Floating Exit Fullscreen Button -->
+            <button class="theater-floating-close" id="btn-close-theater-fullscreen" title="Exit Fullscreen (Esc)"><i class="fa-solid fa-xmark"></i></button>
+
+            <!-- Ambient Glow & Framing Accents -->
+            <div class="frame-ambient-glow"></div>
+            <div class="frame-hud-corner top-left"></div>
+            <div class="frame-hud-corner top-right"></div>
+            <div class="frame-hud-corner bottom-left"></div>
+            <div class="frame-hud-corner bottom-right"></div>
+
+            <!-- LAYER 1: RESULT SLIDE CONTENT -->
+            <div class="theater-slide-stage" id="theater-slide-stage">
+              <!-- Dynamically rendered by slideshow.js with rich animations -->
+            </div>
+
+            <!-- LAYER 2: INTERLEAVED VIDEO TRANSITION OVERLAY -->
+            <div class="theater-video-stage" id="theater-video-stage">
+              <video id="theater-transition-video" class="theater-video-element" src="/videos/INTRO SPEED.mp4" playsinline preload="auto" muted></video>
+              <div class="video-stinger-badge">
+                <div class="stinger-loader-ring"></div>
+                <div class="stinger-text-wrap">
+                  <span class="stinger-glitch">EXCELLENTIA 2026</span>
+                  <span class="stinger-sub">DISCOVER THE UNSEEN</span>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Bottom Slide Countdown Progress Bar -->
+            <div class="theater-progress-track">
+              <div class="theater-progress-bar" id="theater-progress-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. GALLERY VIEW (WITH OFFICIAL FOOTER BADGES) -->
+    <section class="view-section" id="gallery-view">
+      <div class="section-container">
+        <div class="page-title-box">
+          <div class="title-with-icon">
+            <div class="title-icon-badge"><i class="fa-solid fa-images"></i></div>
+            <div>
+              <span class="section-subtitle">VISUAL MEMOIRS</span>
+              <h1 class="page-main-title">Discover the Unseen Moments</h1>
+              <p class="page-description">Capturing the intensity, art, and triumph of Excellentia Arts Fiesta 2026.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Category Tabs -->
+        <div class="gallery-category-tabs" id="gallery-tabs">
+          <button class="gal-tab active" data-category="ALL">All Captures</button>
+          <button class="gal-tab" data-category="A-Zone">A-Zone</button>
+          <button class="gal-tab" data-category="B-Zone">B-Zone</button>
+          <button class="gal-tab" data-category="C-Zone">C-Zone</button>
+          <button class="gal-tab" data-category="General">General</button>
+          <button class="gal-tab" data-category="Ceremony">Ceremony</button>
+        </div>
+
+        <div class="gallery-masonry-grid mt-6" id="main-gallery-grid">
+          <!-- Populated dynamically with footer badging -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5.5. WINNING WORKS & CREATIONS SHOWCASE VIEW (1ST, 2ND, 3RD PLACES PREVIEW) -->
+    <section class="view-section" id="showcase-view">
+      <div class="section-container">
+        <div class="page-title-box">
+          <div class="title-with-icon">
+            <div class="title-icon-badge"><i class="fa-solid fa-palette text-cyan"></i></div>
+            <div>
+              <span class="section-subtitle">CREATIVE MASTERPIECES</span>
+              <h1 class="page-main-title">Winning Works & Creations</h1>
+              <p class="page-description">Explore the literary poems, essays, calligraphy, and artworks of 1st, 2nd, and 3rd place champions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Showcase Filters Bar -->
+        <div class="showcase-controls-bar glass-panel mt-4 mb-4 p-3">
+          <div class="showcase-filters-grid">
+            <!-- Category Filter Tabs -->
+            <div class="filter-tab-pill-group" id="showcase-category-tabs">
+              <button class="filter-pill-btn active" data-cat="ALL">All Categories</button>
+              <button class="filter-pill-btn" data-cat="A-Zone">A-Zone</button>
+              <button class="filter-pill-btn" data-cat="B-Zone">B-Zone</button>
+              <button class="filter-pill-btn" data-cat="C-Zone">C-Zone</button>
+              <button class="filter-pill-btn" data-cat="General">General</button>
+            </div>
+
+            <!-- Place Filter Tabs (1st, 2nd, 3rd) -->
+            <div class="filter-tab-pill-group" id="showcase-place-tabs">
+              <button class="filter-pill-btn active" data-place="ALL">All Places</button>
+              <button class="filter-pill-btn" data-place="1st"><i class="fa-solid fa-crown text-gold"></i> 1st Place</button>
+              <button class="filter-pill-btn" data-place="2nd">2nd Place</button>
+              <button class="filter-pill-btn" data-place="3rd">3rd Place</button>
+            </div>
+
+            <!-- Search input -->
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="showcase-search-input" class="form-input search-glass" placeholder="Search subject, program, student...">
+            </div>
+          </div>
+        </div>
+
+        <!-- Showcase Items Grid -->
+        <div class="showcase-cards-grid mt-6" id="showcase-items-grid">
+          <!-- Dynamically populated -->
+        </div>
+
+        <div class="empty-state-card glass-panel hidden" id="showcase-empty-state">
+          <div class="empty-icon-wrap"><i class="fa-solid fa-feather-pointed"></i></div>
+          <h3>No Works Found</h3>
+          <p class="text-muted">No winning works published yet for this filter. Check back soon as items are uploaded by the committee.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. NEWS & ANNOUNCEMENTS VIEW -->
+    <section class="view-section" id="news-view">
+      <div class="section-container">
+        <div class="page-title-box">
+          <div class="title-with-icon">
+            <div class="title-icon-badge"><i class="fa-solid fa-newspaper"></i></div>
+            <div>
+              <span class="section-subtitle">OFFICIAL DISPATCHES</span>
+              <h1 class="page-main-title">Fiesta News & Announcements</h1>
+              <p class="page-description">Stay updated with breaking announcements, circulars, and event highlights.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-cards-grid" id="main-news-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ABOUT VIEW -->
+    <section class="view-section" id="about-view">
+      <div class="section-container">
+        <div class="about-hero-card glass-panel">
+          <div class="about-grid">
+            <div class="about-text-col">
+              <span class="section-subtitle">MA'DIN SCHOOL OF EXCELLENCE</span>
+              <h1 class="page-main-title">Excellentia Arts Fiesta 2026</h1>
+              <div class="theme-highlight-badge">
+                <i class="fa-solid fa-gem"></i> THEME: <strong>“DISCOVER THE UNSEEN”</strong>
+              </div>
+              <p class="about-body">
+                The Excellentia Arts Fiesta stands as the crown jewel of cultural and artistic endeavors at <strong>Ma'din School of Excellence</strong>, Malappuram. In its 2026 edition, we set sail under the profound motto <em>“Discover the Unseen”</em>.
+              </p>
+              <p class="about-body">
+                Like an immense iceberg floating upon the deep ocean, the true depths of a student's artistic brilliance lie beneath the visible surface. Excellentia provides the grand stage where hidden talents in literature, stagecraft, calligraphy, public speaking, and traditional musical arts emerge to claim their rightful glory.
+              </p>
+              <div class="about-actions-row mt-4">
+                <a href="https://excellentia25.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-ocean-primary" id="btn-visit-excellentia-fest" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.75rem 1.4rem; font-weight: 700; border-radius: 12px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit 2025 Excellentia Fest
+                </a>
+              </div>
+            </div>
+            <div class="about-image-col">
+              <div class="about-emblem-wrap">
+                <img src="/assets/images/theme-iceberg-logo.png" alt="Discover The Unseen" class="about-iceberg-art">
+                <img src="/assets/images/theme-text-discover.png" alt="Discover The Unseen" class="about-theme-text">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Previous Edition Archive Banner -->
+        <div class="about-archive-banner glass-panel mt-6 p-4" style="border-radius: 16px; border: 1px solid rgba(0, 240, 255, 0.3); background: rgba(2, 13, 26, 0.7);">
+          <div class="archive-banner-flex" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div class="archive-banner-icon-circle" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(0, 240, 255, 0.15); border: 1px solid var(--cyan-glow); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--cyan-glow);">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+              <div>
+                <h4 style="margin: 0; color: #fff; font-size: 1.05rem;">Visit 2025 Excellentia Fest Portal</h4>
+                <p class="text-muted text-xs" style="margin: 0.2rem 0 0 0;">Explore previous edition records, points, and archives at excellentia25.vercel.app</p>
+              </div>
+            </div>
+            <a href="https://excellentia25.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-ocean-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; border-radius: 10px;">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit 2025 Fest
+            </a>
+          </div>
+        </div>
+
+        <!-- The Four Teams Rationale -->
+        <h2 class="section-title mt-10 mb-6 text-center">The Historic Teams of Excellence</h2>
+        <div class="houses-rationale-grid">
+          <div class="house-card house-bukhara">
+            <div class="house-emblem-badge">
+              <img src="/assets/images/houses/bukhara-arch.png" alt="Bukhara Team Emblem" class="house-about-emblem-img">
+              <span class="house-icon-mini"><i class="fa-solid fa-crown"></i></span>
+            </div>
+            <h3>Bukhara</h3>
+            <span class="house-motto">The Golden Vanguard</span>
+            <p>Named after the illustrious Silk Road oasis of scholarly mastery, representing brilliance, clarity, and steadfast dedication.</p>
+          </div>
+          <div class="house-card house-undulus">
+            <div class="house-emblem-badge">
+              <img src="/assets/images/houses/undulus-arch.png" alt="Undulus Team Emblem" class="house-about-emblem-img">
+              <span class="house-icon-mini"><i class="fa-solid fa-water"></i></span>
+            </div>
+            <h3>Undulus</h3>
+            <span class="house-motto">The Emerald Tide</span>
+            <p>Reflecting the golden age of Andalusian architecture, poetry, and philosophy, channeling lush creativity, harmony, and poetic elegance.</p>
+          </div>
+          <div class="house-card house-samarkhand">
+            <div class="house-emblem-badge">
+              <img src="/assets/images/houses/samarkhand-arch.png" alt="Samarkhand Team Emblem" class="house-about-emblem-img">
+              <span class="house-icon-mini"><i class="fa-solid fa-moon"></i></span>
+            </div>
+            <h3>Samarkhand</h3>
+            <span class="house-motto">The Mystic Luminary</span>
+            <p>Inspired by the turquoise domes and starry observatories of Samarkand, symbolizing infinite imagination, theatrical depth, and scientific wonder.</p>
+          </div>
+          <div class="house-card house-qurthuba">
+            <div class="house-emblem-badge">
+              <img src="/assets/images/houses/qurthuba-arch.png" alt="Qurthuba Team Emblem" class="house-about-emblem-img">
+              <span class="house-icon-mini"><i class="fa-solid fa-fire-flame-curved"></i></span>
+            </div>
+            <h3>Qurthuba</h3>
+            <span class="house-motto">The Crimson Horizon</span>
+            <p>Commemorating the great cultural crossroads of Cordoba, embracing passionate expression, vocal eloquence, and vibrant musical resonance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. ADMIN DASHBOARD VIEW (Protected) -->
+    <section class="view-section" id="admin-view">
+      <div class="section-container admin-dashboard-container">
+        <!-- Admin Header Bar -->
+        <div class="admin-top-bar glass-panel">
+          <div class="admin-title-wrap">
+            <div class="admin-badge"><i class="fa-solid fa-user-shield"></i> CONTROL ROOM</div>
+            <div>
+              <h2>Fiesta Admin Console</h2>
+              <span class="admin-user-tag" id="admin-user-display">Logged in as: e26@gmail.com</span>
+            </div>
+          </div>
+          <div class="admin-top-actions">
+            <button class="btn-admin-refresh" id="btn-admin-refresh-data" title="Sync & Recalculate Live Database">
+              <i class="fa-solid fa-rotate"></i> Sync Data
+            </button>
+            <button class="btn-admin-logout" id="btn-admin-logout">
+              <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+          </div>
+        </div>
+
+        <!-- Admin Navigation Tabs -->
+        <div class="admin-tabs-nav" id="admin-tabs">
+          <button class="admin-tab active" data-tab="tab-results-mgr"><i class="fa-solid fa-scroll"></i> Results Manager</button>
+          <button class="admin-tab" data-tab="tab-items-mgr"><i class="fa-solid fa-palette text-cyan"></i> Winning Items Uploader</button>
+          <button class="admin-tab" data-tab="tab-bulk-participants"><i class="fa-solid fa-file-excel"></i> Bulk Participants (Excel)</button>
+          <button class="admin-tab" data-tab="tab-videos-mgr"><i class="fa-solid fa-video text-ruby"></i> Videos Manager</button>
+          <button class="admin-tab" data-tab="tab-gallery-mgr"><i class="fa-solid fa-images"></i> Gallery & Bulk PC Upload</button>
+          <button class="admin-tab" data-tab="tab-programs-mgr"><i class="fa-solid fa-list-check"></i> Programs Manager</button>
+          <button class="admin-tab" data-tab="tab-news-mgr"><i class="fa-solid fa-newspaper"></i> News Manager</button>
+          <button class="admin-tab" data-tab="tab-notifications-inbox" id="admin-notif-tab">
+            <i class="fa-solid fa-bell"></i> Reports Inbox
+            <span class="notif-badge-pill" id="admin-notif-badge">0</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: RESULTS MANAGER (Support Result #, Multiple 1st/2nd/3rd, Score Visibility & Cutoff Filter) -->
+        <div class="admin-tab-pane active-pane" id="tab-results-mgr">
+          <div class="admin-pane-header">
+            <div>
+              <h3>Official Results & Visibility Control</h3>
+              <p>Manage published results, configure public visibility cutoffs, and toggle team points display.</p>
+            </div>
+            <button class="btn-ocean-primary" id="btn-open-add-result-modal">
+              <i class="fa-solid fa-plus"></i> Publish New Result
+            </button>
+          </div>
+
+          <!-- ADMIN CONTROL CENTER: TEAM SCORES VISIBILITY & RESULT CUTOFF FILTER -->
+          <div class="admin-control-center-card glass-panel mt-4 mb-4">
+            <div class="control-center-grid">
+              <!-- Feature 1: Team Score Visibility Toggle -->
+              <div class="control-card-item">
+                <div class="control-item-header">
+                  <div class="control-icon-circle icon-gold"><i class="fa-solid fa-trophy"></i></div>
+                  <div>
+                    <h4 class="control-title">Team Scores Public Visibility</h4>
+                    <p class="control-desc">When OFF, numeric points on leaderboard and cards are concealed from public.</p>
+                  </div>
+                </div>
+                <div class="control-item-action">
+                  <label class="switch-toggle-label">
+                    <input type="checkbox" id="toggle-show-team-scores" checked>
+                    <span class="switch-slider"></span>
+                  </label>
+                  <span class="visibility-status-pill pill-active" id="team-scores-status-pill">
+                    <i class="fa-solid fa-eye"></i> Scores Visible
+                  </span>
+                </div>
+              </div>
+
+              <!-- Feature 2: Team Overview Score Cutoff -->
+              <div class="control-card-item">
+                <div class="control-item-header">
+                  <div class="control-icon-circle icon-cyan"><i class="fa-solid fa-calculator"></i></div>
+                  <div>
+                    <h4 class="control-title">Team Standings Score Cutoff</h4>
+                    <p class="control-desc">Calculate team leaderboard points only from results up to this Result #. (All individual results remain visible).</p>
+                  </div>
+                </div>
+                <div class="control-cutoff-inputs">
+                  <div class="cutoff-input-group">
+                    <span class="cutoff-prefix">Calculate up to Result #</span>
+                    <input type="number" id="input-max-result-number" min="1" max="999" placeholder="All Results" class="form-input-sm">
+                  </div>
+                  <button type="button" class="btn-ocean-primary btn-sm" id="btn-apply-result-cutoff">
+                    <i class="fa-solid fa-check"></i> Apply Cutoff
+                  </button>
+                  <button type="button" class="btn-reset-filters btn-sm" id="btn-clear-result-cutoff" title="Calculate from all results">
+                    All Results
+                  </button>
+                </div>
+              </div>
+
+              <!-- Feature 3: Team Standings Slide Interval in Slideshow Session -->
+              <div class="control-card-item">
+                <div class="control-item-header">
+                  <div class="control-icon-circle icon-purple"><i class="fa-solid fa-layer-group"></i></div>
+                  <div>
+                    <h4 class="control-title">Team Standings Slide Interval</h4>
+                    <p class="control-desc">Show Team Points Overview slide after every X results in the slideshow session.</p>
+                  </div>
+                </div>
+                <div class="control-cutoff-inputs">
+                  <div class="cutoff-input-group">
+                    <span class="cutoff-prefix">After every</span>
+                    <input type="number" id="input-standings-interval" min="1" max="50" placeholder="3" value="3" class="form-input-sm" style="max-width: 75px; text-align: center;">
+                    <span class="cutoff-prefix">Results</span>
+                  </div>
+                  <button type="button" class="btn-ocean-primary btn-sm" id="btn-apply-standings-interval">
+                    <i class="fa-solid fa-check"></i> Apply Interval
+                  </button>
+                  <button type="button" class="btn-reset-filters btn-sm" id="btn-disable-standings-interval" title="Disable automatic team overview slide">
+                    Disable
+                  </button>
+                </div>
+              </div>
+
+              <!-- Feature 4: Auto-Renumber Sequential Button -->
+              <div class="control-card-item control-item-compact">
+                <div class="control-item-header">
+                  <div class="control-icon-circle icon-purple"><i class="fa-solid fa-arrow-down-1-9"></i></div>
+                  <div>
+                    <h4 class="control-title">Sequential Renumbering</h4>
+                    <p class="control-desc">Auto-sequence all results 1..N based on publish order.</p>
+                  </div>
+                </div>
+                <button type="button" class="btn-ocean-glass btn-sm" id="btn-renumber-results-seq">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-Sequence 1..N
+                </button>
+              </div>
+            </div>
+            <div class="current-cutoff-indicator" id="current-cutoff-indicator">
+              <i class="fa-solid fa-circle-info text-cyan"></i>
+              <span id="current-cutoff-text">Team overview points currently reflect all published results.</span>
+            </div>
+          </div>
+
+          <!-- Results Table Toolbar with Bulk Delete -->
+          <div class="flex-between-row glass-panel p-3 mb-3" style="gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; color: var(--ice-blue); font-size: 0.85rem; font-weight: 600;">
+              <input type="checkbox" id="chk-select-all-results" style="transform: scale(1.15);">
+              <span>Select All Results</span>
+            </label>
+            <div class="flex-center-row" style="gap: 0.6rem;">
+              <button class="btn-sm-action" id="btn-bulk-delete-results" style="display: none; color: #f87171; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.15);">
+                <i class="fa-solid fa-trash"></i> Delete Selected (<span id="selected-results-count">0</span>)
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive glass-panel mt-2">
+            <table class="fiesta-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px; text-align: center;"><input type="checkbox" id="chk-head-results" title="Select All"></th>
+                  <th style="width: 80px; text-align: center;">Result #</th>
+                  <th>Code</th>
+                  <th>Program Name</th>
+                  <th>Category</th>
+                  <th>Winners & Positions (1st, 2nd, 3rd, Grades)</th>
+                  <th>Points</th>
+                  <th>Public Status</th>
+                  <th style="text-align: center;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-results-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 2: BULK PARTICIPANTS EXCEL IMPORTER -->
+        <div class="admin-tab-pane" id="tab-bulk-participants">
+          <div class="admin-pane-header">
+            <div>
+              <h3>Bulk Participants Import & Roster</h3>
+              <p>Import all participants using Excel (.xlsx / .csv) format. (No chest numbers or classes required).</p>
+            </div>
+            <div class="header-btns">
+              <a href="/api/template/participants" class="btn-ocean-secondary" id="btn-download-excel-template" download>
+                <i class="fa-solid fa-download"></i> Download Excel Template (.xlsx)
+              </a>
+              <button class="btn-ocean-glass" id="btn-open-single-participant-modal">
+                <i class="fa-solid fa-user-plus"></i> Add Single Participant
+              </button>
+            </div>
+          </div>
+
+          <!-- Excel Upload Dropzone & Live Parser -->
+          <div class="excel-upload-zone glass-panel" id="excel-dropzone">
+            <input type="file" id="excel-file-input" accept=".xlsx, .xls, .csv" class="hidden-file-input">
+            <div class="dropzone-inner" id="dropzone-trigger">
+              <div class="excel-icon-circle"><i class="fa-solid fa-file-excel"></i></div>
+              <h4>Drag & Drop Participant Excel / CSV Sheet Here</h4>
+              <p>Columns: <strong>Name, Team, Category (A-Zone / B-Zone / C-Zone / General)</strong></p>
+              <button type="button" class="btn-ocean-primary mt-3" id="btn-browse-excel">Browse Computer</button>
+            </div>
+          </div>
+
+          <!-- Live Excel Preview Table before Committing -->
+          <div class="excel-preview-wrapper glass-panel mt-6 hidden" id="excel-preview-box">
+            <div class="preview-header">
+              <div>
+                <h4><i class="fa-solid fa-table"></i> Excel Preview (<span id="preview-row-count">0</span> Participants Loaded)</h4>
+                <p class="preview-subtitle">Verify participant data before saving permanently into the database.</p>
+              </div>
+              <div class="preview-actions">
+                <label class="overwrite-checkbox-wrap">
+                  <input type="checkbox" id="chk-overwrite-participants">
+                  <span>Replace existing roster</span>
+                </label>
+                <button class="btn-ocean-primary" id="btn-confirm-excel-import">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Confirm & Save All to Database
+                </button>
+                <button class="btn-reset-filters" id="btn-cancel-excel-import">Cancel</button>
+              </div>
+            </div>
+            <div class="table-responsive max-h-400 mt-3">
+              <table class="fiesta-table">
+                <thead>
+                  <tr>
+                    <th>Participant Name</th>
+                    <th>Team</th>
+                    <th>Category</th>
+                  </tr>
+                </thead>
+                <tbody id="excel-preview-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Current Active Roster Table -->
+          <div class="glass-panel mt-6">
+            <div class="roster-header flex-between-row" style="flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <h4>Current Registered Participants Roster (<span id="roster-total-count">0</span>)</h4>
+              </div>
+              <div class="flex-center-row" style="gap: 0.75rem; flex-wrap: wrap;">
+                <button class="btn-sm-action" id="btn-bulk-delete-participants" style="display: none; color: #f87171; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.15);">
+                  <i class="fa-solid fa-trash"></i> Delete Selected (<span id="selected-participants-count">0</span>)
+                </button>
+                <button class="btn-sm-action" id="btn-clear-all-participants" style="color: #f87171; border-color: rgba(239, 68, 68, 0.3);">
+                  <i class="fa-solid fa-dumpster-fire"></i> Clear Entire Roster
+                </button>
+                <div class="roster-search-wrap">
+                  <input type="text" id="roster-search-input" class="search-input-sm" placeholder="Filter roster by name, team...">
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive mt-3 max-h-400">
+              <table class="fiesta-table">
+                <thead>
+                  <tr>
+                    <th style="width: 40px; text-align: center;"><input type="checkbox" id="chk-select-all-participants" title="Select All Participants"></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-roster-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: VIDEOS MANAGER -->
+        <div class="admin-tab-pane" id="tab-videos-mgr">
+          <div class="admin-pane-header">
+            <div>
+              <h3>Video Highlights & Recitals Manager</h3>
+              <p>Upload and manage recorded stage performances, highlights, and festival videos.</p>
+            </div>
+            <button class="btn-ocean-primary" id="btn-open-add-video-modal">
+              <i class="fa-solid fa-video"></i> Add Video Highlight
+            </button>
+          </div>
+
+          <!-- Videos List -->
+          <div class="video-admin-grid mt-4" id="admin-videos-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- TAB 4: GALLERY & BULK PC UPLOAD MANAGER -->
+        <div class="admin-tab-pane" id="tab-gallery-mgr">
+          <div class="admin-pane-header">
+            <div>
+              <h3>Gallery Media & Categorized PC Photo Upload</h3>
+              <p>Upload photos directly from PC (single or bulk). All photos automatically receive the official footer badge watermark!</p>
+            </div>
+          </div>
+
+          <!-- Category Selection & Upload Action Toolbar (Separated to prevent accidental dialog triggers) -->
+          <div class="glass-panel p-4 mb-4 flex-between-row" style="gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <label for="bulk-default-category" style="font-weight: 700; color: var(--ice-blue); white-space: nowrap;">
+                <i class="fa-solid fa-tags text-cyan"></i> Target Photo Category:
+              </label>
+              <select id="bulk-default-category" class="filter-select" style="min-width: 180px; cursor: pointer;">
+                <option value="A-Zone">A-Zone</option>
+                <option value="B-Zone">B-Zone</option>
+                <option value="C-Zone">C-Zone</option>
+                <option value="General">General</option>
+                <option value="Ceremony">Ceremony / Official</option>
+              </select>
+            </div>
+            <button type="button" class="btn-ocean-primary" id="btn-browse-pc-gallery" style="padding: 0.65rem 1.4rem;">
+              <i class="fa-solid fa-folder-open"></i> Browse PC Images
+            </button>
+          </div>
+
+          <!-- Bulk PC Image Drag & Drop Zone -->
+          <div class="excel-upload-zone glass-panel mb-6" id="pc-gallery-dropzone">
+            <input type="file" id="pc-gallery-file-input" accept="image/*" multiple class="hidden-file-input">
+            <div class="dropzone-inner" id="pc-gallery-trigger">
+              <div class="excel-icon-circle" style="background: rgba(0, 240, 255, 0.15); color: var(--cyan-glow); border-color: rgba(0, 240, 255, 0.4);"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+              <h4>Drag & Drop Photos Here (Bulk Supported)</h4>
+              <p>Or click Browse above to upload multiple photos at once into the selected category.</p>
+            </div>
+          </div>
+
+          <!-- Bulk Selection & Actions Toolbar -->
+          <div class="flex-between-row glass-panel p-3 mb-4" style="gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; color: var(--ice-blue); font-size: 0.85rem; font-weight: 600;">
+              <input type="checkbox" id="chk-select-all-gallery" style="transform: scale(1.15);">
+              <span>Select All Photos</span>
+            </label>
+            <div class="flex-center-row" style="gap: 0.6rem;">
+              <button class="btn-sm-action" id="btn-bulk-delete-gallery" style="display: none; color: #f87171; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.15);">
+                <i class="fa-solid fa-trash"></i> Delete Selected (<span id="selected-gallery-count">0</span>)
+              </button>
+              <button class="btn-sm-action" id="btn-clear-all-gallery" style="color: #f87171; border-color: rgba(239, 68, 68, 0.3);">
+                <i class="fa-solid fa-trash-can"></i> Clear All Gallery
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-admin-grid mt-4" id="admin-gallery-cards-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- TAB 5: PROGRAMS & BULK EXCEL MANAGER -->
+        <div class="admin-tab-pane" id="tab-programs-mgr">
+          <div class="admin-pane-header flex-between-row" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3>Event Programs & Bulk Excel Importer</h3>
+              <p>Import programs in bulk via Excel or add single events. (Categories: A-Zone, B-Zone, C-Zone).</p>
+            </div>
+            <div class="flex-center-row" style="gap: 0.75rem; flex-wrap: wrap;">
+              <a href="/api/template/programs" class="btn-outline-ocean" id="btn-download-programs-template" download>
+                <i class="fa-solid fa-file-excel text-emerald"></i> Download Excel Template
+              </a>
+              <button class="btn-ocean-primary" id="btn-open-add-program-modal">
+                <i class="fa-solid fa-plus"></i> Add Single Program
+              </button>
+            </div>
+          </div>
+
+          <!-- Bulk Program Excel Upload Dropzone -->
+          <div class="excel-upload-zone glass-panel mb-6 mt-4" id="excel-programs-dropzone">
+            <input type="file" id="excel-programs-file-input" accept=".xlsx, .xls, .csv" class="hidden-file-input">
+            <div class="dropzone-inner" id="excel-programs-trigger">
+              <div class="excel-icon-circle"><i class="fa-solid fa-file-excel"></i></div>
+              <h4>Upload Program List via Excel Spreadsheet</h4>
+              <p>Drag and drop your <code>.xlsx</code> file here, or click to browse. (Template columns: Program Name, Category, Date).</p>
+              <button type="button" class="btn-ocean-primary mt-3" id="btn-browse-programs-excel"><i class="fa-solid fa-folder-open"></i> Browse Excel File</button>
+            </div>
+          </div>
+
+          <!-- Live Program Excel Preview Table -->
+          <div class="excel-preview-wrapper glass-panel mt-4 mb-6 hidden" id="excel-programs-preview-box">
+            <div class="preview-header flex-between-row" style="flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h4><i class="fa-solid fa-table"></i> Program Excel Preview (<span id="preview-programs-row-count">0</span> Programs Loaded)</h4>
+                <p class="preview-subtitle">Verify program list before committing into permanent storage.</p>
+              </div>
+              <div class="preview-actions flex-center-row" style="gap: 0.75rem; flex-wrap: wrap;">
+                <label class="overwrite-checkbox-wrap" style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; color: var(--ice-blue);">
+                  <input type="checkbox" id="chk-overwrite-programs">
+                  <span>Replace existing programs</span>
+                </label>
+                <button class="btn-ocean-primary" id="btn-confirm-programs-excel-import">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Save Programs to Database
+                </button>
+                <button class="btn-reset-filters" id="btn-cancel-programs-excel-import">Cancel</button>
+              </div>
+            </div>
+            <div class="table-responsive max-h-400 mt-3">
+              <table class="fiesta-table">
+                <thead>
+                  <tr>
+                    <th>Program Name</th>
+                    <th>Category (A-Zone / B-Zone / C-Zone / General)</th>
+                  </tr>
+                </thead>
+                <tbody id="excel-programs-preview-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Programs Table Toolbar with Bulk Delete -->
+          <div class="flex-between-row glass-panel p-3 mb-3 mt-4" style="gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; color: var(--ice-blue); font-size: 0.85rem; font-weight: 600;">
+              <input type="checkbox" id="chk-select-all-programs" style="transform: scale(1.15);">
+              <span>Select All Programs</span>
+            </label>
+            <div class="flex-center-row" style="gap: 0.6rem;">
+              <button class="btn-sm-action" id="btn-bulk-delete-programs" style="display: none; color: #f87171; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.15);">
+                <i class="fa-solid fa-trash"></i> Delete Selected (<span id="selected-programs-count">0</span>)
+              </button>
+            </div>
+          </div>
+
+          <!-- Programs Table -->
+          <div class="table-responsive glass-panel mt-2">
+            <table class="fiesta-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px; text-align: center;"><input type="checkbox" id="chk-head-programs" title="Select All"></th>
+                  <th>Program Name</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th style="text-align: center;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-programs-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 6: NEWS MANAGER -->
+        <div class="admin-tab-pane" id="tab-news-mgr">
+          <div class="admin-pane-header">
+            <div>
+              <h3><i class="fa-solid fa-newspaper text-cyan"></i> News &amp; Dispatches Management</h3>
+              <p>Publish official circulars, breaking updates, and highlights. Unuploaded or draft news is strictly kept private.</p>
+            </div>
+            <div class="flex-row-gap" style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+              <button class="btn-danger-glass btn-sm" id="btn-bulk-delete-news" style="display: none;">
+                <i class="fa-solid fa-trash"></i> Delete Selected (<span id="selected-news-count">0</span>)
+              </button>
+              <button class="btn-outline-ocean btn-sm" id="btn-clean-unuploaded-news" title="Remove any invalid, blank, or unuploaded draft news articles">
+                <i class="fa-solid fa-broom"></i> Clean Unuploaded
+              </button>
+              <button class="btn-danger-glass btn-sm" id="btn-clear-all-news">
+                <i class="fa-solid fa-trash-can"></i> Delete All News
+              </button>
+              <button class="btn-ocean-primary" id="btn-open-add-news-modal">
+                <i class="fa-solid fa-plus"></i> Post News Article
+              </button>
+            </div>
+          </div>
+
+          <!-- News Bulk Select & Filter Bar -->
+          <div class="flex-between-row glass-panel p-3 mt-4 mb-4" style="gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <label class="custom-checkbox-label" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: #fff; font-size: 0.88rem; font-weight: 600;">
+                <input type="checkbox" id="chk-select-all-news" style="transform: scale(1.2); cursor: pointer;">
+                <span>Select All News (<span id="admin-news-total-count">0</span>)</span>
+              </label>
+            </div>
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+              <span class="text-muted" style="font-size: 0.82rem;"><i class="fa-solid fa-shield-check text-cyan"></i> Unuploaded news is filtered out of public display</span>
+            </div>
+          </div>
+
+          <div class="news-admin-grid mt-4" id="admin-news-cards-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- TAB 6.5: WINNING ITEMS & WORKS UPLOADER (1ST, 2ND, 3RD PLACES) -->
+        <div class="admin-tab-pane" id="tab-items-mgr">
+          <div class="admin-pane-header">
+            <div>
+              <h3><i class="fa-solid fa-palette text-cyan"></i> Winning Items & Works Uploader</h3>
+              <p>Upload and manage items, poems, articles, calligraphy, videos, and PDFs for 1st, 2nd, and 3rd place winners of published results.</p>
+            </div>
+            <div class="flex-row-gap">
+              <button class="btn-danger-glass btn-sm" id="btn-bulk-delete-items">
+                <i class="fa-solid fa-trash-can"></i> Delete All Items
+              </button>
+            </div>
+          </div>
+
+          <!-- Items Filter & Search Bar -->
+          <div class="flex-between-row glass-panel p-3 mt-4 mb-4" style="gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <div style="display: flex; gap: 0.6rem; align-items: center; flex: 1; min-width: 260px;">
+              <div class="search-input-wrap w-100">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="admin-items-search" class="form-input search-glass" placeholder="Search program, participant, or item subject...">
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+              <select id="admin-items-category-filter" class="form-input" style="max-width: 170px;">
+                <option value="ALL">All Categories</option>
+                <option value="A-Zone">A-Zone</option>
+                <option value="B-Zone">B-Zone</option>
+                <option value="C-Zone">C-Zone</option>
+                <option value="General">General</option>
+              </select>
+              <select id="admin-items-status-filter" class="form-input" style="max-width: 170px;">
+                <option value="ALL">All Statuses</option>
+                <option value="HAS_ITEMS">Has Uploaded Items</option>
+                <option value="PENDING">Pending Items</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Published Results List with 1st, 2nd, 3rd Item Uploaders -->
+          <div class="admin-items-results-list" id="admin-items-results-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- TAB 7: NOTIFICATIONS & REPORTS INBOX -->
+        <div class="admin-tab-pane" id="tab-notifications-inbox">
+          <div class="admin-pane-header flex-between-row">
+            <div>
+              <h3><i class="fa-solid fa-flag text-gold"></i> User Result Discrepancy Reports</h3>
+              <p>Review correction reports submitted by public users. Click Solve to immediately correct and update results.</p>
+            </div>
+            <div class="flex-row-gap">
+              <button type="button" class="btn-ocean-glass btn-sm" id="btn-test-chime-sound" title="Test Notification Chime Sound">
+                <i class="fa-solid fa-volume-high"></i> Test Sound
+              </button>
+            </div>
+          </div>
+
+          <div class="notifications-list-grid mt-4" id="admin-notifications-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL: RESULT POSTER GENERATOR & DOWNLOADER -->
+  <div class="modal-backdrop" id="modal-poster-generator">
+    <div class="modal-dialog poster-modal-dialog glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-wand-magic-sparkles text-cyan"></i>
+          <h3>Official Result & Poster Hub</h3>
+        </div>
+        <div class="modal-header-actions" style="display: flex; align-items: center; gap: 0.65rem;">
+          <button type="button" class="btn-icon-circle text-ruby" id="btn-poster-header-report" title="Report Discrepancy for this Result" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #f87171; cursor: pointer; transition: all 0.2s ease;">
+            <i class="fa-solid fa-flag"></i>
+          </button>
+          <button class="btn-close-modal" id="btn-close-poster-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="poster-modal-body">
+        <div class="poster-canvas-col">
+          <div class="poster-preview-wrapper" id="poster-render-container">
+            <canvas id="fiesta-poster-canvas" width="1080" height="1350"></canvas>
+          </div>
+        </div>
+        <div class="poster-controls-col">
+          <h4><i class="fa-solid fa-sliders"></i> Poster Customization</h4>
+          <p class="text-muted">High-resolution artistic poster crafted for Instagram, WhatsApp status, and official notice boards.</p>
+          
+          <div class="poster-options-group">
+            <label class="form-label" style="font-weight: 700; color: var(--ice-blue); margin-bottom: 0.4rem; display: block;">Official Layout Template</label>
+            <select id="poster-template-select" class="form-input">
+              <option value="literary-orange" selected>1. Literary Open Book (Official Orange Emblem & Blooming Art)</option>
+              <option value="royal-purple">2. Royal Purple Minimalism (Official Edition 04 Base)</option>
+              <option value="crystal-magnifier">3. Crystal Magnifier (Official White & Sapphire Theme)</option>
+              <option value="stamp-vintage">4. Postage Stamp (Perforated Grey/White)</option>
+              <option value="ocean-compass">5. Deep Ocean Compass (Official Navy Blue)</option>
+              <option value="notebook-craft">6. Spiral Notebook & Mobile (Craft Studio)</option>
+            </select>
+          </div>
+
+          <div class="poster-options-group admin-only-control hidden" id="poster-result-num-group">
+            <label class="form-label" style="font-weight: 700; color: var(--ice-blue); margin-bottom: 0.4rem; display: block;">Result Number (Admin Editor)</label>
+            <input type="text" id="poster-result-num" class="form-input" value="01" placeholder="01" maxlength="6">
+          </div>
+
+          <div class="poster-action-buttons">
+            <button class="btn-ocean-primary w-100 py-3" id="btn-download-poster-png">
+              <i class="fa-solid fa-cloud-arrow-down"></i> Download High-Res PNG Poster
+            </button>
+          </div>
+
+          <!-- Winning Works Section (Only shown when admin has added winning works) -->
+          <div class="poster-works-container glass-card mt-3 p-3" id="poster-works-section" style="display: none;">
+            <div class="flex-between-row align-center mb-2" style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="color: var(--gold-glow); font-size: 0.92rem; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-palette"></i> Winning Works & Compositions
+              </h4>
+              <span class="text-xs text-muted" id="poster-works-count">0 Works</span>
+            </div>
+            <p class="text-muted text-xs mb-2" style="font-size: 0.78rem; line-height: 1.4; margin: 0 0 0.5rem 0;">
+              Preview literary works, poetry, calligraphy, or recitals for podium winners:
+            </p>
+            <div class="poster-works-list" id="poster-works-list">
+              <!-- Dynamically populated with winning work cards -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DEDICATED RESULT DETAIL VIEW (WITH POSTER GENERATION, WINNING WORKS & AUDIT REPORTING) -->
+  <div class="modal-backdrop" id="modal-result-detail">
+    <div class="modal-dialog result-detail-modal-dialog glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="auth-icon-badge" style="background: rgba(0, 240, 255, 0.15); border-color: var(--cyan-glow); color: var(--cyan-glow);">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div>
+            <h3 id="res-detail-title">Malayalam Recitation</h3>
+            <span class="text-muted" id="res-detail-subtitle">Official Result Announcement • Excellentia Arts Fiesta 2026</span>
+          </div>
+        </div>
+        <button class="btn-close-modal" id="btn-close-result-detail"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="result-detail-modal-body p-4">
+        <!-- Event Meta Header Card -->
+        <div class="result-detail-meta-card glass-card mb-4 p-3">
+          <div class="flex-between-row flex-wrap" style="gap: 1rem; align-items: center;">
+            <div class="flex-row-gap" style="display: flex; align-items: center; gap: 0.75rem;">
+              <span class="modern-res-num-pill" id="res-detail-number-badge">#01</span>
+              <span class="modern-res-cat-badge" id="res-detail-category-badge">A-Zone</span>
+              <span class="badge-status-completed" id="res-detail-status-badge"><i class="fa-solid fa-circle-check"></i> Declared</span>
+            </div>
+            <div class="text-muted text-xs font-mono" id="res-detail-published-at">
+              <i class="fa-regular fa-clock"></i> Published Live
+            </div>
+          </div>
+        </div>
+
+        <!-- Podium & Winners Table/List -->
+        <div class="result-detail-winners-section mb-4">
+          <h4 class="section-subheading mb-3 text-cyan" style="font-size: 0.95rem; margin: 0 0 0.75rem 0;"><i class="fa-solid fa-award"></i> Official Podium & Winners</h4>
+          <div class="result-detail-winners-list" id="res-detail-winners-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Winning Works Available Section (if any works uploaded for this event) -->
+        <div class="result-detail-works-section glass-card p-3 mb-4 hidden" id="res-detail-works-container">
+          <div class="flex-between-row align-center mb-2">
+            <h4 class="text-gold" style="font-size: 0.95rem; margin: 0;"><i class="fa-solid fa-wand-magic-sparkles"></i> Winning Works & Compositions</h4>
+            <span class="text-xs text-muted" id="res-detail-works-count">Works Available</span>
+          </div>
+          <p class="text-muted text-xs mb-3">Preview the published literary poems, essays, calligraphy artworks, recitals, or manuscripts.</p>
+          <div class="result-detail-works-grid" id="res-detail-works-items">
+            <!-- Populated with previewable cards -->
+          </div>
+        </div>
+
+        <!-- 3 Primary Action Options (Poster Generation, Winning Works, Discrepancy Reporting) -->
+        <div class="result-detail-actions-grid mt-4">
+          <button type="button" class="btn-ocean-primary btn-action-lg" id="btn-detail-generate-poster">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Official Poster
+          </button>
+          <button type="button" class="btn-danger-glass btn-action-lg" id="btn-detail-report-discrepancy">
+            <i class="fa-solid fa-flag"></i> Report Discrepancy
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PUBLIC RESULT DISCREPANCY AUDIT REPORT -->
+  <div class="modal-backdrop" id="modal-public-report">
+    <div class="modal-dialog glass-panel" style="max-width: 580px; width: 95%;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="auth-icon-badge icon-ruby" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35);">
+            <i class="fa-solid fa-flag"></i>
+          </div>
+          <div>
+            <h3>Report Result Discrepancy</h3>
+            <span class="text-muted">Fiesta Audit Committee Verification</span>
+          </div>
+        </div>
+        <button class="btn-close-modal" id="btn-close-public-report"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-public-report" class="modal-form">
+        <input type="hidden" id="report-result-id" value="">
+        <div class="form-group">
+          <label><i class="fa-solid fa-tag text-cyan"></i> Program / Event Name *</label>
+          <input type="text" id="report-program-name" class="form-input" placeholder="e.g. Social Text / Malayalam Recitation" required>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label><i class="fa-solid fa-user text-cyan"></i> Your Name *</label>
+            <input type="text" id="report-reporter-name" class="form-input" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-layer-group text-cyan"></i> Team / House *</label>
+            <select id="report-team-select" class="form-input" required>
+              <option value="Bukhara">Bukhara</option>
+              <option value="Undulus">Undulus</option>
+              <option value="Samarkhand">Samarkhand</option>
+              <option value="Qurthuba">Qurthuba</option>
+              <option value="General">General / Audience</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label><i class="fa-solid fa-triangle-exclamation text-ruby"></i> Description of Discrepancy / Error *</label>
+          <textarea id="report-description" class="form-textarea" rows="4" placeholder="Detail the correction needed (e.g. Name spelling, team misattribution, grade correction)..." required></textarea>
+        </div>
+        <div class="auth-hint mb-3">
+          <i class="fa-solid fa-shield-halved text-cyan"></i> Reports are submitted directly to the Audit Control Room for verification.
+        </div>
+        <button type="submit" class="btn-ocean-primary w-100 py-3">
+          <i class="fa-solid fa-paper-plane"></i> Submit Official Audit Report
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: UNIFIED ADMINISTRATOR CLEARANCE -->
+  <div class="modal-backdrop" id="modal-admin-login">
+    <div class="modal-dialog auth-modal-dialog glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="auth-icon-badge"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <h3>Fiesta Committee Clearance</h3>
+            <span class="text-muted">Administrator Access Portal</span>
+          </div>
+        </div>
+        <button class="btn-close-modal" id="btn-close-admin-login"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-admin-login" class="modal-form">
+        <div class="form-group">
+          <label><i class="fa-solid fa-user-shield"></i> Username or Email</label>
+          <input type="text" id="login-username" class="form-input" placeholder="e26@gmail.com" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label><i class="fa-solid fa-key"></i> Access Key / Password</label>
+          <div class="password-input-wrap">
+            <input type="password" id="login-password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+            <button type="button" class="btn-toggle-pass" id="btn-toggle-login-pass"><i class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+        <div class="auth-hint">
+          <i class="fa-solid fa-lock"></i> Authorized audit committee access only.
+        </div>
+        <button type="submit" class="btn-ocean-primary w-100 py-3 mt-4" id="btn-submit-login">
+          <i class="fa-solid fa-unlock-keyhole"></i> Enter Control Room
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD / EDIT RESULT (ADMIN - WITH SEARCH BARS & MULTIPLE 1ST/2ND/3RD WINNERS) -->
+  <div class="modal-backdrop" id="modal-result-editor">
+    <div class="modal-dialog result-modal-dialog glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-trophy text-gold"></i>
+          <h3 id="result-modal-title">Publish Official Result</h3>
+        </div>
+        <button class="btn-close-modal" id="btn-close-result-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-result-editor" class="modal-form">
+        <input type="hidden" id="edit-result-id" value="">
+
+        <div class="form-grid-3">
+          <!-- Result Number Input -->
+          <div class="form-group">
+            <label><i class="fa-solid fa-hashtag text-cyan"></i> Result # *</label>
+            <input type="number" id="res-result-number" class="form-input" min="1" max="9999" placeholder="Auto" required>
+          </div>
+
+          <!-- Searchable Program Selector -->
+          <div class="form-group">
+            <label><i class="fa-solid fa-magnifying-glass text-cyan"></i> Program / Item *</label>
+            <div class="searchable-combobox-wrap">
+              <input type="text" id="res-program-search" class="form-input" placeholder="Search program..." autocomplete="off">
+              <input type="hidden" id="res-selected-program-id" value="" required>
+              <div class="combobox-dropdown hidden" id="res-program-dropdown"></div>
+            </div>
+            <div id="selected-program-badge" class="selected-badge-pill hidden">
+              <span id="selected-program-text"></span>
+              <button type="button" id="btn-clear-selected-prog"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+          </div>
+
+          <!-- Category -->
+          <div class="form-group">
+            <label>Category *</label>
+            <select id="res-category" class="form-input" required>
+              <option value="A-Zone">A-Zone</option>
+              <option value="B-Zone">B-Zone</option>
+              <option value="C-Zone">C-Zone</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+
+          <!-- Public Visibility Switch -->
+          <div class="form-group flex-align-center" style="grid-column: 1 / -1; background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.25); border-radius: 10px; padding: 0.75rem 1rem;">
+            <label class="switch-toggle-label" style="margin-right: 0.75rem;">
+              <input type="checkbox" id="res-is-public" checked>
+              <span class="switch-slider"></span>
+            </label>
+            <div>
+              <strong style="color: #ffffff; font-size: 0.95rem;">Show Result to Public</strong>
+              <p class="text-muted" style="font-size: 0.8rem; margin: 0;">When enabled, this result is published and visible in the public Results Hub & Slideshow.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Winner Rows Section (Supports Multiple 1st, 2nd, 3rd, and Grade Positions) -->
+        <div class="dynamic-winners-section mt-4">
+          <div class="winners-section-header">
+            <div>
+              <h4><i class="fa-solid fa-medal text-gold"></i> Position Winners & Grade Achievers</h4>
+              <p class="text-muted" style="font-size: 0.8rem;">Add multiple 1st, 2nd, 3rd places or grade entries with independent grades & custom points.</p>
+            </div>
+            <button type="button" class="btn-sm-action" id="btn-add-winner-row">
+              <i class="fa-solid fa-plus"></i> Add Another Winner
+            </button>
+          </div>
+
+          <div id="winners-rows-container" class="winners-rows-container mt-3">
+            <!-- Dynamically populated winner rows -->
+          </div>
+        </div>
+
+        <div class="modal-footer-actions mt-6">
+          <button type="submit" class="btn-ocean-primary py-3 px-8" id="btn-submit-result-form">
+            <i class="fa-solid fa-floppy-disk"></i> Save & Recalculate Championship Points
+          </button>
+          <button type="button" class="btn-reset-filters ml-3" id="btn-cancel-result-form">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD VIDEO HIGHLIGHT (ADMIN) -->
+  <div class="modal-backdrop" id="modal-video-editor">
+    <div class="modal-dialog glass-panel" style="max-width: 620px; width: 95%;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-video text-ruby"></i>
+          <h3>Add Video Highlight</h3>
+        </div>
+        <button class="btn-close-modal" id="btn-close-video-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-video-editor" class="modal-form">
+        <div class="form-group">
+          <label>Video Title *</label>
+          <input type="text" id="vid-title" class="form-input" placeholder="e.g. Duffmuttu Championship Grand Finale" required>
+        </div>
+
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="vid-category" class="form-input" required>
+            <option value="A-Zone">A-Zone</option>
+            <option value="B-Zone">B-Zone</option>
+            <option value="C-Zone">C-Zone</option>
+            <option value="General">General</option>
+            <option value="Ceremony">Ceremony</option>
+          </select>
+        </div>
+
+        <!-- Video Source Selection: PC Upload or URL -->
+        <div class="form-group">
+          <label class="flex-between-row" style="margin-bottom: 0.4rem;">
+            <span><i class="fa-solid fa-film text-cyan"></i> Video Source *</span>
+            <span class="text-muted" style="font-size: 0.78rem;">Upload from PC or Paste Link</span>
+          </label>
+          
+          <!-- PC Video Upload Dropzone / Button -->
+          <div class="video-upload-box glass-panel p-3 mb-2" id="vid-upload-box" style="border: 2px dashed rgba(0, 240, 255, 0.35); border-radius: 12px; text-align: center; background: rgba(0, 240, 255, 0.03); transition: all 0.2s ease;">
+            <input type="file" id="vid-pc-file" accept="video/*" class="hidden-file-input">
+            <div id="vid-upload-prompt">
+              <i class="fa-solid fa-cloud-arrow-up text-cyan mb-2" style="font-size: 1.8rem; display: block;"></i>
+              <button type="button" class="btn-ocean-primary" id="btn-browse-vid-pc" style="padding: 0.55rem 1.25rem; font-size: 0.85rem; margin-bottom: 0.4rem;">
+                <i class="fa-solid fa-folder-open"></i> Upload Video from PC
+              </button>
+              <div class="text-muted" style="font-size: 0.78rem;">Supports MP4, WebM, MOV, MKV (Up to 500MB)</div>
+            </div>
+            <div id="vid-selected-info" class="hidden" style="display: none; align-items: center; justify-content: space-between; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 8px; padding: 0.6rem 0.85rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem; overflow: hidden; text-align: left;">
+                <i class="fa-solid fa-file-video text-cyan" style="font-size: 1.3rem; flex-shrink: 0;"></i>
+                <div style="overflow: hidden;">
+                  <div id="vid-file-name" style="font-weight: 700; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff;">video.mp4</div>
+                  <div id="vid-file-size" class="text-muted" style="font-size: 0.75rem;">0 MB</div>
+                </div>
+              </div>
+              <button type="button" class="btn-sm-action text-ruby" id="btn-remove-vid-file" title="Remove selected video">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Video URL Input (Alternative or Generated) -->
+          <div style="position: relative;">
+            <input type="text" id="vid-url" class="form-input" placeholder="Or enter Video URL (https://... / YouTube / Embed)" required>
+          </div>
+        </div>
+
+        <!-- Thumbnail Selector / Auto-Capture -->
+        <div class="form-group">
+          <label class="flex-between-row" style="margin-bottom: 0.4rem;">
+            <span><i class="fa-solid fa-image text-cyan"></i> Video Cover Thumbnail</span>
+            <span class="text-muted" style="font-size: 0.78rem;">Auto-captured or custom image</span>
+          </label>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <input type="text" id="vid-thumb" class="form-input" placeholder="Thumbnail URL or auto-extracted frame">
+            <button type="button" class="btn-outline-ocean" id="btn-browse-vid-thumb" style="white-space: nowrap; padding: 0.6rem 1rem; font-size: 0.85rem;">
+              <i class="fa-solid fa-upload"></i> PC Image
+            </button>
+            <input type="file" id="vid-thumb-pc-file" accept="image/*" class="hidden-file-input">
+          </div>
+          <div id="vid-thumb-preview-wrap" class="mt-2 hidden" style="display: none;">
+            <img id="vid-thumb-preview" src="" style="max-height: 90px; border-radius: 8px; border: 1px solid var(--border-glass); object-fit: cover;">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Short Description (Optional)</label>
+          <textarea id="vid-desc" class="form-textarea" rows="2" placeholder="Brief note about the performance..."></textarea>
+        </div>
+
+        <!-- Upload Progress Bar (shown when uploading video file) -->
+        <div id="vid-upload-progress-container" class="hidden mb-3" style="display: none;">
+          <div class="flex-between-row mb-1">
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--ice-blue);"><i class="fa-solid fa-spinner fa-spin text-cyan"></i> Uploading video from PC...</span>
+            <span id="vid-upload-percent" style="font-size: 0.8rem; font-family: var(--font-mono); color: #00f0ff;">0%</span>
+          </div>
+          <div style="width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden;">
+            <div id="vid-upload-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #00f0ff, #3b82f6); transition: width 0.15s ease;"></div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-ocean-primary w-100 py-3 mt-2" id="btn-submit-video">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Save Video Highlight
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: VIDEO PLAYER (PUBLIC) -->
+  <div class="modal-backdrop" id="modal-video-player">
+    <div class="modal-dialog glass-panel" style="max-width: 860px; width: 95%;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-play text-cyan"></i>
+          <h3 id="modal-video-title">Fiesta Video Player</h3>
+        </div>
+        <button class="btn-close-modal" id="btn-close-video-player"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div style="padding: 1.25rem;">
+        <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.3);">
+          <iframe id="modal-video-iframe" src="" style="width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <video id="modal-video-html5" src="" controls style="width: 100%; height: 100%; display: none;"></video>
+        </div>
+        <div class="mt-4 flex-between-row">
+          <span class="badge-zone" id="modal-video-category">A-Zone</span>
+          <span class="text-muted" id="modal-video-date" style="font-size: 0.82rem;">Excellentia 2026</span>
+        </div>
+        <p class="text-muted mt-2" id="modal-video-desc" style="font-size: 0.9rem;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD/EDIT NEWS ARTICLE (ADMIN) -->
+  <div class="modal-backdrop" id="modal-news-editor">
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-newspaper text-cyan"></i>
+          <h3 id="news-modal-title">Post News / Announcement</h3>
+        </div>
+        <button class="btn-close-modal" id="btn-close-news-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-news-editor" class="modal-form">
+        <input type="hidden" id="edit-news-id" value="">
+        <div class="form-group">
+          <label>Article Title *</label>
+          <input type="text" id="news-title" class="form-input" placeholder="News Headline" required>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Category Badge *</label>
+            <input type="text" id="news-category" class="form-input" placeholder="e.g. Top Story, Announcement" required>
+          </div>
+          <div class="form-group">
+            <label>Badge Label</label>
+            <input type="text" id="news-badge" class="form-input" placeholder="e.g. Breaking, Official">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Article Featured Image (Upload from PC or Paste URL)</label>
+          <div class="flex-between-row" style="gap: 0.5rem; flex-wrap: wrap;">
+            <input type="file" id="news-pc-file-input" accept="image/*" class="hidden-file-input">
+            <button type="button" class="btn-sm-action" id="btn-browse-news-pc" style="padding: 0.6rem 1rem;">
+              <i class="fa-solid fa-folder-open"></i> Browse Image from PC
+            </button>
+            <span class="text-muted" style="font-size: 0.8rem;">OR paste URL below</span>
+          </div>
+          <input type="text" id="news-image" class="form-input mt-2" placeholder="https://... or uploaded image data">
+          <div id="news-image-preview-wrap" class="mt-2 hidden">
+            <img id="news-image-preview" src="" style="max-height: 120px; border-radius: 8px; border: 1px solid var(--border-glass);">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Short Summary *</label>
+          <textarea id="news-summary" class="form-textarea" rows="2" placeholder="Brief 1-2 sentence lead..." required></textarea>
+        </div>
+        <!-- Visibility Switch -->
+        <div class="form-group flex-align-center" style="background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.25); border-radius: 10px; padding: 0.75rem 1rem;">
+          <label class="switch-toggle-label" style="margin-right: 0.75rem;">
+            <input type="checkbox" id="news-is-public" checked>
+            <span class="switch-slider"></span>
+          </label>
+          <div>
+            <strong style="color: #ffffff; font-size: 0.95rem;">Show Article to Public</strong>
+            <p class="text-muted" style="font-size: 0.8rem; margin: 0;">When enabled, this article is published to the public News stream & Home feed.</p>
+          </div>
+        </div>
+        <button type="submit" class="btn-ocean-primary w-100 py-3 mt-3" id="btn-submit-news-form">
+          <i class="fa-solid fa-paper-plane"></i> Publish News Article
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: LIGHTBOX VIEWER WITH OFFICIAL FOOTER BADGE -->
+  <div class="modal-backdrop lightbox-backdrop" id="modal-lightbox">
+    <div class="lightbox-container">
+      <button class="btn-close-lightbox" id="btn-close-lightbox"><i class="fa-solid fa-xmark"></i></button>
+      <div class="lightbox-content">
+        <div class="lightbox-img-wrapper">
+          <img src="" alt="Lightbox Preview" id="lightbox-img" class="lightbox-image">
+          <!-- Official Footer Badge Strip on Photo -->
+          <div class="gallery-photo-badge-strip">
+            <img src="/assets/images/gallery-footer-badge.png" alt="Excellentia Fiesta Badge" class="badge-strip-img">
+          </div>
+        </div>
+        <div class="lightbox-caption-box">
+          <div class="flex-between-row w-100" style="gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <div>
+              <span class="badge-zone" id="lightbox-category">A-Zone</span>
+              <h3 id="lightbox-title" style="margin: 0.35rem 0 0.15rem 0;">Title</h3>
+              <p id="lightbox-desc" style="margin: 0; color: var(--text-muted); font-size: 0.85rem;">Caption</p>
+            </div>
+            <button class="btn-ocean-primary" id="btn-download-lightbox" style="padding: 0.6rem 1.25rem; font-size: 0.85rem; flex-shrink: 0;">
+              <i class="fa-solid fa-cloud-arrow-down"></i> Download Photo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION STACK -->
+  <div class="toast-container" id="toast-stack"></div>
+
+  <!-- MODAL: ADD SINGLE PROGRAM (ADMIN - NO DATE) -->
+  <div class="modal-backdrop" id="modal-program-form">
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-list-check text-cyan"></i>
+          <h3 id="program-modal-title">Add Event Program</h3>
+        </div>
+        <button class="btn-close-modal" id="btn-close-program-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-single-program" class="modal-form">
+        <div class="form-group">
+          <label>Program / Item Name *</label>
+          <input type="text" id="prog-name-input" class="form-input" placeholder="e.g. English Elocution, Qawwali Group" required>
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="prog-category-input" class="form-input" required>
+            <option value="A-Zone">A-Zone</option>
+            <option value="B-Zone">B-Zone</option>
+            <option value="C-Zone">C-Zone</option>
+            <option value="General">General</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-ocean-primary w-100 py-3 mt-3">
+          <i class="fa-solid fa-plus"></i> Save Program
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD SINGLE PARTICIPANT (ADMIN - NO CLASS) -->
+  <div class="modal-backdrop" id="modal-participant-form">
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-user-plus text-cyan"></i>
+          <h3 id="participant-modal-title">Register Participant</h3>
+        </div>
+        <button class="btn-close-modal" id="btn-close-participant-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-single-participant" class="modal-form">
+        <div class="form-group">
+          <label>Participant Full Name *</label>
+          <input type="text" id="part-name-input" class="form-input" placeholder="e.g. Zayan Rayan" required>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Team *</label>
+            <select id="part-team-input" class="form-input" required>
+              <option value="Bukhara">Bukhara</option>
+              <option value="Undulus">Undulus</option>
+              <option value="Samarkhand">Samarkhand</option>
+              <option value="Qurthuba">Qurthuba</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Category *</label>
+            <select id="part-category-input" class="form-input" required>
+              <option value="A-Zone">A-Zone</option>
+              <option value="B-Zone">B-Zone</option>
+              <option value="C-Zone">C-Zone</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-ocean-primary w-100 py-3 mt-3">
+          <i class="fa-solid fa-user-check"></i> Register Participant
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: SETTINGS, FIESTA GUIDE, FAQ, T&C & HELPLINE -->
+  <div class="modal-backdrop" id="modal-settings">
+    <div class="modal-dialog glass-panel" style="max-width: 720px; width: 95%; max-height: 88vh; overflow-y: auto;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-gear text-cyan"></i>
+          <h3>Settings & Fiesta Guide</h3>
+        </div>
+        <button class="btn-close-modal" id="btn-close-settings-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="settings-modal-body p-2">
+        <!-- 1. Theme & Mode Switch -->
+        <div class="settings-section-card glass-card p-4 mb-4">
+          <div class="flex-between-row">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="settings-icon-circle icon-cyan"><i class="fa-solid fa-circle-half-stroke"></i></div>
+              <div>
+                <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">Appearance Mode</h4>
+                <p class="text-muted" style="margin: 2px 0 0; font-size: 0.82rem;">Toggle between Dark Arena and Clean Light mode.</p>
+              </div>
+            </div>
+            <div class="theme-mode-switch-wrap">
+              <label class="switch-toggle-label">
+                <input type="checkbox" id="settings-theme-toggle">
+                <span class="switch-slider"></span>
+              </label>
+              <span id="theme-mode-label" style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--ice-blue); margin-left: 0.5rem;">Dark</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. PWA Application Install -->
+        <div class="settings-section-card glass-card p-4 mb-4" id="settings-pwa-card">
+          <div class="flex-between-row" style="flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="settings-icon-circle icon-cyan" style="background: rgba(0, 240, 255, 0.15); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.4);"><i class="fa-solid fa-mobile-screen"></i></div>
+              <div>
+                <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">Install Fiesta App</h4>
+                <p class="text-muted" style="margin: 2px 0 0; font-size: 0.82rem;">Install Excellentia 2026 on your phone or PC for full-screen stadium slideshow and offline access.</p>
+              </div>
+            </div>
+            <button class="btn-ocean-primary btn-trigger-pwa-install" id="btn-settings-pwa-install" style="padding: 0.5rem 1.2rem;">
+              <i class="fa-solid fa-download"></i> Install App
+            </button>
+          </div>
+        </div>
+
+        <!-- 2B. Supabase Cloud Database Manager -->
+        <div class="settings-section-card glass-card p-4 mb-4" style="border-color: rgba(0, 240, 255, 0.35);">
+          <div class="flex-between-row mb-3" style="flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="settings-icon-circle icon-emerald" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);"><i class="fa-solid fa-database"></i></div>
+              <div>
+                <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">Supabase Cloud Database</h4>
+                <p class="text-muted" style="margin: 2px 0 0; font-size: 0.82rem;">Cloud PostgreSQL persistence with dual-mode real-time sync.</p>
+              </div>
+            </div>
+            <span class="badge-status-completed" id="supabase-status-badge"><i class="fa-solid fa-cloud text-cyan"></i> Supabase Engine Active</span>
+          </div>
+          <div class="supabase-config-form" style="display: flex; flex-direction: column; gap: 0.65rem;">
+            <input type="text" id="supabase-input-url" class="form-input" placeholder="Supabase Project URL (https://xyz.supabase.co)" style="font-size: 0.82rem;">
+            <input type="password" id="supabase-input-key" class="form-input" placeholder="Supabase Anon / Service Role Key" style="font-size: 0.82rem;">
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.25rem;">
+              <button type="button" class="btn-ocean-primary btn-sm" id="btn-supabase-save-connect" style="padding: 0.45rem 1rem;">
+                <i class="fa-solid fa-link"></i> Connect & Sync
+              </button>
+              <button type="button" class="btn-ocean-secondary btn-sm" id="btn-supabase-manual-sync" style="padding: 0.45rem 1rem;">
+                <i class="fa-solid fa-arrows-rotate"></i> Sync All Tables Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Report Discrepancy Quick Action -->
+        <div class="settings-section-card glass-card p-4 mb-4">
+          <div class="flex-between-row" style="flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="settings-icon-circle icon-ruby" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35);"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div>
+                <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">Result Discrepancy Reporting</h4>
+                <p class="text-muted" style="margin: 2px 0 0; font-size: 0.82rem;">Notice an error in participant name, team, or grade? Submit an official audit report.</p>
+              </div>
+            </div>
+            <button class="btn-sm-action" id="btn-settings-open-report" style="color: #f87171; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.12); padding: 0.5rem 1rem;">
+              <i class="fa-solid fa-flag"></i> Submit Report
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Helpline & Calling Support -->
+        <div class="settings-section-card glass-card p-4 mb-4" style="border-color: rgba(16, 185, 129, 0.4); background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.12) 0%, rgba(3, 13, 28, 0.85) 100%);">
+          <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem;">
+            <div class="settings-icon-circle icon-emerald" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);"><i class="fa-solid fa-phone-volume"></i></div>
+            <div>
+              <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">Official Enquiries & Support Hotline</h4>
+              <p class="text-muted" style="margin: 2px 0 0; font-size: 0.82rem;">Tap either number below to place an immediate call to the helpdesk:</p>
+            </div>
+          </div>
+          <div class="helpline-buttons-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+            <a href="tel:9037339492" class="helpline-call-btn">
+              <i class="fa-solid fa-phone"></i>
+              <span><strong>9037339492</strong><small>Fiesta Coordinator</small></span>
+            </a>
+            <a href="tel:9526813688" class="helpline-call-btn">
+              <i class="fa-solid fa-phone"></i>
+              <span><strong>9526813688</strong><small>General Enquiry</small></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. About the Site & Fiesta Overview -->
+        <div class="settings-section-card glass-card p-4 mb-4">
+          <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.65rem;">
+            <i class="fa-solid fa-circle-info text-cyan"></i>
+            <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">About Excellentia Arts Fiesta</h4>
+          </div>
+          <p class="text-muted" style="font-size: 0.88rem; line-height: 1.6; margin-bottom: 0.5rem;">
+            <strong>Excellentia Arts Fiesta 2026</strong> is the premier inter-team cultural championship of <strong>Ma'din School of Excellence</strong>, Malappuram, celebrated under the banner <em>"Discover the Unseen"</em>.
+          </p>
+          <p class="text-muted" style="font-size: 0.88rem; line-height: 1.6; margin: 0;">
+            Featuring four prestigious teams: <strong>Bukhara</strong> (The Golden Vanguard), <strong>Undulus</strong> (The Emerald Tide), <strong>Samarkhand</strong> (The Mystic Luminary), and <strong>Qurthuba</strong> (The Crimson Horizon) across A-Zone, B-Zone, C-Zone, and General categories.
+          </p>
+        </div>
+
+        <!-- 5. How to Use the App -->
+        <div class="settings-section-card glass-card p-4 mb-4">
+          <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem;">
+            <i class="fa-solid fa-book-open-reader text-gold"></i>
+            <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">How to Use This App</h4>
+          </div>
+          <ul class="guide-steps-list" style="padding-left: 1.25rem; margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;">
+            <li><strong>Icon Navigation:</strong> Use the top bar icons to switch between Home, Leaderboard, Results Hub, Videos, Gallery, News, and About.</li>
+            <li><strong>Live Points & Podium:</strong> Explore the real-time recalculated points matrix and podium standings in the Teams & Points section.</li>
+            <li><strong>Results & Posters:</strong> Browse results by zone and click <strong>Poster ↗</strong> on any result card to generate an instant, customizable HD graphic poster for social sharing.</li>
+            <li><strong>Slideshow & Arena Mode:</strong> Open the Theater Slideshow in the Videos view for continuous broadcast of declared results and periodic team standings.</li>
+          </ul>
+        </div>
+
+        <!-- 6. FAQ (Frequently Asked Questions) Accordion -->
+        <div class="settings-section-card glass-card p-4 mb-4">
+          <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem;">
+            <i class="fa-solid fa-circle-question text-purple"></i>
+            <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">Frequently Asked Questions (FAQ)</h4>
+          </div>
+          <div class="faq-accordion">
+            <details class="faq-item">
+              <summary><strong>How are team points calculated?</strong></summary>
+              <p>Team scores are dynamically computed from all declared results based on standard criteria: 1st Place (10 pts), 2nd Place (7 pts), 3rd Place (5 pts), with additional grade points (Grade A: 5 pts, Grade B: 3 pts, Grade C: 1 pt).</p>
+            </details>
+            <details class="faq-item mt-2">
+              <summary><strong>Why are numeric points sometimes concealed?</strong></summary>
+              <p>The Fiesta Audit Committee may enable score concealment or cutoff modes during critical stages to build excitement before final grand valedictory reveals.</p>
+            </details>
+            <details class="faq-item mt-2">
+              <summary><strong>Can I download and share result posters?</strong></summary>
+              <p>Yes! Every result card features a Poster button allowing you to download high-resolution PNG posters in multiple artistic styles for WhatsApp status, Instagram, or prints.</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- 7. Terms & Conditions (T&C) -->
+        <div class="settings-section-card glass-card p-4">
+          <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.65rem;">
+            <i class="fa-solid fa-scale-balanced text-cyan"></i>
+            <h4 style="margin: 0; color: #ffffff; font-size: 1.05rem;">Terms & Conditions (T&C)</h4>
+          </div>
+          <p class="text-muted" style="font-size: 0.82rem; line-height: 1.6; margin: 0;">
+            1. All results declared on this portal are vetted and approved by the official Fiesta Judgment Panel.<br>
+            2. Any disputes or appeals must be submitted within 2 hours of announcement through the official Report channel or helpdesk.<br>
+            3. Discrepancies reported via this portal are audited directly by the Control Room administration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADMIN ITEM / SUBMISSION UPLOADER WORKSPACE (RICH TEXT & PC UPLOADS) -->
+  <div class="modal-backdrop" id="modal-item-uploader">
+    <div class="modal-dialog item-uploader-modal-dialog glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="auth-icon-badge" style="background: rgba(168, 85, 247, 0.2); border-color: #a855f7; color: #d8b4fe;">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+          <div>
+            <h3 id="item-uploader-modal-title">Upload Winning Work</h3>
+            <span class="text-muted" id="item-uploader-subtitle">Attach poem, article, calligraphy, video, or PDF for podium holder</span>
+          </div>
+        </div>
+        <button class="btn-close-modal" id="btn-close-item-uploader"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Winner & Program Banner -->
+      <div class="item-context-banner glass-card mb-4" id="item-context-banner">
+        <div class="item-context-info">
+          <span class="item-context-place-badge" id="item-context-place">1st Place</span>
+          <span class="item-context-prog" id="item-context-prog">Poem Malayalam</span>
+          <span class="item-context-cat" id="item-context-cat">A-Zone</span>
+        </div>
+        <div class="item-context-winner">
+          <span class="item-context-name" id="item-context-name">Winner Name</span>
+          <span class="item-context-team-pill" id="item-context-team">Bukhara</span>
+        </div>
+      </div>
+
+      <form id="form-item-uploader" class="modal-form">
+        <input type="hidden" id="item-result-id" value="">
+        <input type="hidden" id="item-result-num" value="">
+        <input type="hidden" id="item-program-name" value="">
+        <input type="hidden" id="item-category" value="">
+        <input type="hidden" id="item-place" value="1st">
+        <input type="hidden" id="item-participant-name" value="">
+        <input type="hidden" id="item-team" value="">
+        <input type="hidden" id="item-existing-id" value="">
+        <input type="hidden" id="item-uploaded-media-url" value="">
+        <input type="hidden" id="item-uploaded-media-type" value="text">
+        <input type="hidden" id="item-uploaded-original-name" value="">
+
+        <!-- Subject Input -->
+        <div class="form-group mb-4">
+          <label class="form-label font-bold text-cyan"><i class="fa-solid fa-heading"></i> Subject / Title of Work *</label>
+          <input type="text" id="item-subject-input" class="form-input" placeholder="e.g. The Horizon Beyond - Malayalam Poem / Surah Al-Mulk Calligraphy" required>
+        </div>
+
+        <!-- Media & Content Tabs -->
+        <div class="item-upload-type-tabs mb-3" id="item-type-tabs">
+          <button type="button" class="item-type-tab active" data-type="text"><i class="fa-solid fa-pen-nib"></i> Rich Text / Poem</button>
+          <button type="button" class="item-type-tab" data-type="image"><i class="fa-solid fa-image"></i> Photo / Artwork</button>
+          <button type="button" class="item-type-tab" data-type="video"><i class="fa-solid fa-video"></i> Video Recital</button>
+          <button type="button" class="item-type-tab" data-type="pdf"><i class="fa-solid fa-file-pdf"></i> PDF Document</button>
+        </div>
+
+        <!-- 1. Rich Text / Poem Editor Section -->
+        <div class="item-type-pane active-pane" id="pane-item-text">
+          <div class="rich-editor-toolbar-wrap glass-card mb-2">
+            <!-- Text Styles -->
+            <div class="toolbar-group">
+              <button type="button" class="rich-tool-btn" data-action="bold" title="Bold (Ctrl+B)"><i class="fa-solid fa-bold"></i></button>
+              <button type="button" class="rich-tool-btn" data-action="italic" title="Italic (Ctrl+I)"><i class="fa-solid fa-italic"></i></button>
+              <button type="button" class="rich-tool-btn" data-action="underline" title="Underline (Ctrl+U)"><i class="fa-solid fa-underline"></i></button>
+              <button type="button" class="rich-tool-btn" data-action="strikeThrough" title="Strikethrough"><i class="fa-solid fa-strikethrough"></i></button>
+            </div>
+            <!-- Heading Style -->
+            <div class="toolbar-group">
+              <select class="rich-tool-select" id="rich-heading-select" title="Paragraph / Heading">
+                <option value="p">Normal Text</option>
+                <option value="h1">Heading 1</option>
+                <option value="h2">Heading 2</option>
+                <option value="h3">Heading 3</option>
+              </select>
+            </div>
+            <!-- Font Size Adjuster -->
+            <div class="toolbar-group">
+              <select class="rich-tool-select" id="rich-size-select" title="Font Size">
+                <option value="3" selected>Size: 16px</option>
+                <option value="1">Size: 12px (Tiny)</option>
+                <option value="2">Size: 14px (Small)</option>
+                <option value="4">Size: 18px (Medium)</option>
+                <option value="5">Size: 24px (Large)</option>
+                <option value="6">Size: 32px (X-Large)</option>
+              </select>
+            </div>
+            <!-- Alignment -->
+            <div class="toolbar-group">
+              <button type="button" class="rich-tool-btn" data-action="justifyLeft" title="Align Left"><i class="fa-solid fa-align-left"></i></button>
+              <button type="button" class="rich-tool-btn" data-action="justifyCenter" title="Align Center"><i class="fa-solid fa-align-center"></i></button>
+              <button type="button" class="rich-tool-btn" data-action="justifyRight" title="Align Right"><i class="fa-solid fa-align-right"></i></button>
+              <button type="button" class="rich-tool-btn" data-action="justifyFull" title="Justify"><i class="fa-solid fa-align-justify"></i></button>
+            </div>
+            <!-- Lists & Quote -->
+            <div class="toolbar-group">
+              <button type="button" class="rich-tool-btn" data-action="insertUnorderedList" title="Bullet List"><i class="fa-solid fa-list-ul"></i></button>
+              <button type="button" class="rich-tool-btn" data-action="insertOrderedList" title="Numbered List"><i class="fa-solid fa-list-ol"></i></button>
+              <button type="button" class="rich-tool-btn" data-action="formatBlock" data-val="blockquote" title="Quote Block"><i class="fa-solid fa-quote-left"></i></button>
+            </div>
+            <!-- Color Presets -->
+            <div class="toolbar-group color-preset-group">
+              <button type="button" class="color-dot color-white" data-color="#ffffff" title="White"></button>
+              <button type="button" class="color-dot color-cyan" data-color="#00f0ff" title="Electric Cyan"></button>
+              <button type="button" class="color-dot color-gold" data-color="#fbbf24" title="Gold"></button>
+              <button type="button" class="color-dot color-purple" data-color="#c084fc" title="Purple"></button>
+              <button type="button" class="color-dot color-emerald" data-color="#34d399" title="Emerald"></button>
+              <button type="button" class="rich-tool-btn" data-action="removeFormat" title="Clear Formatting"><i class="fa-solid fa-eraser"></i></button>
+            </div>
+          </div>
+          <!-- Editable Box -->
+          <div id="item-rich-text-editor" class="rich-editable-area" contenteditable="true" data-placeholder="Write or paste the literary work, poem, essay, or Arabic text here..."></div>
+        </div>
+
+        <!-- 2. Photo Upload Section -->
+        <div class="item-type-pane" id="pane-item-image">
+          <div class="drop-zone-pc glass-card p-4 text-center" id="dropzone-item-photo">
+            <input type="file" id="input-item-photo" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml" class="hidden-file-input">
+            <div class="dropzone-content">
+              <i class="fa-solid fa-cloud-arrow-up text-cyan drop-icon"></i>
+              <h4 class="mt-2">Drag & Drop Image or Click to Browse PC</h4>
+              <p class="text-muted">Supports high-resolution PNG, JPG, WEBP, GIF (Up to 100MB)</p>
+              <button type="button" class="btn-ocean-secondary btn-sm mt-3" id="btn-browse-photo">
+                <i class="fa-solid fa-folder-open"></i> Choose Image from PC
+              </button>
+            </div>
+          </div>
+          <div class="media-upload-preview-card glass-panel mt-3 hidden" id="item-photo-preview-wrap">
+            <img src="" id="item-photo-preview-img" alt="Photo Preview" class="upload-thumb-img">
+            <div class="media-preview-meta">
+              <span class="file-name" id="item-photo-name">image.jpg</span>
+              <button type="button" class="btn-danger-icon" id="btn-remove-photo" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Video Upload Section -->
+        <div class="item-type-pane" id="pane-item-video">
+          <div class="drop-zone-pc glass-card p-4 text-center" id="dropzone-item-video">
+            <input type="file" id="input-item-video" accept="video/mp4,video/webm,video/ogg,video/quicktime,video/x-matroska" class="hidden-file-input">
+            <div class="dropzone-content">
+              <i class="fa-solid fa-file-video text-ruby drop-icon"></i>
+              <h4 class="mt-2">Drag & Drop Video or Click to Browse PC</h4>
+              <p class="text-muted">Supports MP4, WebM, MOV, MKV files (Up to 500MB)</p>
+              <button type="button" class="btn-ocean-secondary btn-sm mt-3" id="btn-browse-video">
+                <i class="fa-solid fa-folder-open"></i> Choose Video from PC
+              </button>
+            </div>
+          </div>
+          <div class="media-upload-preview-card glass-panel mt-3 hidden" id="item-video-preview-wrap">
+            <video id="item-video-preview-player" controls class="upload-thumb-video"></video>
+            <div class="media-preview-meta">
+              <span class="file-name" id="item-video-name">video.mp4</span>
+              <button type="button" class="btn-danger-icon" id="btn-remove-video" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. PDF Document Upload Section -->
+        <div class="item-type-pane" id="pane-item-pdf">
+          <div class="drop-zone-pc glass-card p-4 text-center" id="dropzone-item-pdf">
+            <input type="file" id="input-item-pdf" accept="application/pdf" class="hidden-file-input">
+            <div class="dropzone-content">
+              <i class="fa-solid fa-file-pdf text-gold drop-icon"></i>
+              <h4 class="mt-2">Drag & Drop PDF or Click to Browse PC</h4>
+              <p class="text-muted">Supports PDF manuscripts, calligraphy scans, and articles (Up to 100MB)</p>
+              <button type="button" class="btn-ocean-secondary btn-sm mt-3" id="btn-browse-pdf">
+                <i class="fa-solid fa-folder-open"></i> Choose PDF from PC
+              </button>
+            </div>
+          </div>
+          <div class="media-upload-preview-card glass-panel mt-3 hidden" id="item-pdf-preview-wrap">
+            <div class="pdf-file-pill">
+              <i class="fa-solid fa-file-pdf text-gold fa-2x"></i>
+              <div>
+                <span class="file-name" id="item-pdf-name">document.pdf</span>
+                <span class="text-muted block text-xs" id="item-pdf-size">PDF Document</span>
+              </div>
+            </div>
+            <button type="button" class="btn-danger-icon" id="btn-remove-pdf" title="Remove"><i class="fa-solid fa-trash-can"></i></button>
+          </div>
+        </div>
+
+        <!-- Footer Action Buttons -->
+        <div class="item-uploader-actions mt-4">
+          <button type="submit" class="btn-ocean-primary" id="btn-save-item">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Save & Publish Item
+          </button>
+          <button type="button" class="btn-ocean-glass" id="btn-preview-item-live">
+            <i class="fa-solid fa-eye"></i> Live Preview
+          </button>
+          <button type="button" class="btn-danger-glass hidden" id="btn-delete-current-item">
+            <i class="fa-solid fa-trash-can"></i> Delete Work
+          </button>
+          <button type="button" class="btn-reset-filters" id="btn-cancel-item-uploader">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: SECURE PUBLIC PREVIEW-ONLY SHOWCASE VIEWER (NO DOWNLOADS ALLOWED) -->
+  <div class="modal-backdrop" id="modal-item-preview">
+    <div class="modal-dialog preview-showcase-dialog glass-panel" oncontextmenu="return false;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="auth-icon-badge" style="background: rgba(0, 240, 255, 0.15); border-color: var(--cyan-glow); color: var(--cyan-glow);">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div>
+            <h3 id="public-preview-title">Winning Work Showcase</h3>
+            <span class="text-muted" id="public-preview-subtitle">Excellentia Arts Fiesta 2026</span>
+          </div>
+        </div>
+        <button class="btn-close-modal" id="btn-close-item-preview"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Preview Security Watermark Strip -->
+      <div class="preview-security-strip">
+        <i class="fa-solid fa-shield-halved text-cyan"></i>
+        <span>EXCELLENTIA ARTS FIESTA 2026 • OFFICIAL SHOWCASE • PREVIEW ONLY</span>
+      </div>
+
+      <!-- Winner & Program Banner -->
+      <div class="preview-hero-meta glass-card mb-4" id="public-preview-meta">
+        <div class="preview-meta-left">
+          <span class="preview-place-badge" id="public-preview-place">1st Place</span>
+          <h2 class="preview-subject-title" id="public-preview-subject">The Sacred Mirage</h2>
+          <span class="preview-prog-tag" id="public-preview-prog">Malayalam Recitation • A-Zone</span>
+        </div>
+        <div class="preview-meta-right">
+          <div class="preview-winner-name" id="public-preview-winner">Muhammad Swalih MT</div>
+          <div class="preview-team-tag" id="public-preview-team">Bukhara</div>
+        </div>
+      </div>
+
+      <!-- Main Viewer Area -->
+      <div class="preview-viewer-body" id="public-preview-content">
+        <!-- 1. Rich Text / Poem View -->
+        <div class="preview-text-container hidden" id="public-preview-text-box">
+          <div class="reader-toolbar">
+            <span class="reader-font-ctrl" id="btn-reader-font-decrease" title="Decrease font size">A-</span>
+            <span class="reader-font-ctrl" id="btn-reader-font-increase" title="Increase font size">A+</span>
+            <div class="reader-themes">
+              <button type="button" class="reader-theme-btn active" data-theme="dark" title="Obsidian Theme">🌙</button>
+              <button type="button" class="reader-theme-btn" data-theme="parchment" title="Parchment Theme">📜</button>
+              <button type="button" class="reader-theme-btn" data-theme="royal" title="Royal Purple Theme">💜</button>
+              <button type="button" class="reader-theme-btn" data-theme="light" title="Pure Paper Theme">☀️</button>
+            </div>
+          </div>
+          <div class="preview-text-content" id="public-preview-text-render"></div>
+        </div>
+
+        <!-- 2. Protected Image View -->
+        <div class="preview-media-container hidden" id="public-preview-image-box">
+          <div class="protected-image-wrapper">
+            <img src="" id="public-preview-img" alt="Artwork Preview" draggable="false" oncontextmenu="return false;">
+            <div class="transparent-shield-overlay" oncontextmenu="return false;"></div>
+          </div>
+        </div>
+
+        <!-- 3. Protected Video View -->
+        <div class="preview-media-container hidden" id="public-preview-video-box">
+          <video id="public-preview-video-player" controls controlsList="nodownload nofullscreen" disablePictureInPicture oncontextmenu="return false;" class="protected-video-player"></video>
+        </div>
+
+        <!-- 4. Protected PDF View -->
+        <div class="preview-media-container hidden" id="public-preview-pdf-box">
+          <iframe id="public-preview-pdf-frame" src="" class="protected-pdf-frame" title="PDF Document Preview"></iframe>
+        </div>
+      </div>
+
+      <!-- Anti-Screenshot & Screen Recording Blackout Privacy Shield -->
+      <div class="anti-screenshot-shield hidden" id="preview-privacy-shield">
+        <div class="shield-content-box">
+          <div class="shield-lock-icon-wrap">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="shield-title">Content Protected</h3>
+          <p class="shield-message">Screen capture, screenshots, and screen recording are strictly prohibited for submitted student works.</p>
+          <div class="shield-badge-pill">
+            <i class="fa-solid fa-lock"></i> Ma'din School of Excellence Fiesta Security Protocol
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-modal-footer mt-4 text-center">
+        <span class="preview-notice-text">
+          <i class="fa-solid fa-shield-halved text-cyan"></i> Preview-only mode • Anti-screenshot and anti-recording active • Ma'din School of Excellence
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN FOOTER -->
+  <footer class="fiesta-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col-brand">
+          <img src="/assets/images/excellentia-brand-logo.png" alt="Excellentia Logo" class="footer-logo">
+          <div class="footer-theme-row">
+            <img src="/assets/images/theme-iceberg-logo.png" alt="Theme Logo" class="footer-theme-emblem">
+            <div>
+              <span class="footer-theme-title">DISCOVER THE UNSEEN</span>
+              <span class="footer-theme-sub">Excellence Arts Fiesta 2026</span>
+            </div>
+          </div>
+          <p class="footer-text-desc">
+            The grand arena where hidden depth and creative mastery meet in glorious discovery.
+          </p>
+        </div>
+
+        <div class="footer-col-links">
+          <h4>Quick Portals</h4>
+          <ul>
+            <li><a href="#results" data-target="results-view"><i class="fa-solid fa-chevron-right"></i> Live Results Hub</a></li>
+            <li><a href="#leaderboard" data-target="leaderboard-view"><i class="fa-solid fa-chevron-right"></i> Team Points Table</a></li>
+            <li><a href="#videos" data-target="videos-view"><i class="fa-solid fa-chevron-right"></i> Video Highlights</a></li>
+            <li><a href="#gallery" data-target="gallery-view"><i class="fa-solid fa-chevron-right"></i> Discovery Gallery</a></li>
+            <li><a href="#about" data-target="about-view"><i class="fa-solid fa-chevron-right"></i> About Excellence</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-houses">
+          <h4>The 4 Teams</h4>
+          <div class="footer-houses-pills">
+            <span class="house-pill pill-bukhara"><img src="/assets/images/houses/bukhara-arch.png" class="footer-house-mini-img" alt="Bukhara"> Bukhara</span>
+            <span class="house-pill pill-undulus"><img src="/assets/images/houses/undulus-arch.png" class="footer-house-mini-img" alt="Undulus"> Undulus</span>
+            <span class="house-pill pill-samarkhand"><img src="/assets/images/houses/samarkhand-arch.png" class="footer-house-mini-img" alt="Samarkhand"> Samarkhand</span>
+            <span class="house-pill pill-qurthuba"><img src="/assets/images/houses/qurthuba-arch.png" class="footer-house-mini-img" alt="Qurthuba"> Qurthuba</span>
+          </div>
+          <h4 class="mt-4">Categories</h4>
+          <div class="footer-houses-pills">
+            <span class="badge-zone">A-Zone</span>
+            <span class="badge-zone">B-Zone</span>
+            <span class="badge-zone">C-Zone</span>
+            <span class="badge-zone">General</span>
+          </div>
+        </div>
+
+        <div class="footer-col-contact">
+          <h4>Headquarters</h4>
+          <p><i class="fa-solid fa-school text-cyan"></i> Ma'din School of Excellence</p>
+          <p><i class="fa-solid fa-location-dot text-cyan"></i> Near Police Station, Malappuram, Kerala</p>
+          <p><i class="fa-solid fa-phone text-emerald"></i> 9037339492, 9526813688</p>
+          <div class="footer-actions-group mt-4">
+            <button class="btn-footer-settings" id="btn-footer-settings-btn" title="Fiesta Settings & Guide">
+              <i class="fa-solid fa-gear text-cyan"></i> <span>Settings & Guide</span>
+            </button>
+            <button class="btn-footer-install btn-trigger-pwa-install" id="btn-footer-pwa-install">
+              <i class="fa-solid fa-download text-cyan"></i> <span>Install Fiesta App</span>
+            </button>
+            <button class="btn-footer-admin" id="btn-footer-admin-btn">
+              <i class="fa-solid fa-shield-halved"></i> Committee Portal
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXACT REQUESTED FOOTER TEXT -->
+      <div class="footer-bottom-bar">
+        <p class="copyright-text">
+          Ma'din School of Excellence • Near Police Station Malappuram • Excellentia Arts Fiesta 2026 • Copyright Reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING PWA INSTALL BANNER -->
+  <div class="pwa-install-banner glass-panel hidden" id="pwa-install-banner">
+    <div class="pwa-banner-content">
+      <img src="/assets/images/icons/icon-192.png" alt="App Icon" class="pwa-banner-icon">
+      <div class="pwa-banner-text">
+        <strong>Excellentia Arts Fiesta 2026</strong>
+        <span>Install app for stadium slideshow & instant live results</span>
+      </div>
+    </div>
+    <div class="pwa-banner-actions">
+      <button class="btn-ocean-primary btn-sm btn-trigger-pwa-install" id="btn-banner-install"><i class="fa-solid fa-download"></i> Install</button>
+      <button class="btn-icon-circle btn-sm" id="btn-dismiss-pwa-banner" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+
+  <!-- iOS PWA INSTALL GUIDE MODAL -->
+  <div class="modal-backdrop" id="modal-ios-install-guide">
+    <div class="modal-dialog glass-panel" style="max-width: 440px; text-align: center;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-brands fa-apple text-cyan fa-2x"></i>
+          <h3>Install on iOS / iPhone</h3>
+        </div>
+        <button class="btn-close-modal" id="btn-close-ios-guide"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="p-4">
+        <img src="/assets/images/icons/icon-192.png" alt="App Icon" style="width: 72px; height: 72px; border-radius: 16px; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);">
+        <p class="mb-3" style="font-size: 0.95rem; line-height: 1.5;">To install <strong>Excellentia Arts Fiesta 2026</strong> on your iPhone or iPad:</p>
+        <div class="ios-install-steps" style="text-align: left; background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 12px; padding: 1rem; margin-bottom: 1.2rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <span style="background: #0284c7; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800;">1</span>
+            <span>Tap the <strong>Share</strong> button <i class="fa-solid fa-arrow-up-from-bracket text-cyan"></i> in Safari</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #0284c7; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800;">2</span>
+            <span>Scroll down and tap <strong>"Add to Home Screen"</strong> <i class="fa-solid fa-plus-square text-cyan"></i></span>
+          </div>
+        </div>
+        <button class="btn-ocean-primary w-100 py-2" onclick="document.getElementById('modal-ios-install-guide').classList.remove('active')">Got It!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/particles.js"></script>
+  <script src="/js/floating-popover.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/poster-canvas.js"></script>
+  <script src="/js/results.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/slideshow.js"></script>
+  <script src="/js/pwa.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
