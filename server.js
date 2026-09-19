@@ -15,6 +15,9 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
 const DB_PATH = path.join(__dirname, 'data', 'db.json');
 
+// --- SERVERLESS & VERCEL RUNTIME DETECTION ---
+const isVercel = !!(process.env.VERCEL || process.env.NOW_REGION || process.env.AWS_LAMBDA_FUNCTION_NAME);
+
 // --- UPLOAD DIRECTORIES ---
 const VIDEO_UPLOADS_DIR = path.join(__dirname, 'public', 'videos', 'uploads');
 const ITEMS_UPLOADS_DIR = path.join(__dirname, 'public', 'uploads', 'items');
@@ -22,17 +25,26 @@ const GALLERY_UPLOADS_DIR = path.join(__dirname, 'public', 'uploads', 'gallery')
 const NEWS_UPLOADS_DIR = path.join(__dirname, 'public', 'uploads', 'news');
 const GENERAL_UPLOADS_DIR = path.join(__dirname, 'public', 'uploads', 'images');
 
-[VIDEO_UPLOADS_DIR, ITEMS_UPLOADS_DIR, GALLERY_UPLOADS_DIR, NEWS_UPLOADS_DIR, GENERAL_UPLOADS_DIR].forEach(dir => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+function safeMkdirSync(dir) {
+  try {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+  } catch (e) {
+    // Read-only filesystem in Vercel/serverless environments - gracefully continue
   }
+}
+
+[VIDEO_UPLOADS_DIR, ITEMS_UPLOADS_DIR, GALLERY_UPLOADS_DIR, NEWS_UPLOADS_DIR, GENERAL_UPLOADS_DIR].forEach(dir => {
+  safeMkdirSync(dir);
 });
 
 // --- MULTER STORAGE CONFIGURATIONS ---
 const videoStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    if (!fs.existsSync(VIDEO_UPLOADS_DIR)) fs.mkdirSync(VIDEO_UPLOADS_DIR, { recursive: true });
-    cb(null, VIDEO_UPLOADS_DIR);
+    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'videos') : VIDEO_UPLOADS_DIR;
+    safeMkdirSync(targetDir);
+    cb(null, targetDir);
   },
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname).toLowerCase() || '.mp4';
@@ -58,8 +70,9 @@ const uploadVideo = multer({
 
 const galleryStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    if (!fs.existsSync(GALLERY_UPLOADS_DIR)) fs.mkdirSync(GALLERY_UPLOADS_DIR, { recursive: true });
-    cb(null, GALLERY_UPLOADS_DIR);
+    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'gallery') : GALLERY_UPLOADS_DIR;
+    safeMkdirSync(targetDir);
+    cb(null, targetDir);
   },
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname).toLowerCase() || '.jpg';
@@ -85,8 +98,9 @@ const uploadGallery = multer({
 
 const imageStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    if (!fs.existsSync(GENERAL_UPLOADS_DIR)) fs.mkdirSync(GENERAL_UPLOADS_DIR, { recursive: true });
-    cb(null, GENERAL_UPLOADS_DIR);
+    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'images') : GENERAL_UPLOADS_DIR;
+    safeMkdirSync(targetDir);
+    cb(null, targetDir);
   },
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname).toLowerCase() || '.jpg';
@@ -112,8 +126,9 @@ const uploadImage = multer({
 
 const newsStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    if (!fs.existsSync(NEWS_UPLOADS_DIR)) fs.mkdirSync(NEWS_UPLOADS_DIR, { recursive: true });
-    cb(null, NEWS_UPLOADS_DIR);
+    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'news') : NEWS_UPLOADS_DIR;
+    safeMkdirSync(targetDir);
+    cb(null, targetDir);
   },
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname).toLowerCase() || '.jpg';
@@ -130,8 +145,9 @@ const uploadNews = multer({
 
 const itemStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    if (!fs.existsSync(ITEMS_UPLOADS_DIR)) fs.mkdirSync(ITEMS_UPLOADS_DIR, { recursive: true });
-    cb(null, ITEMS_UPLOADS_DIR);
+    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'items') : ITEMS_UPLOADS_DIR;
+    safeMkdirSync(targetDir);
+    cb(null, targetDir);
   },
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname).toLowerCase();
@@ -177,10 +193,144 @@ app.use(express.static(path.join(__dirname, 'public'), {
 }));
 
 // --- WEBSOCKET REAL-TIME BROADCAST ENGINE ---
-const wss = new WebSocket.Server({ server });
+let wss = null;
 const studioClients = new Set();
 const cameraClients = new Map();
 const viewerClients = new Set();
+
+if (!isVercel) {
+  try {
+    wss = new WebSocket.Server({ server });
+
+    wss.on('connection', (ws, req) => {
+      ws.isAlive = true;
+      ws.role = 'generic';
+      ws.on('pong', () => { ws.isAlive = true; });
+
+      // Instantly send current database state
+      const db = inMemoryDbCache || readDatabase();
+      if (db) {
+        try {
+          ws.send(JSON.stringify({
+            type: 'INITIAL_STATE',
+            state: db,
+            timestamp: Date.now()
+          }));
+        } catch (e) {}
+      }
+
+      ws.on('message', (message, isBinary) => {
+        // Binary frame relay from studio -> viewers
+        if (isBinary) {
+          viewerClients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+              try { client.send(message, { binary: true }); } catch (e) {}
+            }
+          });
+          return;
+        }
+
+        try {
+          const data = JSON.parse(message.toString());
+          if (data.type === 'PING') {
+            ws.send(JSON.stringify({ type: 'PONG', timestamp: Date.now() }));
+            return;
+          }
+          if (data.type === 'join') {
+            ws.role = data.role || 'viewer';
+            if (ws.role === 'studio') {
+              studioClients.add(ws);
+              ws.send(JSON.stringify({ type: 'joined', role: 'studio', success: true }));
+            } else if (ws.role === 'camera') {
+              ws.camId = data.camId || 'CAM-1';
+              cameraClients.set(ws.camId, ws);
+              ws.send(JSON.stringify({ type: 'joined', role: 'camera', camId: ws.camId, success: true }));
+            } else {
+              viewerClients.add(ws);
+              ws.send(JSON.stringify({ type: 'joined', role: 'viewer', success: true }));
+            }
+            return;
+          }
+          if (data.type === 'frame_relay') {
+            const frameMsg = JSON.stringify({
+              type: 'camera_frame',
+              camId: ws.camId || data.camId || 'CAM-1',
+              frame: data.frame,
+              fps: data.fps || 30
+            });
+            studioClients.forEach(studio => {
+              if (studio.readyState === WebSocket.OPEN) {
+                try { studio.send(frameMsg); } catch (e) {}
+              }
+            });
+            return;
+          }
+          if (data.type === 'tally_update') {
+            const targetCam = cameraClients.get(data.camId);
+            if (targetCam && targetCam.readyState === WebSocket.OPEN) {
+              try {
+                targetCam.send(JSON.stringify({ type: 'tally', status: data.status, camId: data.camId }));
+              } catch (e) {}
+            }
+            return;
+          }
+          if (data.type === 'program_broadcast_frame') {
+            const bcastMsg = JSON.stringify({
+              type: 'broadcast_frame',
+              frame: data.frame,
+              timestamp: Date.now()
+            });
+            viewerClients.forEach(viewer => {
+              if (viewer.readyState === WebSocket.OPEN) {
+                try { viewer.send(bcastMsg); } catch (e) {}
+              }
+            });
+            return;
+          }
+          // Broadcast live studio/cam relays to all other connected peers
+          if (data.type === 'STUDIO_RELAY' || data.type === 'CAMERA_FRAME' || data.type === 'STREAM_CONTROL') {
+            if (wss && wss.clients) {
+              wss.clients.forEach(client => {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
+                  try { client.send(message.toString()); } catch (e) {}
+                }
+              });
+            }
+          }
+        } catch (e) {}
+      });
+
+      ws.on('close', () => {
+        if (ws.role === 'studio') studioClients.delete(ws);
+        if (ws.role === 'camera' && ws.camId) cameraClients.delete(ws.camId);
+        if (ws.role === 'viewer') viewerClients.delete(ws);
+      });
+
+      ws.on('error', (err) => {
+        console.warn('WebSocket client error:', err.message);
+      });
+    });
+
+    const heartbeatInterval = setInterval(() => {
+      if (!wss || !wss.clients) return;
+      wss.clients.forEach(ws => {
+        if (ws.isAlive === false) return ws.terminate();
+        ws.isAlive = false;
+        try { ws.ping(); } catch (e) {}
+      });
+    }, 25000);
+
+    if (heartbeatInterval.unref) {
+      heartbeatInterval.unref();
+    }
+
+    wss.on('close', () => {
+      clearInterval(heartbeatInterval);
+    });
+  } catch (wsErr) {
+    console.warn('WebSocket initialization note:', wsErr.message);
+  }
+}
 
 function broadcastStateUpdate(db) {
   if (!wss || !wss.clients) return;
@@ -200,127 +350,36 @@ function broadcastStateUpdate(db) {
   });
 }
 
-wss.on('connection', (ws, req) => {
-  ws.isAlive = true;
-  ws.role = 'generic';
-  ws.on('pong', () => { ws.isAlive = true; });
-
-  // Instantly send current database state
-  const db = inMemoryDbCache || readDatabase();
-  if (db) {
-    try {
-      ws.send(JSON.stringify({
-        type: 'INITIAL_STATE',
-        state: db,
-        timestamp: Date.now()
-      }));
-    } catch (e) {}
-  }
-
-  ws.on('message', (message, isBinary) => {
-    // Binary frame relay from studio -> viewers
-    if (isBinary) {
-      viewerClients.forEach(client => {
-        if (client.readyState === WebSocket.OPEN) {
-          try { client.send(message, { binary: true }); } catch (e) {}
-        }
-      });
-      return;
-    }
-
-    try {
-      const data = JSON.parse(message.toString());
-      if (data.type === 'PING') {
-        ws.send(JSON.stringify({ type: 'PONG', timestamp: Date.now() }));
-        return;
-      }
-      if (data.type === 'join') {
-        ws.role = data.role || 'viewer';
-        if (ws.role === 'studio') {
-          studioClients.add(ws);
-          ws.send(JSON.stringify({ type: 'joined', role: 'studio', success: true }));
-        } else if (ws.role === 'camera') {
-          ws.camId = data.camId || 'CAM-1';
-          cameraClients.set(ws.camId, ws);
-          ws.send(JSON.stringify({ type: 'joined', role: 'camera', camId: ws.camId, success: true }));
-        } else {
-          viewerClients.add(ws);
-          ws.send(JSON.stringify({ type: 'joined', role: 'viewer', success: true }));
-        }
-        return;
-      }
-      if (data.type === 'frame_relay') {
-        const frameMsg = JSON.stringify({
-          type: 'camera_frame',
-          camId: ws.camId || data.camId || 'CAM-1',
-          frame: data.frame,
-          fps: data.fps || 30
-        });
-        studioClients.forEach(studio => {
-          if (studio.readyState === WebSocket.OPEN) {
-            try { studio.send(frameMsg); } catch (e) {}
-          }
-        });
-        return;
-      }
-      if (data.type === 'tally_update') {
-        const targetCam = cameraClients.get(data.camId);
-        if (targetCam && targetCam.readyState === WebSocket.OPEN) {
-          try {
-            targetCam.send(JSON.stringify({ type: 'tally', status: data.status, camId: data.camId }));
-          } catch (e) {}
-        }
-        return;
-      }
-      if (data.type === 'program_broadcast_frame') {
-        const bcastMsg = JSON.stringify({
-          type: 'broadcast_frame',
-          frame: data.frame,
-          timestamp: Date.now()
-        });
-        viewerClients.forEach(viewer => {
-          if (viewer.readyState === WebSocket.OPEN) {
-            try { viewer.send(bcastMsg); } catch (e) {}
-          }
-        });
-        return;
-      }
-      // Broadcast live studio/cam relays to all other connected peers
-      if (data.type === 'STUDIO_RELAY' || data.type === 'CAMERA_FRAME' || data.type === 'STREAM_CONTROL') {
-        wss.clients.forEach(client => {
-          if (client !== ws && client.readyState === WebSocket.OPEN) {
-            try { client.send(message.toString()); } catch (e) {}
-          }
-        });
-      }
-    } catch (e) {}
-  });
-
-  ws.on('close', () => {
-    if (ws.role === 'studio') studioClients.delete(ws);
-    if (ws.role === 'camera' && ws.camId) cameraClients.delete(ws.camId);
-    if (ws.role === 'viewer') viewerClients.delete(ws);
-  });
-
-  ws.on('error', (err) => {
-    console.warn('WebSocket client error:', err.message);
-  });
-});
-
-const heartbeatInterval = setInterval(() => {
-  if (!wss || !wss.clients) return;
-  wss.clients.forEach(ws => {
-    if (ws.isAlive === false) return ws.terminate();
-    ws.isAlive = false;
-    try { ws.ping(); } catch (e) {}
-  });
-}, 25000);
-
-wss.on('close', () => {
-  clearInterval(heartbeatInterval);
-});
-
 // --- DATABASE ENGINE (IN-MEMORY CACHE-FIRST & ASYNC PERSISTENCE) ---
+const DEFAULT_DATABASE = {
+  teams: [
+    { id: "team-1", name: "AL HIKMA", color: "#FFD700", points: 0, firstCount: 0, secondCount: 0, thirdCount: 0, categoryPoints: { "A-Zone": 0, "B-Zone": 0, "C-Zone": 0, "General": 0 } },
+    { id: "team-2", name: "AL FATHA", color: "#00E5FF", points: 0, firstCount: 0, secondCount: 0, thirdCount: 0, categoryPoints: { "A-Zone": 0, "B-Zone": 0, "C-Zone": 0, "General": 0 } },
+    { id: "team-3", name: "AL ISHRAQ", color: "#FF007F", points: 0, firstCount: 0, secondCount: 0, thirdCount: 0, categoryPoints: { "A-Zone": 0, "B-Zone": 0, "C-Zone": 0, "General": 0 } },
+    { id: "team-4", name: "AL ITTIHAD", color: "#00FF66", points: 0, firstCount: 0, secondCount: 0, thirdCount: 0, categoryPoints: { "A-Zone": 0, "B-Zone": 0, "C-Zone": 0, "General": 0 } }
+  ],
+  results: [],
+  programs: [],
+  participants: [],
+  videos: [],
+  gallery: [],
+  news: [],
+  items: [],
+  settings: {
+    heroTitle: "EXCELLENTIA ARTS FIESTA 2026",
+    heroSubtitle: "DISCOVER THE UNSEEN",
+    liveStreamActive: false,
+    showTeamScores: true,
+    maxVisibleResultNumber: null,
+    standingsSlideInterval: 5
+  },
+  reports: []
+};
+
+function getClonedDefaultState() {
+  return JSON.parse(JSON.stringify(DEFAULT_DATABASE));
+}
+
 let inMemoryDbCache = null;
 let cachedStateJson = null;
 let cachedStateEtag = null;
@@ -338,17 +397,30 @@ function readDatabase(forceReload = false) {
     return inMemoryDbCache;
   }
   try {
-    if (!fs.existsSync(DB_PATH)) {
-      throw new Error("DB file does not exist");
+    let db = null;
+    if (fs.existsSync(DB_PATH)) {
+      const data = fs.readFileSync(DB_PATH, 'utf8');
+      db = JSON.parse(data);
+    } else if (isVercel) {
+      const tmpPath = path.join('/tmp', 'db.json');
+      if (fs.existsSync(tmpPath)) {
+        const data = fs.readFileSync(tmpPath, 'utf8');
+        db = JSON.parse(data);
+      }
     }
-    const data = fs.readFileSync(DB_PATH, 'utf8');
-    const db = JSON.parse(data);
+    
+    if (!db) {
+      db = inMemoryDbCache || getClonedDefaultState();
+    }
+
     recalculateTeamPoints(db);
     updateStateCache(db);
     return db;
   } catch (err) {
-    console.error("Error reading DB:", err);
-    return inMemoryDbCache || null;
+    console.warn("DB read note:", err.message);
+    const fallback = inMemoryDbCache || getClonedDefaultState();
+    updateStateCache(fallback);
+    return fallback;
   }
 }
 
@@ -360,25 +432,26 @@ function persistToDiskAsync(db) {
   setImmediate(() => {
     const stateToWrite = pendingDiskState;
     pendingDiskState = null;
-    const tempPath = DB_PATH + '.tmp';
+    const targetPath = isVercel ? path.join('/tmp', 'db.json') : DB_PATH;
+    const tempPath = targetPath + '.tmp';
     const jsonStr = JSON.stringify(stateToWrite, null, 2);
 
-    fs.writeFile(tempPath, jsonStr, 'utf8', (err) => {
-      if (err) {
-        console.error("Async DB write error:", err.message);
-        isWritingToDisk = false;
-        return;
-      }
-      fs.rename(tempPath, DB_PATH, (renameErr) => {
-        isWritingToDisk = false;
-        if (renameErr) {
-          console.error("Async DB rename error:", renameErr.message);
+    try {
+      fs.writeFile(tempPath, jsonStr, 'utf8', (err) => {
+        if (err) {
+          isWritingToDisk = false;
+          return;
         }
-        if (pendingDiskState) {
-          persistToDiskAsync(pendingDiskState);
-        }
+        fs.rename(tempPath, targetPath, (renameErr) => {
+          isWritingToDisk = false;
+          if (pendingDiskState) {
+            persistToDiskAsync(pendingDiskState);
+          }
+        });
       });
-    });
+    } catch (e) {
+      isWritingToDisk = false;
+    }
   });
 }
 
@@ -1577,12 +1650,45 @@ app.post('/api/supabase/sync', async (req, res) => {
 
 // --- FALLBACK TO SPA ---
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  const indexPath = path.join(__dirname, 'public', 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath, (err) => {
+      if (err && !res.headersSent) {
+        res.status(200).send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EXCELLENTIA ARTS FIESTA 2026</title>
+</head>
+<body style="background:#090614;color:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">
+  <div style="text-align:center;">
+    <h1>EXCELLENTIA ARTS FIESTA 2026</h1>
+    <p>DISCOVER THE UNSEEN</p>
+  </div>
+</body>
+</html>`);
+      }
+    });
+  } else {
+    res.status(200).send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EXCELLENTIA ARTS FIESTA 2026</title>
+</head>
+<body style="background:#090614;color:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">
+  <div style="text-align:center;">
+    <h1>EXCELLENTIA ARTS FIESTA 2026</h1>
+    <p>DISCOVER THE UNSEEN</p>
+  </div>
+</body>
+</html>`);
+  }
 });
 
 const HOST = '0.0.0.0';
 
-if (require.main === module || !process.env.VERCEL) {
+if (!isVercel && require.main === module) {
   server.listen(PORT, HOST, () => {
     console.log(`====================================================`);
     console.log(`EXCELLENTIA ARTS FIESTA 2026 - DISCOVER THE UNSEEN`);

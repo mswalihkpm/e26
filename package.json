@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node test-all-features.js && node test-pwa-and-landscape.js && node test-performance-benchmark.js && node test-security-audit.js",
+    "test": "node test-all-features.js && node test-pwa-and-landscape.js && node test-performance-benchmark.js && node test-security-audit.js && node test-vercel-production-simulation.js",
     "icons:generate": "node generate-pwa-icons.js"
   },
   "engines": {

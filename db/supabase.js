@@ -184,6 +184,9 @@ class SupabaseProvider {
         }));
       }
     }, delay);
+    if (this.debounceTimer && this.debounceTimer.unref) {
+      this.debounceTimer.unref();
+    }
   }
 
   async syncAllToSupabase(localState) {
