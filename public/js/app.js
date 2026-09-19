@@ -195,10 +195,11 @@ function setupSettingsModal() {
    SPA NAVIGATION
    ========================================================================== */
 function setupNavigation() {
-  const navLinks = document.querySelectorAll('.nav-item, .drawer-link, .link-view-all, [data-target]');
+  const navLinks = document.querySelectorAll('.nav-item, .drawer-link, .link-view-all, .mobile-bottom-nav-item, [data-target]');
   const drawer = document.getElementById('mobile-nav-drawer');
   const btnMenuToggle = document.getElementById('mobile-menu-btn');
   const btnCloseDrawer = document.getElementById('btn-close-drawer');
+  const btnMobNavMore = document.getElementById('mob-nav-more');
 
   function switchView(targetViewId) {
     const allViews = document.querySelectorAll('.view-section');
@@ -210,7 +211,7 @@ function setupNavigation() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    document.querySelectorAll('.nav-item, .drawer-link').forEach(link => {
+    document.querySelectorAll('.nav-item, .drawer-link, .mobile-bottom-nav-item').forEach(link => {
       if (link.dataset.target === targetViewId) {
         link.classList.add('active');
       } else {
@@ -236,6 +237,12 @@ function setupNavigation() {
   }
   if (btnCloseDrawer && drawer) {
     btnCloseDrawer.addEventListener('click', () => drawer.classList.remove('open'));
+  }
+  if (btnMobNavMore && drawer) {
+    btnMobNavMore.addEventListener('click', (e) => {
+      e.preventDefault();
+      drawer.classList.toggle('open');
+    });
   }
 
   window.addEventListener('hashchange', () => {

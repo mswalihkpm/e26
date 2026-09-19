@@ -86,13 +86,18 @@
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-nav-drawer" id="mobile-nav-drawer">
       <div class="drawer-header">
+        <div class="drawer-brand-wrap">
+          <img src="/assets/images/excellentia-brand-logo.png" alt="Excellentia 2026" class="drawer-brand-logo">
+          <span class="drawer-edition-badge">EXCELLENCE 2026</span>
+        </div>
         <button class="btn-close-drawer" id="btn-close-drawer" aria-label="Close Navigation"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="drawer-links">
         <a href="#home" class="drawer-link active" data-target="home-view"><i class="fa-solid fa-house"></i> Home</a>
         <a href="#leaderboard" class="drawer-link" data-target="leaderboard-view"><i class="fa-solid fa-trophy"></i> Teams & Points</a>
         <a href="#results" class="drawer-link" data-target="results-view"><i class="fa-solid fa-square-poll-vertical"></i> Results Hub</a>
-        <a href="#videos" class="drawer-link" data-target="videos-view"><i class="fa-solid fa-video text-ruby"></i> Videos & Highlights</a>
+        <a href="#showcase" class="drawer-link" data-target="showcase-view"><i class="fa-solid fa-award"></i> Winning Works & Posters</a>
+        <a href="#videos" class="drawer-link" data-target="videos-view"><i class="fa-solid fa-video text-ruby"></i> Videos & Recitals</a>
         <a href="#gallery" class="drawer-link" data-target="gallery-view"><i class="fa-solid fa-images"></i> Photo Gallery</a>
         <a href="#news" class="drawer-link" data-target="news-view"><i class="fa-solid fa-newspaper"></i> Latest News</a>
         <a href="#about" class="drawer-link" data-target="about-view"><i class="fa-solid fa-circle-info"></i> About Fiesta</a>
@@ -2436,6 +2441,59 @@
       </div>
     </div>
   </div>
+
+  <!-- Modern Glassmorphic Mobile App Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <div class="mobile-bottom-nav-inner">
+      <a href="#home" class="mobile-bottom-nav-item active" data-target="home-view" id="mob-nav-home">
+        <div class="mob-nav-icon-wrap">
+          <i class="fa-solid fa-house"></i>
+        </div>
+        <span class="mob-nav-label">Home</span>
+        <span class="mob-nav-indicator"></span>
+      </a>
+
+      <a href="#leaderboard" class="mobile-bottom-nav-item" data-target="leaderboard-view" id="mob-nav-leaderboard">
+        <div class="mob-nav-icon-wrap">
+          <i class="fa-solid fa-trophy"></i>
+        </div>
+        <span class="mob-nav-label">Standings</span>
+        <span class="mob-nav-indicator"></span>
+      </a>
+
+      <a href="#results" class="mobile-bottom-nav-item" data-target="results-view" id="mob-nav-results">
+        <div class="mob-nav-icon-wrap mob-nav-center-pill">
+          <i class="fa-solid fa-square-poll-vertical"></i>
+          <span class="mob-nav-live-dot"></span>
+        </div>
+        <span class="mob-nav-label">Results</span>
+        <span class="mob-nav-indicator"></span>
+      </a>
+
+      <a href="#showcase" class="mobile-bottom-nav-item" data-target="showcase-view" id="mob-nav-showcase">
+        <div class="mob-nav-icon-wrap">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <span class="mob-nav-label">Works</span>
+        <span class="mob-nav-indicator"></span>
+      </a>
+
+      <a href="#videos" class="mobile-bottom-nav-item" data-target="videos-view" id="mob-nav-videos">
+        <div class="mob-nav-icon-wrap">
+          <i class="fa-solid fa-play"></i>
+        </div>
+        <span class="mob-nav-label">Videos</span>
+        <span class="mob-nav-indicator"></span>
+      </a>
+
+      <button type="button" class="mobile-bottom-nav-item mob-nav-more-btn" id="mob-nav-more" aria-label="More Menu">
+        <div class="mob-nav-icon-wrap">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </div>
+        <span class="mob-nav-label">More</span>
+      </button>
+    </div>
+  </nav>
 
   <!-- Scripts -->
   <script src="/js/particles.js"></script>

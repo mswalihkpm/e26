@@ -1555,15 +1555,11 @@ body {
     max-width: 220px;
   }
   .theme-icon-container {
-    width: 80px;
-    height: 80px;
+    width: 85px;
+    height: 85px;
   }
   .hero-iceberg-symbol {
-    width: 60px;
-    height: 60px;
-  }
-  .podium-showcase {
-    flex-direction: column;
-    align-items: center;
+    width: 68px;
+    height: 68px;
   }
 }

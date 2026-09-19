@@ -6232,4 +6232,517 @@
   }
 }
 
+/* ==========================================================================
+   MOBILE LUXURY APP REDESIGN & DOCK NAVIGATION ENGINE
+   ========================================================================== */
+
+/* --- 1. MOBILE BOTTOM APP DOCK NAVIGATION --- */
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: rgba(3, 11, 26, 0.92) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    border-top: 1px solid rgba(0, 240, 255, 0.22) !important;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.75), 0 -1px 0 rgba(255, 255, 255, 0.08) !important;
+    padding: 0.45rem 0.5rem max(0.5rem, env(safe-area-inset-bottom)) !important;
+  }
+
+  body {
+    padding-bottom: 75px !important;
+  }
+
+  .fiesta-main {
+    padding-bottom: 50px !important;
+  }
+}
+
+.mobile-bottom-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.mobile-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  padding: 0.35rem 0.2rem;
+  color: #94a3b8;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-bottom-nav-item:active {
+  transform: scale(0.92);
+}
+
+.mob-nav-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.mob-nav-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-top: 0.2rem;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.mob-nav-indicator {
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  height: 3px;
+  background: #00f0ff;
+  border-radius: 999px;
+  box-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.6);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-bottom-nav-item.active {
+  color: #00f0ff;
+}
+
+.mobile-bottom-nav-item.active .mob-nav-icon-wrap {
+  background: rgba(0, 240, 255, 0.16);
+  color: #00f0ff;
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.mobile-bottom-nav-item.active .mob-nav-label {
+  color: #00f0ff;
+}
+
+.mobile-bottom-nav-item.active .mob-nav-indicator {
+  width: 18px;
+}
+
+/* Elevated Center Results Pill Button */
+.mob-nav-center-pill {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.25) 0%, rgba(14, 165, 233, 0.35) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.45);
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+}
+
+.mobile-bottom-nav-item.active .mob-nav-center-pill {
+  background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%);
+  color: #030e20 !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.75);
+}
+
+.mob-nav-live-dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ef4444;
+  animation: pulseDot 1.5s infinite;
+}
+
+/* Light Mode Overrides for Mobile Bottom Nav */
+[data-theme="light"] .mobile-bottom-nav {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-top: 1px solid rgba(14, 116, 226, 0.25) !important;
+  box-shadow: 0 -10px 30px rgba(2, 56, 110, 0.12) !important;
+}
+
+[data-theme="light"] .mobile-bottom-nav-item {
+  color: #64748b;
+}
+
+[data-theme="light"] .mobile-bottom-nav-item.active {
+  color: #0284c7;
+}
+
+[data-theme="light"] .mobile-bottom-nav-item.active .mob-nav-icon-wrap {
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+  box-shadow: 0 0 15px rgba(2, 132, 199, 0.25);
+}
+
+[data-theme="light"] .mobile-bottom-nav-item.active .mob-nav-label {
+  color: #0284c7;
+}
+
+[data-theme="light"] .mobile-bottom-nav-item.active .mob-nav-indicator {
+  background: #0284c7;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.6);
+}
+
+/* --- 2. ENHANCED MOBILE DRAWER --- */
+.drawer-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.drawer-brand-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.3));
+}
+
+.drawer-edition-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  background: rgba(0, 240, 255, 0.12);
+  color: #00f0ff;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+/* --- 3. RESPONSIVE HERO & STATS BENTO GRID ON MOBILE --- */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1.5rem 1rem 1.75rem !important;
+  }
+
+  .hero-badge {
+    font-size: 0.68rem !important;
+    padding: 0.35rem 0.9rem !important;
+    letter-spacing: 0.1em !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .hero-brand-block {
+    gap: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .hero-excellentia-logo {
+    max-width: 320px !important;
+    width: 85% !important;
+  }
+
+  .hero-theme-showcase {
+    gap: 1rem !important;
+    margin-top: 0.2rem !important;
+  }
+
+  .theme-icon-container {
+    width: 85px !important;
+    height: 85px !important;
+  }
+
+  .hero-iceberg-symbol {
+    width: 68px !important;
+    height: 68px !important;
+  }
+
+  .theme-typography-container {
+    align-items: center !important;
+    text-align: center !important;
+    max-width: 290px !important;
+  }
+
+  .hero-theme-img {
+    max-width: 220px !important;
+  }
+
+  .theme-tagline {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .hero-cta-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.65rem !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+    max-width: 420px !important;
+  }
+
+  .hero-cta-group .btn-ocean-live {
+    grid-column: 1 / -1 !important;
+  }
+
+  .hero-cta-group a {
+    padding: 0.65rem 0.9rem !important;
+    font-size: 0.88rem !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+  }
+
+  /* 2x2 Bento Stats Grid on Mobile */
+  .fiesta-stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+  }
+
+  .stat-card {
+    padding: 1rem 0.75rem !important;
+    border-radius: 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+    background: rgba(4, 15, 34, 0.78) !important;
+    border: 1px solid rgba(0, 240, 255, 0.18) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .stat-card:active {
+    transform: scale(0.97);
+  }
+
+  .stat-icon-wrap {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    font-size: 1.25rem !important;
+  }
+
+  .stat-num {
+    font-size: 1.45rem !important;
+    line-height: 1.1 !important;
+    font-weight: 900 !important;
+  }
+
+  .stat-title {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    color: var(--text-muted) !important;
+  }
+}
+
+/* --- 4. TOP 3 DUEL & PODIUMS ON MOBILE --- */
+@media (max-width: 768px) {
+  .home-top3-teams-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    max-width: 440px !important;
+    margin: 1rem auto 0 !important;
+  }
+
+  .home-top3-card {
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 1rem !important;
+  }
+
+  .home-top3-emblem-wrap {
+    width: 65px !important;
+    height: 65px !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .home-top3-name {
+    font-size: 1.1rem !important;
+    margin: 0 !important;
+  }
+
+  .home-top3-motto {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .home-top3-pts {
+    font-size: 1.45rem !important;
+    margin: 0 !important;
+  }
+
+  .home-top3-rank-tag {
+    top: 8px !important;
+    right: 12px !important;
+    left: auto !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Podium on Leaderboard Page */
+  .podium-showcase {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    gap: 0.6rem !important;
+    margin: 1.5rem auto 2rem !important;
+    max-width: 440px !important;
+  }
+
+  .podium-step {
+    flex: 1 !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .podium-step-1 { order: 2 !important; }
+  .podium-step-2 { order: 1 !important; }
+  .podium-step-3 { order: 3 !important; }
+
+  .podium-block-1 { height: 160px !important; }
+  .podium-block-2 { height: 125px !important; }
+  .podium-block-3 { height: 100px !important; }
+
+  .podium-emblem-wrap {
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .podium-team-name {
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 95px !important;
+  }
+
+  .podium-points-tag {
+    font-size: 0.88rem !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+
+  /* 4 Detailed Team Cards on Mobile */
+  .teams-detailed-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* --- 5. RESULTS HUB MOBILE UPGRADES --- */
+@media (max-width: 768px) {
+  .results-hero-showcase {
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
+  }
+
+  .results-hero-title {
+    font-size: 1.75rem !important;
+  }
+
+  .results-hero-desc {
+    font-size: 0.82rem !important;
+  }
+
+  .results-streamline-filterbar {
+    padding: 0.5rem 0.6rem !important;
+    gap: 0.5rem !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .results-streamline-filterbar::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .res-zone-btn {
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    border-radius: 10px !important;
+  }
+
+  .modern-results-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .modern-result-card {
+    padding: 1.15rem 1rem !important;
+    border-radius: 16px !important;
+  }
+
+  .modern-res-title {
+    font-size: 1.15rem !important;
+  }
+
+  .modern-res-winner-row {
+    padding: 0.6rem 0.75rem !important;
+    border-radius: 10px !important;
+    gap: 0.6rem !important;
+  }
+
+  .winner-p-name {
+    font-size: 0.9rem !important;
+  }
+
+  .winner-t-tag {
+    font-size: 0.75rem !important;
+  }
+
+  .winner-pts-pill {
+    font-size: 0.75rem !important;
+    padding: 0.15rem 0.45rem !important;
+  }
+}
+
+/* --- 6. GALLERY & VIDEOS ON MOBILE --- */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .gallery-card {
+    border-radius: 14px !important;
+  }
+
+  .videos-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .video-card {
+    border-radius: 16px !important;
+  }
+
+  .news-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+
 
