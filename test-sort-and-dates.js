@@ -1,5 +1,5 @@
 /**
- * Verification Test for Increasing Result Number Ordering and Fest Dates (19, 20 September 2026)
+ * Verification Test for Decreasing Result Number Ordering and Fest Dates (19, 20 September 2026)
  * Excellentia Arts Fiesta 2026
  */
 
@@ -9,7 +9,7 @@ const assert = require('assert');
 
 function runTest() {
   console.log('========================================================================');
-  console.log('TESTING RESULTS INCREASING ORDER SORTING & UPDATED FEST DATES');
+  console.log('TESTING RESULTS DECREASING ORDER SORTING & UPDATED FEST DATES');
   console.log('========================================================================\n');
 
   let passed = 0;
@@ -36,11 +36,11 @@ function runTest() {
   test('data/db.json settings contains dates: "19, 20 September 2026"', dbJson.settings && dbJson.settings.dates === '19, 20 September 2026');
   test('server.js DEFAULT_DATABASE contains dates: "19, 20 September 2026"', serverJs.includes('19, 20 September 2026'));
 
-  // 2. Results Increasing Order Verification
-  console.log('\n[2/2] Testing Results Default Increasing Order (1..N)...');
-  test('results.js activeFilters default sort is "num-asc"', resultsJs.includes("sort: 'num-asc'"));
-  test('results.js filterResults sorts by (Number(a.resultNumber) || 0) - (Number(b.resultNumber) || 0) as default', resultsJs.includes("(Number(a.resultNumber) || 0) - (Number(b.resultNumber) || 0)"));
-  test('index.html res-sort-select defaults to num-asc (Increasing 1..N)', html.includes('<option value="num-asc" selected>Sort by: Result # (Increasing 1..N ▴)</option>'));
+  // 2. Results Decreasing Order Verification
+  console.log('\n[2/2] Testing Results Default Decreasing Order (N..1)...');
+  test('results.js activeFilters default sort is "num-desc"', resultsJs.includes("sort: 'num-desc'"));
+  test('results.js filterResults sorts by (Number(b.resultNumber) || 0) - (Number(a.resultNumber) || 0) as default', resultsJs.includes("(Number(b.resultNumber) || 0) - (Number(a.resultNumber) || 0)"));
+  test('index.html res-sort-select defaults to num-desc (Decreasing N..1)', html.includes('<option value="num-desc" selected>Sort by: Result # (Decreasing N..1 ▾)</option>'));
 
   // Simulate Sorting Behavior
   const sampleResults = [
@@ -50,9 +50,9 @@ function runTest() {
     { id: 'res-2', resultNumber: 8, programName: 'B Calligraphy' }
   ];
 
-  sampleResults.sort((a, b) => (Number(a.resultNumber) || 0) - (Number(b.resultNumber) || 0));
+  sampleResults.sort((a, b) => (Number(b.resultNumber) || 0) - (Number(a.resultNumber) || 0));
   const sortedNumbers = sampleResults.map(r => r.resultNumber);
-  test('Sorted results are strictly increasing: [1, 2, 8, 15]', JSON.stringify(sortedNumbers) === JSON.stringify([1, 2, 8, 15]));
+  test('Sorted results are strictly decreasing: [15, 8, 2, 1]', JSON.stringify(sortedNumbers) === JSON.stringify([15, 8, 2, 1]));
 
   console.log('\n========================================================================');
   console.log(`SORT & DATES AUDIT SUMMARY: ${passed} PASSED | ${failed} FAILED`);
