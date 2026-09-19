@@ -136,23 +136,50 @@ class SupabaseProvider {
   }
 
   async syncTableToSupabase(table, data) {
-    if (!this.isConfigured() || !data) return { success: false, message: 'Not configured or no data' };
+    if (!this.isConfigured() || typeof data === 'undefined') return { success: false, message: 'Not configured or no data' };
     try {
-      if (Array.isArray(data) && data.length === 0) return { success: true, count: 0 };
-      
-      let res;
+      if (table === 'settings') {
+        const res = await this.client.from('settings').upsert({ id: 'main', config: data }, { onConflict: 'id' });
+        if (res && res.error) {
+          console.warn(`Supabase sync warning for settings:`, res.error.message);
+          return { success: false, error: res.error.message };
+        }
+        return { success: true, table, syncedAt: new Date().toISOString() };
+      }
+
       if (table === 'teams') {
-        res = await this.client.from('teams').upsert(data, { onConflict: 'name' });
-      } else if (table === 'settings') {
-        res = await this.client.from('settings').upsert({ id: 'main', config: data }, { onConflict: 'id' });
-      } else {
-        res = await this.client.from(table).upsert(data, { onConflict: 'id' });
+        if (Array.isArray(data) && data.length === 0) {
+          await this.client.from('teams').delete().neq('name', '___NONE___');
+          return { success: true, table, count: 0, syncedAt: new Date().toISOString() };
+        }
+        const upsertRes = await this.client.from('teams').upsert(data, { onConflict: 'name' });
+        if (upsertRes && upsertRes.error) {
+          console.warn(`Supabase teams upsert warning:`, upsertRes.error.message);
+        }
+        const validNames = (data || []).map(d => d.name).filter(Boolean);
+        if (validNames.length > 0) {
+          await this.client.from('teams').delete().not('name', 'in', `(${validNames.map(n => `"${n}"`).join(',')})`);
+        }
+        return { success: true, table, syncedAt: new Date().toISOString() };
       }
-      
-      if (res && res.error) {
-        console.warn(`Supabase sync warning for table ${table}:`, res.error.message);
-        return { success: false, error: res.error.message };
+
+      // Standard tables with 'id' primary key
+      if (Array.isArray(data) && data.length === 0) {
+        await this.client.from(table).delete().neq('id', '___NONE___');
+        return { success: true, table, count: 0, syncedAt: new Date().toISOString() };
       }
+
+      const upsertRes = await this.client.from(table).upsert(data, { onConflict: 'id' });
+      if (upsertRes && upsertRes.error) {
+        console.warn(`Supabase sync warning for table ${table}:`, upsertRes.error.message);
+        return { success: false, error: upsertRes.error.message };
+      }
+
+      const validIds = (data || []).map(d => d.id).filter(Boolean);
+      if (validIds.length > 0) {
+        await this.client.from(table).delete().not('id', 'in', `(${validIds.map(id => `"${id}"`).join(',')})`);
+      }
+
       return { success: true, table, syncedAt: new Date().toISOString() };
     } catch (err) {
       console.warn(`Supabase single-table sync exception (${table}):`, err.message);
@@ -164,7 +191,7 @@ class SupabaseProvider {
   debounceTimer = null;
   pendingSyncTables = new Set();
 
-  queueTableSync(table, localState, delay = 1500) {
+  queueTableSync(table, localState, delay = 800) {
     if (!this.isConfigured() || !localState) return;
     if (table) this.pendingSyncTables.add(table);
     else Object.keys(localState).forEach(k => this.pendingSyncTables.add(k));
@@ -179,7 +206,7 @@ class SupabaseProvider {
       } else {
         await Promise.allSettled(tablesToSync.map(tbl => {
           const tblData = localState[tbl];
-          if (tblData) return this.syncTableToSupabase(tbl, tblData);
+          if (typeof tblData !== 'undefined') return this.syncTableToSupabase(tbl, tblData);
           return Promise.resolve();
         }));
       }
@@ -193,39 +220,16 @@ class SupabaseProvider {
     if (!this.isConfigured() || !localState) return { success: false, message: 'Not configured' };
 
     try {
-      const operations = [];
+      const tables = ['teams', 'results', 'programs', 'participants', 'videos', 'gallery', 'news', 'items', 'settings'];
+      await Promise.allSettled(tables.map(tbl => {
+        if (typeof localState[tbl] !== 'undefined') {
+          return this.syncTableToSupabase(tbl, localState[tbl]);
+        }
+        return Promise.resolve();
+      }));
 
-      if (Array.isArray(localState.teams) && localState.teams.length > 0) {
-        operations.push(this.client.from('teams').upsert(localState.teams, { onConflict: 'name' }));
-      }
-      if (Array.isArray(localState.results) && localState.results.length > 0) {
-        operations.push(this.client.from('results').upsert(localState.results, { onConflict: 'id' }));
-      }
-      if (Array.isArray(localState.programs) && localState.programs.length > 0) {
-        operations.push(this.client.from('programs').upsert(localState.programs, { onConflict: 'id' }));
-      }
-      if (Array.isArray(localState.participants) && localState.participants.length > 0) {
-        operations.push(this.client.from('participants').upsert(localState.participants, { onConflict: 'id' }));
-      }
-      if (Array.isArray(localState.videos) && localState.videos.length > 0) {
-        operations.push(this.client.from('videos').upsert(localState.videos, { onConflict: 'id' }));
-      }
-      if (Array.isArray(localState.gallery) && localState.gallery.length > 0) {
-        operations.push(this.client.from('gallery').upsert(localState.gallery, { onConflict: 'id' }));
-      }
-      if (Array.isArray(localState.news) && localState.news.length > 0) {
-        operations.push(this.client.from('news').upsert(localState.news, { onConflict: 'id' }));
-      }
-      if (Array.isArray(localState.items) && localState.items.length > 0) {
-        operations.push(this.client.from('items').upsert(localState.items, { onConflict: 'id' }));
-      }
-      if (localState.settings) {
-        operations.push(this.client.from('settings').upsert({ id: 'main', config: localState.settings }, { onConflict: 'id' }));
-      }
-
-      await Promise.all(operations);
       this.lastSyncTime = new Date().toISOString();
-      return { success: true, count: operations.length, syncedAt: this.lastSyncTime };
+      return { success: true, count: tables.length, syncedAt: this.lastSyncTime };
     } catch (err) {
       console.error('Supabase full sync error:', err.message);
       return { success: false, error: err.message };
@@ -247,9 +251,14 @@ class SupabaseProvider {
   async deleteEntity(table, id) {
     if (!this.isConfigured() || !id) return null;
     try {
-      const { data, error } = await this.client.from(table).delete().eq('id', id);
-      if (error) console.warn(`Supabase delete from ${table} warning:`, error.message);
-      return data;
+      let res;
+      if (table === 'teams') {
+        res = await this.client.from('teams').delete().or(`id.eq.${id},name.eq.${id}`);
+      } else {
+        res = await this.client.from(table).delete().eq('id', id);
+      }
+      if (res && res.error) console.warn(`Supabase delete from ${table} warning:`, res.error.message);
+      return res ? res.data : null;
     } catch (e) {
       console.warn(`Supabase error on ${table} delete:`, e.message);
       return null;

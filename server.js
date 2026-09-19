@@ -3,6 +3,7 @@ const http = require('http');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const crypto = require('crypto');
 const xlsx = require('xlsx');
 const multer = require('multer');
@@ -17,6 +18,9 @@ const DB_PATH = path.join(__dirname, 'data', 'db.json');
 
 // --- SERVERLESS & VERCEL RUNTIME DETECTION ---
 const isVercel = !!(process.env.VERCEL || process.env.NOW_REGION || process.env.AWS_LAMBDA_FUNCTION_NAME);
+
+// Helper for serverless ephemeral storage
+const getTempDir = (...subdirs) => path.join(os.tmpdir(), ...subdirs);
 
 // --- UPLOAD DIRECTORIES ---
 const VIDEO_UPLOADS_DIR = path.join(__dirname, 'public', 'videos', 'uploads');
@@ -42,7 +46,7 @@ function safeMkdirSync(dir) {
 // --- MULTER STORAGE CONFIGURATIONS ---
 const videoStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'videos') : VIDEO_UPLOADS_DIR;
+    const targetDir = isVercel ? getTempDir('uploads', 'videos') : VIDEO_UPLOADS_DIR;
     safeMkdirSync(targetDir);
     cb(null, targetDir);
   },
@@ -70,7 +74,7 @@ const uploadVideo = multer({
 
 const galleryStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'gallery') : GALLERY_UPLOADS_DIR;
+    const targetDir = isVercel ? getTempDir('uploads', 'gallery') : GALLERY_UPLOADS_DIR;
     safeMkdirSync(targetDir);
     cb(null, targetDir);
   },
@@ -98,7 +102,7 @@ const uploadGallery = multer({
 
 const imageStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'images') : GENERAL_UPLOADS_DIR;
+    const targetDir = isVercel ? getTempDir('uploads', 'images') : GENERAL_UPLOADS_DIR;
     safeMkdirSync(targetDir);
     cb(null, targetDir);
   },
@@ -126,7 +130,7 @@ const uploadImage = multer({
 
 const newsStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'news') : NEWS_UPLOADS_DIR;
+    const targetDir = isVercel ? getTempDir('uploads', 'news') : NEWS_UPLOADS_DIR;
     safeMkdirSync(targetDir);
     cb(null, targetDir);
   },
@@ -145,7 +149,7 @@ const uploadNews = multer({
 
 const itemStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const targetDir = isVercel ? path.join('/tmp', 'uploads', 'items') : ITEMS_UPLOADS_DIR;
+    const targetDir = isVercel ? getTempDir('uploads', 'items') : ITEMS_UPLOADS_DIR;
     safeMkdirSync(targetDir);
     cb(null, targetDir);
   },
@@ -402,7 +406,7 @@ function readDatabase(forceReload = false) {
       const data = fs.readFileSync(DB_PATH, 'utf8');
       db = JSON.parse(data);
     } else if (isVercel) {
-      const tmpPath = path.join('/tmp', 'db.json');
+      const tmpPath = getTempDir('db.json');
       if (fs.existsSync(tmpPath)) {
         const data = fs.readFileSync(tmpPath, 'utf8');
         db = JSON.parse(data);
@@ -432,22 +436,19 @@ function persistToDiskAsync(db) {
   setImmediate(() => {
     const stateToWrite = pendingDiskState;
     pendingDiskState = null;
-    const targetPath = isVercel ? path.join('/tmp', 'db.json') : DB_PATH;
-    const tempPath = targetPath + '.tmp';
+    const targetPath = isVercel ? getTempDir('db.json') : DB_PATH;
     const jsonStr = JSON.stringify(stateToWrite, null, 2);
 
     try {
-      fs.writeFile(tempPath, jsonStr, 'utf8', (err) => {
+      safeMkdirSync(path.dirname(targetPath));
+      fs.writeFile(targetPath, jsonStr, 'utf8', (err) => {
+        isWritingToDisk = false;
         if (err) {
-          isWritingToDisk = false;
-          return;
+          console.warn("Disk write error:", err.message);
         }
-        fs.rename(tempPath, targetPath, (renameErr) => {
-          isWritingToDisk = false;
-          if (pendingDiskState) {
-            persistToDiskAsync(pendingDiskState);
-          }
-        });
+        if (pendingDiskState) {
+          persistToDiskAsync(pendingDiskState);
+        }
       });
     } catch (e) {
       isWritingToDisk = false;
@@ -460,7 +461,7 @@ function saveDatabase(db, changedTable = null) {
     recalculateTeamPoints(db);
     updateStateCache(db);
 
-    // Asynchronous non-blocking atomic disk persistence
+    // Asynchronous non-blocking disk persistence
     persistToDiskAsync(db);
     
     // Real-time broadcast to all connected devices across the world
@@ -468,7 +469,7 @@ function saveDatabase(db, changedTable = null) {
 
     // Debounced asynchronous background sync to Supabase Cloud Database
     if (supabaseProvider && supabaseProvider.isConfigured()) {
-      supabaseProvider.queueTableSync(changedTable, db, 1200);
+      supabaseProvider.queueTableSync(changedTable, db, 600);
     }
 
     return true;
@@ -576,8 +577,20 @@ function recalculateTeamPoints(db) {
 }
 
 // Initial recalculation & cache
-const initialDb = readDatabase();
-if (initialDb) saveDatabase(initialDb);
+let initialDb = readDatabase();
+if (supabaseProvider && supabaseProvider.isConfigured()) {
+  supabaseProvider.loadStateFromSupabase().then(cloudState => {
+    if (cloudState && Object.keys(cloudState).length > 0) {
+      initialDb = { ...initialDb, ...cloudState };
+      recalculateTeamPoints(initialDb);
+      updateStateCache(initialDb);
+      persistToDiskAsync(initialDb);
+      console.log('⚡ Successfully hydrated state from Supabase Cloud Database.');
+    }
+  }).catch(e => {
+    console.warn('Supabase cloud hydration note:', e.message);
+  });
+}
 
 // Stream status API
 app.get('/api/stream/status', (req, res) => {
@@ -716,7 +729,7 @@ app.post('/api/results', (req, res) => {
     if (p) p.status = 'Completed';
   }
 
-  saveDatabase(db);
+  saveDatabase(db, 'results');
   lastResultPost = { time: now, key: postKey, result: newResult };
   res.status(201).json({ success: true, result: newResult, state: db });
 });
@@ -729,7 +742,7 @@ app.post('/api/results/renumber', (req, res) => {
     r.resultNumber = idx + 1;
   });
 
-  saveDatabase(db);
+  saveDatabase(db, 'results');
   res.json({ success: true, results: db.results, state: db });
 });
 
@@ -748,7 +761,7 @@ app.post('/api/results/:id/toggle-visibility', (req, res) => {
   db.results[index].isPublic = newStatus;
   db.results[index].updatedAt = new Date().toISOString();
 
-  saveDatabase(db);
+  saveDatabase(db, 'results');
   res.json({
     success: true,
     isPublic: newStatus,
@@ -782,7 +795,7 @@ app.put('/api/results/:id', (req, res) => {
 
   db.results[index] = updatedResult;
 
-  saveDatabase(db);
+  saveDatabase(db, 'results');
   res.json({ success: true, result: db.results[index], state: db });
 });
 
@@ -796,7 +809,10 @@ app.delete('/api/results/:id', (req, res) => {
   }
 
   const deleted = db.results.splice(index, 1)[0];
-  saveDatabase(db);
+  saveDatabase(db, 'results');
+  if (supabaseProvider && supabaseProvider.isConfigured()) {
+    supabaseProvider.deleteEntity('results', id).catch(() => {});
+  }
   res.json({ success: true, deleted, state: db });
 });
 
@@ -817,11 +833,9 @@ app.post('/api/results/bulk-delete', (req, res) => {
     db.results = db.results.filter(r => !idSet.has(r.id));
     deletedCount = before - db.results.length;
   }
-  saveDatabase(db);
+  saveDatabase(db, 'results');
   res.json({ success: true, count: deletedCount, total: db.results.length, state: db });
-});
-
-// --- PARTICIPANTS & BULK EXCEL ---
+});// --- PARTICIPANTS & BULK EXCEL ---
 app.post('/api/participants', (req, res) => {
   const db = readDatabase();
   const participant = {
@@ -830,7 +844,7 @@ app.post('/api/participants', (req, res) => {
   };
   if (!db.participants) db.participants = [];
   db.participants.push(participant);
-  saveDatabase(db);
+  saveDatabase(db, 'participants');
   res.status(201).json({ success: true, participant, state: db });
 });
 
@@ -861,7 +875,7 @@ app.post('/api/participants/bulk', (req, res) => {
     }
   });
 
-  saveDatabase(db);
+  saveDatabase(db, 'participants');
   res.status(201).json({ success: true, count, total: db.participants.length, state: db });
 });
 
@@ -869,7 +883,10 @@ app.delete('/api/participants/:id', (req, res) => {
   const { id } = req.params;
   const db = readDatabase();
   db.participants = db.participants.filter(p => p.id !== id);
-  saveDatabase(db);
+  saveDatabase(db, 'participants');
+  if (supabaseProvider && supabaseProvider.isConfigured()) {
+    supabaseProvider.deleteEntity('participants', id).catch(() => {});
+  }
   res.json({ success: true, state: db });
 });
 
@@ -886,7 +903,7 @@ app.post('/api/participants/bulk-delete', (req, res) => {
     db.participants = db.participants.filter(p => !idSet.has(p.id));
     deletedCount = before - db.participants.length;
   }
-  saveDatabase(db);
+  saveDatabase(db, 'participants');
   res.json({ success: true, count: deletedCount, total: db.participants.length, state: db });
 });
 
@@ -920,7 +937,7 @@ function updateStreamSettings(req, res) {
     ...db.settings.liveStream,
     ...req.body
   };
-  saveDatabase(db);
+  saveDatabase(db, 'settings');
   res.json({ success: true, liveStream: db.settings.liveStream, state: db });
 }
 
@@ -982,7 +999,7 @@ app.post('/api/videos', (req, res) => {
   };
   if (!db.videos) db.videos = [];
   db.videos.unshift(video);
-  saveDatabase(db);
+  saveDatabase(db, 'videos');
   lastVideoPost = { time: now, key: postKey, video: video };
   res.status(201).json({ success: true, video, state: db });
 });
@@ -1003,7 +1020,10 @@ app.delete('/api/videos/:id', (req, res) => {
     }
   }
   db.videos = (db.videos || []).filter(v => v.id !== id);
-  saveDatabase(db);
+  saveDatabase(db, 'videos');
+  if (supabaseProvider && supabaseProvider.isConfigured()) {
+    supabaseProvider.deleteEntity('videos', id).catch(() => {});
+  }
   res.json({ success: true, state: db });
 });
 
@@ -1018,7 +1038,7 @@ app.post('/api/programs', (req, res) => {
   delete newProgram.code;
   if (!db.programs) db.programs = [];
   db.programs.push(newProgram);
-  saveDatabase(db);
+  saveDatabase(db, 'programs');
   res.status(201).json({ success: true, program: newProgram, state: db });
 });
 
@@ -1052,7 +1072,7 @@ app.post('/api/programs/bulk', (req, res) => {
     }
   });
 
-  saveDatabase(db);
+  saveDatabase(db, 'programs');
   res.status(201).json({ success: true, count, total: db.programs.length, state: db });
 });
 
@@ -1080,7 +1100,10 @@ app.delete('/api/programs/:id', (req, res) => {
   const { id } = req.params;
   const db = readDatabase();
   db.programs = db.programs.filter(p => p.id !== id);
-  saveDatabase(db);
+  saveDatabase(db, 'programs');
+  if (supabaseProvider && supabaseProvider.isConfigured()) {
+    supabaseProvider.deleteEntity('programs', id).catch(() => {});
+  }
   res.json({ success: true, state: db });
 });
 
@@ -1098,10 +1121,10 @@ app.post('/api/programs/bulk-delete', (req, res) => {
   } else if (Array.isArray(ids) && ids.length > 0) {
     const idSet = new Set(ids);
     const before = db.programs.length;
-    db.programs = db.programs.filter(r => !idSet.has(r.id));
+    db.programs = db.programs.filter(p => !idSet.has(p.id));
     deletedCount = before - db.programs.length;
   }
-  saveDatabase(db);
+  saveDatabase(db, 'programs');
   res.json({ success: true, count: deletedCount, total: db.programs.length, state: db });
 });
 
@@ -1116,13 +1139,10 @@ const handleReportSubmission = (req, res) => {
     status: 'pending',
     ...req.body
   };
-  delete notif.phone;
-  delete notif.contact;
-
-  if (!db.notifications) db.notifications = [];
-  db.notifications.unshift(notif);
-  saveDatabase(db);
-  res.status(201).json({ success: true, message: 'Your discrepancy report has been submitted to the fiesta audit committee.', notification: notif });
+  if (!db.reports) db.reports = [];
+  db.reports.unshift(notif);
+  saveDatabase(db, 'reports');
+  res.status(201).json({ success: true, report: notif, state: db });
 };
 
 app.post('/api/reports', handleReportSubmission);
@@ -1132,153 +1152,111 @@ app.post('/api/notifications/:id/action', (req, res) => {
   const { id } = req.params;
   const { action } = req.body;
   const db = readDatabase();
-  const notif = db.notifications.find(n => n.id === id);
-
-  if (!notif) return res.status(404).json({ error: 'Notification not found' });
-
-  if (action === 'delete') {
-    db.notifications = db.notifications.filter(n => n.id !== id);
-  } else if (action === 'ignore') {
-    notif.status = 'ignored';
-  } else if (action === 'resolve') {
-    notif.status = 'resolved';
+  if (!db.reports) db.reports = [];
+  const rep = db.reports.find(r => r.id === id);
+  if (rep) {
+    rep.status = action === 'approve' ? 'approved' : 'dismissed';
+    rep.resolvedAt = new Date().toISOString();
+    saveDatabase(db, 'reports');
+    res.json({ success: true, report: rep, state: db });
+  } else {
+    res.status(404).json({ success: false, message: 'Notification not found' });
   }
-
-  saveDatabase(db);
-  res.json({ success: true, notification: notif, state: db });
 });
 
-// --- GENERIC IMAGE UPLOAD ENDPOINT (For news, thumbnails, posters) ---
+// --- GENERAL IMAGE UPLOAD (FOR HERO / BRANDING) ---
 app.post('/api/upload/image', (req, res) => {
   uploadImage.single('image')(req, res, (err) => {
     if (err) {
+      console.error('Image upload error:', err);
       return res.status(400).json({ success: false, message: err.message || 'Image upload failed' });
     }
-    const file = req.file;
-    if (!file) {
-      // Try single 'file' field
-      return uploadImage.single('file')(req, res, (err2) => {
-        if (err2 || !req.file) {
-          return res.status(400).json({ success: false, message: 'No image file uploaded' });
-        }
-        const fileUrl = `/uploads/images/${req.file.filename}`;
-        return res.status(201).json({
-          success: true,
-          url: fileUrl,
-          filename: req.file.filename,
-          originalName: req.file.originalname,
-          size: req.file.size
-        });
-      });
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: 'No image file provided' });
     }
-    const fileUrl = `/uploads/images/${file.filename}`;
+    const imageUrl = `/uploads/images/${req.file.filename}`;
     res.status(201).json({
       success: true,
-      url: fileUrl,
-      filename: file.filename,
-      originalName: file.originalname,
-      size: file.size
+      url: imageUrl,
+      filename: req.file.filename,
+      originalName: req.file.originalname,
+      size: req.file.size
     });
   });
 });
 
-// --- GALLERY MANAGEMENT (Single & Bulk PC File Upload) ---
+// --- GALLERY MANAGEMENT ---
 let lastGalleryPost = { time: 0, key: '', items: [] };
 
-// 1. Direct PC Photo Upload (Multipart Form-Data for Single or Multiple Images)
 app.post('/api/gallery/upload', (req, res) => {
-  uploadGallery.array('images', 100)(req, res, (err) => {
+  uploadGallery.array('photos', 30)(req, res, (err) => {
     if (err) {
-      console.error('Gallery file upload error:', err);
-      return res.status(400).json({ success: false, message: err.message || 'Gallery upload failed' });
+      console.error('Gallery photos upload error:', err);
+      return res.status(400).json({ success: false, message: err.message || 'Photo upload failed' });
     }
-    let files = req.files || [];
-    if (files.length === 0 && req.file) files = [req.file];
-
-    if (files.length === 0) {
-      return res.status(400).json({ success: false, message: 'No photo files provided' });
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ success: false, message: 'No photos uploaded' });
     }
 
-    const defaultCat = req.body.category || req.body.defaultCategory || 'A-Zone';
     const db = readDatabase();
     if (!db.gallery) db.gallery = [];
 
-    const added = [];
-    files.forEach((file, idx) => {
-      const fileUrl = `/uploads/gallery/${file.filename}`;
-      const title = (file.originalname || 'Fiesta Capture').replace(/\.[^/.]+$/, "").replace(/[-_]/g, ' ');
+    const defaultCategory = req.body.category || 'A-Zone';
+    const uploadedItems = [];
+
+    req.files.forEach(file => {
       const item = {
-        id: 'gal-' + Date.now() + '-' + idx,
-        date: new Date().toISOString().split('T')[0],
-        title: title,
-        category: defaultCat,
-        caption: '',
-        image: fileUrl,
-        filename: file.filename,
-        originalName: file.originalname,
-        size: file.size
+        id: 'gal-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+        title: req.body.title || path.parse(file.originalname).name.replace(/[^a-zA-Z0-9 ]/g, ' '),
+        category: defaultCategory,
+        caption: req.body.caption || '',
+        image: `/uploads/gallery/${file.filename}`
       };
       db.gallery.unshift(item);
-      added.push(item);
+      uploadedItems.push(item);
     });
 
-    saveDatabase(db);
-    res.status(201).json({
-      success: true,
-      count: added.length,
-      total: db.gallery.length,
-      items: added,
-      state: db
-    });
+    saveDatabase(db, 'gallery');
+    res.status(201).json({ success: true, count: uploadedItems.length, items: uploadedItems, state: db });
   });
 });
 
-// 2. Create single gallery photo with URL or Base64 fallback
 app.post('/api/gallery', (req, res) => {
   const db = readDatabase();
-  const postKey = `${req.body.title || ''}_${(req.body.image || '').substring(0, 50)}`;
-  const now = Date.now();
-  if (now - lastGalleryPost.time < 3000 && lastGalleryPost.key === postKey && lastGalleryPost.items.length > 0) {
-    return res.status(200).json({ success: true, gallery: lastGalleryPost.items[0], state: db, deduplicated: true });
-  }
-
   const item = {
     id: 'gal-' + Date.now(),
-    date: new Date().toISOString().split('T')[0],
-    title: req.body.title || 'Fiesta Capture',
+    title: req.body.title || 'Fiesta Memory',
     category: req.body.category || 'A-Zone',
     caption: req.body.caption || '',
-    image: req.body.image
+    image: req.body.image || 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800'
   };
   if (!db.gallery) db.gallery = [];
   db.gallery.unshift(item);
-  saveDatabase(db);
-  lastGalleryPost = { time: now, key: postKey, items: [item] };
-  res.status(201).json({ success: true, gallery: item, state: db });
+  saveDatabase(db, 'gallery');
+  res.status(201).json({ success: true, item, state: db });
 });
 
-// 3. Bulk Gallery Creation (JSON Array)
 app.post('/api/gallery/bulk', (req, res) => {
   const { images, defaultCategory } = req.body;
   if (!Array.isArray(images) || images.length === 0) {
-    return res.status(400).json({ success: false, message: 'No images provided' });
+    return res.status(400).json({ success: false, message: 'Invalid or empty images array' });
   }
 
-  const bulkKey = `bulk_${images.length}_${(images[0]?.title || '')}_${String(images[0]?.image || '').substring(0, 30)}`;
+  const bulkKey = `${images.length}_${JSON.stringify(images.slice(0, 2))}`;
   const now = Date.now();
   const db = readDatabase();
-  if (now - lastGalleryPost.time < 3000 && lastGalleryPost.key === bulkKey) {
-    return res.status(200).json({ success: true, count: lastGalleryPost.items.length, total: db.gallery.length, state: db, deduplicated: true });
+
+  if (now - lastGalleryPost.time < 3000 && lastGalleryPost.key === bulkKey && lastGalleryPost.items.length > 0) {
+    return res.status(200).json({ success: true, count: lastGalleryPost.items.length, items: lastGalleryPost.items, state: db, deduplicated: true });
   }
 
   if (!db.gallery) db.gallery = [];
-
   const added = [];
-  images.forEach((imgData, idx) => {
+
+  images.forEach(imgData => {
     const item = {
-      id: 'gal-' + Date.now() + '-' + idx,
-      date: new Date().toISOString().split('T')[0],
-      title: imgData.title || `Fiesta Moment #${db.gallery.length + 1}`,
+      id: 'gal-' + Date.now() + '-' + Math.floor(Math.random() * 100000),
+      title: imgData.title || 'Fiesta Moment',
       category: imgData.category || defaultCategory || 'A-Zone',
       caption: imgData.caption || '',
       image: typeof imgData === 'string' ? imgData : (imgData.image || imgData.url)
@@ -1289,7 +1267,7 @@ app.post('/api/gallery/bulk', (req, res) => {
     }
   });
 
-  saveDatabase(db);
+  saveDatabase(db, 'gallery');
   lastGalleryPost = { time: now, key: bulkKey, items: added };
   res.status(201).json({ success: true, count: added.length, total: db.gallery.length, state: db });
 });
@@ -1305,8 +1283,11 @@ app.delete('/api/gallery/:id', (req, res) => {
       try { fs.unlinkSync(filePath); } catch (e) {}
     }
   }
-  db.gallery = db.gallery.filter(g => g.id !== id);
-  saveDatabase(db);
+  db.gallery = (db.gallery || []).filter(g => g.id !== id);
+  saveDatabase(db, 'gallery');
+  if (supabaseProvider && supabaseProvider.isConfigured()) {
+    supabaseProvider.deleteEntity('gallery', id).catch(() => {});
+  }
   res.json({ success: true, state: db });
 });
 
@@ -1335,9 +1316,9 @@ app.post('/api/gallery/bulk-delete', (req, res) => {
         }
       }
     });
-    db.gallery = db.gallery.filter(g => !idSet.has(g.id));
+    db.gallery = (db.gallery || []).filter(g => !idSet.has(g.id));
   }
-  saveDatabase(db);
+  saveDatabase(db, 'gallery');
   res.json({ success: true, count: db.gallery.length, state: db });
 });
 
@@ -1364,7 +1345,7 @@ app.post('/api/news', (req, res) => {
 
   if (!db.news) db.news = [];
   db.news.unshift(item);
-  saveDatabase(db);
+  saveDatabase(db, 'news');
   res.status(201).json({ success: true, news: item, state: db });
 });
 
@@ -1385,7 +1366,7 @@ app.put('/api/news/:id', (req, res) => {
     updatedAt: new Date().toISOString()
   };
 
-  saveDatabase(db);
+  saveDatabase(db, 'news');
   res.json({ success: true, news: db.news[idx], state: db });
 });
 
@@ -1404,7 +1385,7 @@ app.patch('/api/news/:id/toggle-visibility', (req, res) => {
   db.news[idx].isPublished = newStatus;
   db.news[idx].isUploaded = true;
 
-  saveDatabase(db);
+  saveDatabase(db, 'news');
   res.json({
     success: true,
     isPublic: newStatus,
@@ -1418,7 +1399,10 @@ app.delete('/api/news/:id', (req, res) => {
   const { id } = req.params;
   const db = readDatabase();
   db.news = (db.news || []).filter(n => n.id !== id);
-  saveDatabase(db);
+  saveDatabase(db, 'news');
+  if (supabaseProvider && supabaseProvider.isConfigured()) {
+    supabaseProvider.deleteEntity('news', id).catch(() => {});
+  }
   res.json({ success: true, state: db });
 });
 
@@ -1431,7 +1415,7 @@ app.post('/api/news/bulk-delete', (req, res) => {
     const idSet = new Set(ids);
     db.news = (db.news || []).filter(n => !idSet.has(n.id));
   }
-  saveDatabase(db);
+  saveDatabase(db, 'news');
   res.json({ success: true, count: db.news.length, state: db });
 });
 
@@ -1445,7 +1429,7 @@ app.post('/api/news/clean-unuploaded', (req, res) => {
     }
     return true;
   });
-  saveDatabase(db);
+  saveDatabase(db, 'news');
   const removed = beforeCount - db.news.length;
   res.json({ success: true, removedCount: removed, remainingCount: db.news.length, state: db });
 });
@@ -1540,7 +1524,7 @@ app.post('/api/items', (req, res) => {
     db.items.unshift(itemData);
   }
 
-  saveDatabase(db);
+  saveDatabase(db, 'items');
   res.status(201).json({
     success: true,
     item: existingIndex !== -1 ? db.items[existingIndex] : itemData,
@@ -1569,7 +1553,10 @@ app.delete('/api/items/:id', (req, res) => {
   }
 
   db.items = db.items.filter(it => it.id !== id);
-  saveDatabase(db);
+  saveDatabase(db, 'items');
+  if (supabaseProvider && supabaseProvider.isConfigured()) {
+    supabaseProvider.deleteEntity('items', id).catch(() => {});
+  }
   res.json({ success: true, deletedId: id, items: db.items, state: db });
 });
 
@@ -1604,7 +1591,7 @@ app.post('/api/items/bulk-delete', (req, res) => {
     db.items = db.items.filter(it => !idSet.has(it.id));
   }
 
-  saveDatabase(db);
+  saveDatabase(db, 'items');
   res.json({ success: true, count: db.items.length, items: db.items, state: db });
 });
 
