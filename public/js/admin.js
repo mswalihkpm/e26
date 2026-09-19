@@ -93,6 +93,7 @@ window.FiestaAdmin = (function() {
 
   // --- AUTHENTICATION & SINGLE ADMIN CLEARANCE ---
   function openLoginModal() {
+    if (window.closeMobileDrawer) window.closeMobileDrawer();
     const modalLogin = document.getElementById('modal-admin-login');
     if (window.FiestaAPI.isAdminLoggedIn()) {
       showAdminView();

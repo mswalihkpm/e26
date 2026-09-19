@@ -6260,6 +6260,14 @@
   .fiesta-main {
     padding-bottom: 50px !important;
   }
+
+  .pwa-install-banner {
+    bottom: calc(75px + env(safe-area-inset-bottom)) !important;
+    width: calc(100% - 1.5rem) !important;
+    max-width: 440px !important;
+    z-index: 999 !important;
+    padding: 0.65rem 0.95rem !important;
+  }
 }
 
 .mobile-bottom-nav-inner {
