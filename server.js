@@ -372,6 +372,8 @@ const DEFAULT_DATABASE = {
   settings: {
     heroTitle: "EXCELLENTIA ARTS FIESTA 2026",
     heroSubtitle: "DISCOVER THE UNSEEN",
+    dates: "19, 20 September 2026",
+    location: "Malappuram, Kerala",
     liveStreamActive: false,
     showTeamScores: true,
     maxVisibleResultNumber: null,

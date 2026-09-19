@@ -11,7 +11,7 @@ window.FiestaResults = (function() {
     category: 'ALL',
     team: 'ALL',
     position: 'ALL',
-    sort: 'num-desc'
+    sort: 'num-asc'
   };
 
   function init() {
@@ -100,10 +100,10 @@ window.FiestaResults = (function() {
 
     if (btnResetEmpty) {
       btnResetEmpty.addEventListener('click', () => {
-        activeFilters = { search: '', category: 'ALL', team: 'ALL', position: 'ALL', sort: 'num-desc' };
+        activeFilters = { search: '', category: 'ALL', team: 'ALL', position: 'ALL', sort: 'num-asc' };
         if (searchInput) searchInput.value = '';
         if (btnClearSearch) btnClearSearch.style.display = 'none';
-        if (sortSelect) sortSelect.value = 'num-desc';
+        if (sortSelect) sortSelect.value = 'num-asc';
         document.querySelectorAll('#results-zone-pills .res-zone-btn').forEach(p => p.classList.remove('active'));
         const allBtn = document.querySelector('#results-zone-pills [data-zone="ALL"]');
         if (allBtn) allBtn.classList.add('active');
@@ -169,14 +169,14 @@ window.FiestaResults = (function() {
       return true;
     });
 
-    // Sorting (Default: Descending by Result Number)
-    if (activeFilters.sort === 'num-asc') {
-      list.sort((a, b) => (Number(a.resultNumber) || 0) - (Number(b.resultNumber) || 0));
+    // Sorting (Default: Increasing / Ascending by Result Number 1..N)
+    if (activeFilters.sort === 'num-desc') {
+      list.sort((a, b) => (Number(b.resultNumber) || 0) - (Number(a.resultNumber) || 0));
     } else if (activeFilters.sort === 'name') {
       list.sort((a, b) => (a.programName || '').localeCompare(b.programName || ''));
     } else {
-      // Default: 'num-desc' (latest result number first)
-      list.sort((a, b) => (Number(b.resultNumber) || 0) - (Number(a.resultNumber) || 0));
+      // Default: 'num-asc' (Result Number increasing order: 1, 2, 3...)
+      list.sort((a, b) => (Number(a.resultNumber) || 0) - (Number(b.resultNumber) || 0));
     }
 
     return list;
